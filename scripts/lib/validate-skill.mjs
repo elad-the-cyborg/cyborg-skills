@@ -36,33 +36,46 @@ function stripCode(text) {
 const HEBREW_PROCLITICS = 'והבלמשכ'
 
 // Turns a plain-text marker (e.g. "acme method") into a case-insensitive,
-// whitespace-tolerant regexp (matches "Acme  Method" too), anchored so it
-// only matches whole words rather than firing on any longer word that
-// merely contains it as a substring, in Latin or Hebrew script alike.
-// JavaScript's \b is defined over [A-Za-z0-9_] only, so it treats every
-// Hebrew letter as a non-word character and can't be used here; Unicode-
-// aware lookarounds (with the "u" flag) do the same job for both scripts.
+// whitespace-tolerant regexp (matches "Acme  Method" too), anchored to
+// whole words rather than any substring. Three things to know about how the
+// anchoring actually behaves:
 //
-// The trailing boundary is a plain negative lookahead: nothing may follow
-// the match except a non letter/digit/underscore (so a marker like "blue
-// harbor" doesn't fire on the longer word "harbors"). The leading boundary
-// can't be the mirror negative lookbehind, though: that would treat a glued
-// Hebrew proclitic as an ordinary adjacent letter and reject it, silently
-// missing the single most common way a Hebrew marker actually shows up
-// attached to a noun.
-// So the leading side is a positive lookbehind with alternation: it accepts
-// a real word start (start of string, or a non letter/digit/underscore
-// character) OR exactly one proclitic letter (optionally followed by a
-// hyphen, for glued Latin markers like "ב-Acme"), as long as that proclitic
-// letter is itself at a real word start. A longer glued stem such as
-// invented "פרואקמה" still fails: the letter right before the marker is a
-// letter, not a proclitic-at-word-start, so no alternative matches.
+// 1. Plain \b is wrong for Hebrew. JavaScript's \b is defined over
+//    [A-Za-z0-9_] only, so it treats every Hebrew letter as a non-word
+//    character and can't be used here. Unicode-aware lookarounds (the "u"
+//    flag, \p{L}, \p{N}) do the equivalent job for both scripts. The
+//    trailing boundary is a plain negative lookahead: nothing may follow
+//    the match except a non letter/digit/underscore, so a marker like
+//    "blue harbor" doesn't fire on the longer word "harbors".
+// 2. A single glued Hebrew proclitic is let through on purpose. The
+//    trailing negative-lookahead pattern can't be mirrored on the leading
+//    side, because that would treat a glued proclitic as an ordinary
+//    adjacent letter and reject it, silently missing the single most
+//    common way a Hebrew marker actually shows up attached to a noun. So
+//    the leading side is a positive lookbehind with alternation: a real
+//    word start (start of string, or any non letter/digit/underscore
+//    character, which also covers a marker preceded by punctuation like a
+//    hyphen or a maqaf) OR exactly one proclitic letter that is itself at
+//    a real word start. A longer glued stem such as invented "פרואקמה"
+//    still correctly fails to match: the letter right before the marker is
+//    an ordinary letter, not a proclitic-at-word-start, so no alternative
+//    applies.
+// 3. Known, accepted limitation: a marker can match inside an unrelated
+//    word that merely begins with one of the seven proclitic letters,
+//    because nothing short of a full lexicon can tell a genuine glued
+//    proclitic apart from a word's own first letter. Invented example:
+//    marker "ורד" also matches inside the ordinary standalone word "מורד"
+//    ("slope"), since word-initial מ looks identical to the proclitic מ
+//    ("from"). This is accepted rather than chased with heuristics or a
+//    word list, because this check is warnings-only and every warning is
+//    read by a human before it means anything; recall matters more than
+//    precision here.
 function markerToRegExp(marker) {
   const escaped = marker.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const pattern = escaped.replace(/\s+/g, '\\s+')
   const boundary = '[\\p{L}\\p{N}_]'
   const nonBoundary = '[^\\p{L}\\p{N}_]'
-  const lead = `(?:^|${nonBoundary}|^[${HEBREW_PROCLITICS}]-?|${nonBoundary}[${HEBREW_PROCLITICS}]-?)`
+  const lead = `(?:^|${nonBoundary}|^[${HEBREW_PROCLITICS}]|${nonBoundary}[${HEBREW_PROCLITICS}])`
   return new RegExp(`(?<=${lead})${pattern}(?!${boundary})`, 'iu')
 }
 

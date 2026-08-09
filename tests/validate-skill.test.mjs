@@ -160,10 +160,36 @@ test('a single-letter Hebrew proclitic glued directly onto a marker still trigge
   }
 })
 
-test('a Hebrew proclitic followed by a hyphen before a Latin marker still triggers the warning', () => {
-  const r = validateSkill({
+test('a marker preceded by punctuation such as a hyphen or a maqaf still triggers the warning', () => {
+  // Any non letter/digit/underscore character immediately before the marker
+  // is already a valid word start on its own, whether or not a Hebrew
+  // proclitic is involved: this pins that general boundary behavior, not a
+  // proclitic-specific mechanism.
+  const hyphen = validateSkill({
     dirName: 'hook-generator', data: goodData, body: goodBody + '\nזה נבנה עם ב-Blue Harbor בשבילכם.', hasInstall: true,
     forbiddenMarkers: ['blue harbor'],
+  })
+  assert.ok(hyphen.warnings.some(w => w.includes('forbidden')))
+
+  const maqaf = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nזה נבנה עם ב־Blue Harbor בשבילכם.', hasInstall: true,
+    forbiddenMarkers: ['blue harbor'],
+  })
+  assert.ok(maqaf.warnings.some(w => w.includes('forbidden')))
+})
+
+test('a marker can match inside an unrelated word starting with a proclitic letter (known, accepted limitation)', () => {
+  // Nothing short of a full lexicon can tell a genuine glued proclitic apart
+  // from a real word that simply happens to start with the same letter.
+  // Invented example: the marker "ורד" also matches inside the ordinary
+  // word "מורד" ("slope"), because word-initial מ is indistinguishable from
+  // the proclitic מ ("from"). This is accepted, not a bug to chase: the
+  // check is warnings-only and every warning is read by a human before it
+  // means anything. See the doc comment above markerToRegExp and
+  // AUTHORING.md section 3.
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nירדנו במורד ההר, מורד תלול מאוד.', hasInstall: true,
+    forbiddenMarkers: ['ורד'],
   })
   assert.ok(r.warnings.some(w => w.includes('forbidden')))
 })
