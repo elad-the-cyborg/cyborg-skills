@@ -145,6 +145,37 @@ test('a Hebrew marker matches standalone but not glued inside a longer word', ()
   assert.deepEqual(gluedBefore.warnings, [])
 })
 
+test('a single-letter Hebrew proclitic glued directly onto a marker still triggers the warning', () => {
+  // ו/ה/ב/ל/מ/ש/כ are the standard one-letter prefixes ("and", "the", "in",
+  // "to", "from", "that", "like") that Hebrew attaches straight onto a noun
+  // with no space, e.g. "באקמה" ("in Acme"). This is one of the most common
+  // constructions in Hebrew prose, so the guard must not miss it.
+  const proclitics = ['ו', 'ה', 'ב', 'ל', 'מ', 'ש', 'כ']
+  for (const p of proclitics) {
+    const r = validateSkill({
+      dirName: 'hook-generator', data: goodData, body: goodBody + `\nבדקנו את ${p}אקמה בקפידה.`, hasInstall: true,
+      forbiddenMarkers: ['אקמה'],
+    })
+    assert.ok(r.warnings.some(w => w.includes('forbidden')), `proclitic "${p}" should still trigger a warning`)
+  }
+})
+
+test('a Hebrew proclitic followed by a hyphen before a Latin marker still triggers the warning', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nזה נבנה עם ב-Blue Harbor בשבילכם.', hasInstall: true,
+    forbiddenMarkers: ['blue harbor'],
+  })
+  assert.ok(r.warnings.some(w => w.includes('forbidden')))
+})
+
+test('a multi-letter Hebrew stem glued in front of a marker still does not trigger a warning', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nהעסק בנוי על פרואקמה בעברית.', hasInstall: true,
+    forbiddenMarkers: ['אקמה'],
+  })
+  assert.deepEqual(r.warnings, [])
+})
+
 test('category_slug matching the category directory has no error', () => {
   const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true, catDirName: '02-copy-content' })
   assert.deepEqual(r.errors, [])

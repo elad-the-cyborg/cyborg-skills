@@ -28,18 +28,42 @@ function stripCode(text) {
     .replace(/`[^`\n]*`/g, '')
 }
 
+// One-letter Hebrew proclitics that glue straight onto the following word
+// with no space (ו/ה/ב/ל/מ/ש/כ: "and/the/in/to/from/that/like"), e.g.
+// "באקמה" ("in Acme") or "שאקמה" ("that Acme"). This is one of the most
+// common constructions in Hebrew prose, so a marker preceded by one of
+// these letters at a genuine word start must still match.
+const HEBREW_PROCLITICS = 'והבלמשכ'
+
 // Turns a plain-text marker (e.g. "acme method") into a case-insensitive,
 // whitespace-tolerant regexp (matches "Acme  Method" too), anchored so it
 // only matches whole words rather than firing on any longer word that
 // merely contains it as a substring, in Latin or Hebrew script alike.
-// JavaScript's \b is defined over [A-Za-z0-9_] only, so it treats Hebrew
-// letters as non-word characters and can't be used here; Unicode-aware
-// lookarounds (with the "u" flag) work for both scripts.
+// JavaScript's \b is defined over [A-Za-z0-9_] only, so it treats every
+// Hebrew letter as a non-word character and can't be used here; Unicode-
+// aware lookarounds (with the "u" flag) do the same job for both scripts.
+//
+// The trailing boundary is a plain negative lookahead: nothing may follow
+// the match except a non letter/digit/underscore (so a marker like "blue
+// harbor" doesn't fire on the longer word "harbors"). The leading boundary
+// can't be the mirror negative lookbehind, though: that would treat a glued
+// Hebrew proclitic as an ordinary adjacent letter and reject it, silently
+// missing the single most common way a Hebrew marker actually shows up
+// attached to a noun.
+// So the leading side is a positive lookbehind with alternation: it accepts
+// a real word start (start of string, or a non letter/digit/underscore
+// character) OR exactly one proclitic letter (optionally followed by a
+// hyphen, for glued Latin markers like "ב-Acme"), as long as that proclitic
+// letter is itself at a real word start. A longer glued stem such as
+// invented "פרואקמה" still fails: the letter right before the marker is a
+// letter, not a proclitic-at-word-start, so no alternative matches.
 function markerToRegExp(marker) {
   const escaped = marker.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const pattern = escaped.replace(/\s+/g, '\\s+')
   const boundary = '[\\p{L}\\p{N}_]'
-  return new RegExp(`(?<!${boundary})${pattern}(?!${boundary})`, 'iu')
+  const nonBoundary = '[^\\p{L}\\p{N}_]'
+  const lead = `(?:^|${nonBoundary}|^[${HEBREW_PROCLITICS}]-?|${nonBoundary}[${HEBREW_PROCLITICS}]-?)`
+  return new RegExp(`(?<=${lead})${pattern}(?!${boundary})`, 'iu')
 }
 
 export function validateSkill({ dirName, data, body, hasInstall, catDirName, forbiddenMarkers = [] }) {
