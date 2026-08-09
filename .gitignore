@@ -4,3 +4,7 @@ node_modules/
 
 # internal planning docs live outside this repo
 docs/superpowers/
+
+# maintainer-local denylist of sources skills must never be derived from;
+# never committed, see AUTHORING.md section 3
+forbidden-markers.local.json

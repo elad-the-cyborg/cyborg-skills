@@ -7,7 +7,6 @@ const REQUIRED_META = [
   'level', 'visibility', 'author', 'site', 'version',
 ]
 const BRAND_MARKER = 'The Cyborg ·'
-const FORBIDDEN = [/\bacme\b/i, /אקמה/, /blue\s*harbor/i, /בלו\s*הרבור/]
 const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
 
 // Safety denylist (warnings only): a skill body is read-only / draft-only by
@@ -29,7 +28,16 @@ function stripCode(text) {
     .replace(/`[^`\n]*`/g, '')
 }
 
-export function validateSkill({ dirName, data, body, hasInstall, catDirName }) {
+// Turns a plain-text marker (e.g. "acme method") into a case-insensitive,
+// whitespace-tolerant regexp (matches "Acme  Method" too), so callers can
+// pass in plain strings without knowing anything about regexp syntax.
+function markerToRegExp(marker) {
+  const escaped = marker.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const pattern = escaped.replace(/\s+/g, '\\s+')
+  return new RegExp(pattern, 'i')
+}
+
+export function validateSkill({ dirName, data, body, hasInstall, catDirName, forbiddenMarkers = [] }) {
   const errors = []
   const warnings = []
   const name = data?.name
@@ -71,8 +79,8 @@ export function validateSkill({ dirName, data, body, hasInstall, catDirName }) {
     }
   }
 
-  for (const re of FORBIDDEN) {
-    if (re.test(body)) warnings.push(`forbidden marker found (review for IP): ${re}`)
+  for (const marker of forbiddenMarkers) {
+    if (markerToRegExp(marker).test(body)) warnings.push(`forbidden marker found (review for IP): "${marker}"`)
   }
 
   for (const { re, msg } of DENYLIST) {

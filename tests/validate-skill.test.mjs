@@ -71,7 +71,26 @@ test('missing INSTALL.md is an error', () => {
 })
 
 test('forbidden marker is a warning not an error', () => {
-  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nמבוסס על שיטת אקמה', hasInstall: true })
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nמבוסס על שיטת אקמה', hasInstall: true,
+    forbiddenMarkers: ['שיטת אקמה'],
+  })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('forbidden')))
+})
+
+test('with no forbidden markers configured, the same body produces no warnings', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nמבוסס על שיטת אקמה', hasInstall: true,
+  })
+  assert.deepEqual(r.warnings, [])
+})
+
+test('forbidden marker matching is case-insensitive and whitespace-tolerant', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nBuilt on the Acme  Method.', hasInstall: true,
+    forbiddenMarkers: ['acme method'],
+  })
   assert.deepEqual(r.errors, [])
   assert.ok(r.warnings.some(w => w.includes('forbidden')))
 })

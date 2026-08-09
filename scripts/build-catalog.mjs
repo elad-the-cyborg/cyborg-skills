@@ -6,10 +6,12 @@ import { fileURLToPath } from 'node:url'
 import { parseFrontmatter } from './lib/frontmatter.mjs'
 import { buildCatalog } from './lib/catalog.mjs'
 import { validateSkill } from './lib/validate-skill.mjs'
+import { loadForbiddenMarkers } from './lib/forbidden-markers.mjs'
 
 const run = promisify(execFile)
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const SKILLS_DIR = join(ROOT, 'skills')
+const forbiddenMarkers = await loadForbiddenMarkers(ROOT)
 
 async function exists(p) { try { await access(p); return true } catch { return false } }
 
@@ -42,7 +44,7 @@ for (const cat of cats.filter(d => d.isDirectory())) {
     }
     const { data, body } = parseFrontmatter(md)
     const hasInstall = await exists(join(skPath, 'INSTALL.md'))
-    const validation = validateSkill({ dirName: s.name, data, body, hasInstall, catDirName: cat.name })
+    const validation = validateSkill({ dirName: s.name, data, body, hasInstall, catDirName: cat.name, forbiddenMarkers })
 
     const name = data?.name
     if (name && typeof name === 'string') {
