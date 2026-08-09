@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-09T18:48:35.750Z",
+  "generated_at": "2026-08-09T19:01:20.932Z",
   "count": 3,
   "skills": [
     {
@@ -41,7 +41,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hook-generator/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T18:48:35.740Z"
+      "updated_at": "2026-08-09T21:49:07+03:00"
     },
     {
       "name": "brand-palette",
