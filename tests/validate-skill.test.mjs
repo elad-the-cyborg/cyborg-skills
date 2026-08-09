@@ -95,6 +95,56 @@ test('forbidden marker matching is case-insensitive and whitespace-tolerant', ()
   assert.ok(r.warnings.some(w => w.includes('forbidden')))
 })
 
+test('empty and whitespace-only markers are ignored and do not cause false warnings', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    forbiddenMarkers: ['', '   '],
+  })
+  assert.deepEqual(r.warnings, [])
+})
+
+test('an empty marker earlier in the array does not suppress a real marker later in it', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nמבוסס על שיטת אקמה', hasInstall: true,
+    forbiddenMarkers: ['', '   ', 'שיטת אקמה'],
+  })
+  assert.ok(r.warnings.some(w => w.includes('forbidden')))
+})
+
+test('a Latin marker does not match a longer word that merely contains it', () => {
+  const matches = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nBuilt with the Blue Harbor toolkit.', hasInstall: true,
+    forbiddenMarkers: ['blue harbor'],
+  })
+  assert.ok(matches.warnings.some(w => w.includes('forbidden')))
+
+  const noMatch = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nTaking things to the Blue Harbors of excellence.', hasInstall: true,
+    forbiddenMarkers: ['blue harbor'],
+  })
+  assert.deepEqual(noMatch.warnings, [])
+})
+
+test('a Hebrew marker matches standalone but not glued inside a longer word', () => {
+  const standalone = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nהעסק בנוי על שיטת אקמה בעברית.', hasInstall: true,
+    forbiddenMarkers: ['אקמה'],
+  })
+  assert.ok(standalone.warnings.some(w => w.includes('forbidden')))
+
+  const gluedAfter = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nהעסק בנוי על שיטת אקמהיסטית בעברית.', hasInstall: true,
+    forbiddenMarkers: ['אקמה'],
+  })
+  assert.deepEqual(gluedAfter.warnings, [])
+
+  const gluedBefore = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nהעסק בנוי על פרואקמה בעברית.', hasInstall: true,
+    forbiddenMarkers: ['אקמה'],
+  })
+  assert.deepEqual(gluedBefore.warnings, [])
+})
+
 test('category_slug matching the category directory has no error', () => {
   const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true, catDirName: '02-copy-content' })
   assert.deepEqual(r.errors, [])

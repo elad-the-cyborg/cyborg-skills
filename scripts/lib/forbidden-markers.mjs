@@ -32,5 +32,8 @@ export async function loadForbiddenMarkers(rootDir) {
     return []
   }
 
-  return parsed
+  // Drop empty / whitespace-only entries: markerToRegExp("") would build an
+  // empty-pattern regexp that matches every string, so a stray "" from a
+  // trailing-comma edit or copy-paste slip must never reach the matcher.
+  return parsed.filter(m => m.trim().length > 0)
 }

@@ -29,12 +29,17 @@ function stripCode(text) {
 }
 
 // Turns a plain-text marker (e.g. "acme method") into a case-insensitive,
-// whitespace-tolerant regexp (matches "Acme  Method" too), so callers can
-// pass in plain strings without knowing anything about regexp syntax.
+// whitespace-tolerant regexp (matches "Acme  Method" too), anchored so it
+// only matches whole words rather than firing on any longer word that
+// merely contains it as a substring, in Latin or Hebrew script alike.
+// JavaScript's \b is defined over [A-Za-z0-9_] only, so it treats Hebrew
+// letters as non-word characters and can't be used here; Unicode-aware
+// lookarounds (with the "u" flag) work for both scripts.
 function markerToRegExp(marker) {
   const escaped = marker.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const pattern = escaped.replace(/\s+/g, '\\s+')
-  return new RegExp(pattern, 'i')
+  const boundary = '[\\p{L}\\p{N}_]'
+  return new RegExp(`(?<!${boundary})${pattern}(?!${boundary})`, 'iu')
 }
 
 export function validateSkill({ dirName, data, body, hasInstall, catDirName, forbiddenMarkers = [] }) {
@@ -80,6 +85,12 @@ export function validateSkill({ dirName, data, body, hasInstall, catDirName, for
   }
 
   for (const marker of forbiddenMarkers) {
+    // Defensive: an empty/whitespace-only marker would build an empty-
+    // pattern regexp that matches every string. loadForbiddenMarkers()
+    // already filters these out, but skip them here too so a caller
+    // passing an array in directly (as tests and other code do) can't
+    // trigger the same false-positive flood.
+    if (!marker || !marker.trim()) continue
     if (markerToRegExp(marker).test(body)) warnings.push(`forbidden marker found (review for IP): "${marker}"`)
   }
 
