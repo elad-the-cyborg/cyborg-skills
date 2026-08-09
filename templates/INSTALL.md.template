@@ -1,0 +1,21 @@
+# התקנה · {{title_he}}
+
+{{one_liner}}
+
+## מה צריך
+Claude Code + VS Code. אם עוד אין לך, ראה את מדריך ההתקנה הממותג של הסייבורג.
+
+## התקנה בשורה אחת (העתק והדבק)
+```
+npx degit elad-the-cyborg/cyborg-skills/skills/{{category_slug}}/{{name}} ~/.claude/skills/{{name}}
+```
+
+חלופה ידנית: הורד את התיקייה `skills/{{category_slug}}/{{name}}` וגרור אותה אל
+`~/.claude/skills/`.
+
+## איך מפעילים
+פתח את קלוד קוד וכתוב: "{{example_prompt}}".
+
+## רוצה יותר?
+זה טעימה. בתוכנית הליווי של הסייבורג בונים את כל מערכת השיווק שלך עם כלים כאלה.
+https://thecyborg.co.il
