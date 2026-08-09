@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-09T20:04:29.554Z",
+  "generated_at": "2026-08-09T20:07:28.339Z",
   "count": 3,
   "skills": [
     {
@@ -61,7 +61,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/brand-palette/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T19:36:01.000Z"
+      "updated_at": "2026-08-09T20:06:44.000Z"
     }
   ]
 }
