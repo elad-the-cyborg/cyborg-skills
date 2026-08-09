@@ -36,13 +36,17 @@ export function buildCatalog(skills, now) {
   return { json, markdown: renderCatalogMd(entries) }
 }
 
-function renderCatalogMd(entries) {
+function escapeCell(value) {
+  return String(value).replace(/\|/g, '\\|')
+}
+
+export function renderCatalogMd(entries) {
   const lines = [
     '# קטלוג הסקילים · The Cyborg', '',
     '| קטגוריה | נושא | סקיל | רמה | התקנה |', '|---|---|---|---|---|',
   ]
   for (const e of entries) {
-    lines.push(`| ${e.category} | ${e.topic} | [${e.title_he}](${e.github_url}) | ${e.level} | \`${e.install_command}\` |`)
+    lines.push(`| ${escapeCell(e.category)} | ${escapeCell(e.topic)} | [${escapeCell(e.title_he)}](${e.github_url}) | ${e.level} | \`${e.install_command}\` |`)
   }
   lines.push('')
   return lines.join('\n')

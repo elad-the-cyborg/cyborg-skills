@@ -1,11 +1,12 @@
 import { mkdir, writeFile, readFile, access } from 'node:fs/promises'
 import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { fillTemplate } from './lib/template.mjs'
 
 // Usage: node scripts/new-skill.mjs name=hook-generator category_slug=02-copy-content \
 //   category="קופי ותוכן" topic="הוקים וזוויות" title_he="מחולל הוקים הסייבורג" level=beginner \
 //   one_liner="..." trigger="..." step1_title="..." example_prompt="..." [tags="..."]
-const ROOT = new URL('../', import.meta.url).pathname
+const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const args = Object.fromEntries(process.argv.slice(2).map(a => {
   const i = a.indexOf('='); return [a.slice(0, i), a.slice(i + 1)]
 }))

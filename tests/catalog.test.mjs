@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { deriveUrls, toCatalogEntry, buildCatalog } from '../scripts/lib/catalog.mjs'
+import { deriveUrls, toCatalogEntry, buildCatalog, renderCatalogMd } from '../scripts/lib/catalog.mjs'
 
 const skill = {
   data: {
@@ -39,4 +39,29 @@ test('buildCatalog produces stable shape and sorts', () => {
   assert.equal(json.version, '1.0')
   assert.equal(json.count, 2)
   assert.equal(json.skills[0].category_slug, '01-research-strategy') // sorted first
+})
+
+test('renderCatalogMd renders a normal row with category, topic, title link, level and install command', () => {
+  const entry = toCatalogEntry(skill)
+  const md = renderCatalogMd([entry])
+  assert.ok(md.includes('| קופי ותוכן | הוקים וזוויות |'))
+  assert.ok(md.includes('[מחולל הוקים הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator)'))
+  assert.ok(md.includes('| beginner |'))
+  assert.ok(md.includes('`npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/.claude/skills/hook-generator`'))
+})
+
+test('renderCatalogMd escapes pipe characters in cell values so they cannot break the table', () => {
+  const withPipe = {
+    ...skill,
+    data: {
+      ...skill.data,
+      metadata: { ...skill.data.metadata, category: 'קופי | תוכן', title_he: 'הוק | מהיר' },
+    },
+  }
+  const entry = toCatalogEntry(withPipe)
+  const md = renderCatalogMd([entry])
+  assert.ok(md.includes('קופי \\| תוכן'))
+  assert.ok(md.includes('הוק \\| מהיר'))
+  assert.ok(!md.includes('קופי | תוכן'))
+  assert.ok(!md.includes('הוק | מהיר'))
 })

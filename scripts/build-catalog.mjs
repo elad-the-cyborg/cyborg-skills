@@ -2,12 +2,13 @@ import { readdir, readFile, writeFile, access } from 'node:fs/promises'
 import { join } from 'node:path'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
+import { fileURLToPath } from 'node:url'
 import { parseFrontmatter } from './lib/frontmatter.mjs'
 import { buildCatalog } from './lib/catalog.mjs'
 import { validateSkill } from './lib/validate-skill.mjs'
 
 const run = promisify(execFile)
-const ROOT = new URL('../', import.meta.url).pathname
+const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const SKILLS_DIR = join(ROOT, 'skills')
 
 async function exists(p) { try { await access(p); return true } catch { return false } }
@@ -15,12 +16,19 @@ async function exists(p) { try { await access(p); return true } catch { return f
 async function gitUpdatedAt(path) {
   try {
     const { stdout } = await run('git', ['log', '-1', '--format=%cI', '--', path], { cwd: ROOT })
-    return stdout.trim() || new Date().toISOString()
+    const raw = stdout.trim()
+    return raw ? new Date(raw).toISOString() : new Date().toISOString()
   } catch { return new Date().toISOString() }
+}
+
+if (!(await exists(SKILLS_DIR))) {
+  console.error('No skills/ directory found. Cannot build a catalog.')
+  process.exit(1)
 }
 
 const skills = []
 const invalidSkills = []
+const seenNames = new Map() // skill name -> first path seen with that name
 const cats = await readdir(SKILLS_DIR, { withFileTypes: true })
 for (const cat of cats.filter(d => d.isDirectory())) {
   const catPath = join(SKILLS_DIR, cat.name)
@@ -28,19 +36,32 @@ for (const cat of cats.filter(d => d.isDirectory())) {
   for (const s of entries.filter(d => d.isDirectory())) {
     const skPath = join(catPath, s.name)
     const md = await readFile(join(skPath, 'SKILL.md'), 'utf8').catch(() => null)
-    if (!md) continue
+    if (!md) {
+      invalidSkills.push({ skill: s.name, errors: ['no SKILL.md'], warnings: [] })
+      continue
+    }
     const { data, body } = parseFrontmatter(md)
     const hasInstall = await exists(join(skPath, 'INSTALL.md'))
-    const validation = validateSkill({ dirName: s.name, data, body, hasInstall })
+    const validation = validateSkill({ dirName: s.name, data, body, hasInstall, catDirName: cat.name })
+
+    const name = data?.name
+    if (name && typeof name === 'string') {
+      if (seenNames.has(name)) {
+        validation.errors.push(`duplicate skill name "${name}": also used by ${seenNames.get(name)}`)
+      } else {
+        seenNames.set(name, skPath)
+      }
+    }
+
     if (validation.errors.length > 0) {
       invalidSkills.push({ skill: s.name, ...validation })
     } else {
       for (const warning of validation.warnings) {
         console.warn(`Warning: ${s.name}: ${warning}`)
       }
+      const updated_at = await gitUpdatedAt(join('skills', cat.name, s.name))
+      skills.push({ data, updated_at })
     }
-    const updated_at = await gitUpdatedAt(join('skills', cat.name, s.name))
-    skills.push({ data, updated_at })
   }
 }
 

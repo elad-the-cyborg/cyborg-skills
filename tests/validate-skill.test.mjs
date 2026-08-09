@@ -75,3 +75,52 @@ test('forbidden marker is a warning not an error', () => {
   assert.deepEqual(r.errors, [])
   assert.ok(r.warnings.some(w => w.includes('forbidden')))
 })
+
+test('category_slug matching the category directory has no error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true, catDirName: '02-copy-content' })
+  assert.deepEqual(r.errors, [])
+})
+
+test('category_slug disagreeing with the category directory is an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true, catDirName: '07-automation-qa' })
+  assert.ok(r.errors.some(e => e.includes('category_slug')))
+})
+
+test('em dash in body prose is an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nזה משפט עם מקף מפריד — בתוך הטקסט.', hasInstall: true })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') || e.includes('—')))
+})
+
+test('em dash inside an inline code span is not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nהתו `—` הוא מקף מפריד.', hasInstall: true })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
+test('em dash inside a fenced code block is not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\n```\nדוגמה עם — בפנים הבלוק\n```\n', hasInstall: true })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
+test('rm -rf in body is a safety warning not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nלעולם אל תריץ `rm -rf` על תיקיית העבודה.', hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.toLowerCase().includes('rm -rf')))
+})
+
+test('git push in body is a safety warning not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nבסיום מריצים git push origin main.', hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.toLowerCase().includes('git push')))
+})
+
+test('curl to an external host in body is a safety warning not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nהרץ curl https://example.com/api כדי לשלוף את הנתונים.', hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.toLowerCase().includes('curl') || w.toLowerCase().includes('network')))
+})
+
+test('instruction to send mail in body is a safety warning not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nבסיום שלח מייל ללקוח עם הסיכום.', hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.toLowerCase().includes('mail')))
+})
