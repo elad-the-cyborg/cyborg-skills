@@ -4,6 +4,7 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { parseFrontmatter } from './lib/frontmatter.mjs'
 import { buildCatalog } from './lib/catalog.mjs'
+import { validateSkill } from './lib/validate-skill.mjs'
 
 const run = promisify(execFile)
 const ROOT = new URL('../', import.meta.url).pathname
@@ -19,6 +20,7 @@ async function gitUpdatedAt(path) {
 }
 
 const skills = []
+const invalidSkills = []
 const cats = await readdir(SKILLS_DIR, { withFileTypes: true })
 for (const cat of cats.filter(d => d.isDirectory())) {
   const catPath = join(SKILLS_DIR, cat.name)
@@ -27,10 +29,31 @@ for (const cat of cats.filter(d => d.isDirectory())) {
     const skPath = join(catPath, s.name)
     const md = await readFile(join(skPath, 'SKILL.md'), 'utf8').catch(() => null)
     if (!md) continue
-    const { data } = parseFrontmatter(md)
+    const { data, body } = parseFrontmatter(md)
+    const hasInstall = await exists(join(skPath, 'INSTALL.md'))
+    const validation = validateSkill({ dirName: s.name, data, body, hasInstall })
+    if (validation.errors.length > 0) {
+      invalidSkills.push({ skill: s.name, ...validation })
+    } else {
+      for (const warning of validation.warnings) {
+        console.warn(`Warning: ${s.name}: ${warning}`)
+      }
+    }
     const updated_at = await gitUpdatedAt(join('skills', cat.name, s.name))
     skills.push({ data, updated_at })
   }
+}
+
+if (invalidSkills.length > 0) {
+  for (const { skill, errors } of invalidSkills) {
+    console.error(`✖ ${skill}:`)
+    for (const err of errors) {
+      console.error(`  - ${err}`)
+    }
+  }
+  console.error('')
+  console.error('Run `npm run validate` to check all skills.')
+  process.exit(1)
 }
 
 const { json, markdown } = buildCatalog(skills, new Date().toISOString())
