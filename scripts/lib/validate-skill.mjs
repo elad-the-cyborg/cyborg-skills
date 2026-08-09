@@ -8,7 +8,7 @@ const REQUIRED_META = [
 ]
 const BRAND_MARKER = 'The Cyborg ·'
 const FORBIDDEN = [/\bacme\b/i, /אקמה/, /blue\s*harbor/i, /בלו\s*הרבור/]
-const EM_DASH = '—'
+const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
 
 // Safety denylist (warnings only): a skill body is read-only / draft-only by
 // default, so these patterns flag anything that looks like it wants to touch
@@ -64,8 +64,11 @@ export function validateSkill({ dirName, data, body, hasInstall, catDirName }) {
   if (!/CLAUDE\.md/.test(body)) errors.push('no CLAUDE.md read step in body')
   if (!hasInstall) errors.push('INSTALL.md missing')
 
-  if (stripCode(body).includes(EM_DASH)) {
-    errors.push('em dash (—) found in body prose; rephrase with a comma, period or colon (em dash is allowed only in the frontmatter description)')
+  const strippedBody = stripCode(body)
+  for (const dash of DASH_CHARS) {
+    if (strippedBody.includes(dash)) {
+      errors.push(`dash (${dash}) found in body prose; rephrase with a comma, period or colon (em/en dash is allowed only in the frontmatter description)`)
+    }
   }
 
   for (const re of FORBIDDEN) {

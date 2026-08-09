@@ -101,6 +101,21 @@ test('em dash inside a fenced code block is not an error', () => {
   assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
 })
 
+test('en dash in body prose is an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nזה משפט עם מקף מפריד – בתוך הטקסט.', hasInstall: true })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') || e.includes('–')))
+})
+
+test('en dash inside an inline code span is not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nהתו `–` הוא מקף אנגלי קצר.', hasInstall: true })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
+test('en dash inside a fenced code block is not an error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\n```\nדוגמה עם – בפנים הבלוק\n```\n', hasInstall: true })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
 test('rm -rf in body is a safety warning not an error', () => {
   const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nלעולם אל תריץ `rm -rf` על תיקיית העבודה.', hasInstall: true })
   assert.deepEqual(r.errors, [])

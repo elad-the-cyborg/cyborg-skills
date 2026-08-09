@@ -2,6 +2,5 @@ node_modules/
 .DS_Store
 *.log
 
-# internal planning docs live outside the repo, see
-# /Users/eladk/Claude/Projects/cyborg-skills-internal/
+# internal planning docs live outside this repo
 docs/superpowers/
