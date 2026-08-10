@@ -15,6 +15,12 @@ metadata:
   site: "https://thecyborg.co.il"
   version: "1.0.0"
   tags: "בריף, קמפיין, אסטרטגיה"
+  summary_he: "בשיחה קצרה מקבלים מסמך קמפיין מסודר: קהל יעד, מסר מרכזי, הצעה ושלוש זוויות שיווק, מוכן להעברה ישר לכתיבת המודעות."
+  audience_he: "מתאים לבעל עסק שמתכנן קמפיין פרסום חדש ורוצה למפות קהל, מסר והצעה לפני שמתחילים לכתוב מודעות."
+  safety:
+    writes_files: true
+    sends_external: false
+    touches_live_campaigns: false
 ---
 
 # בריף קמפיין · The Cyborg

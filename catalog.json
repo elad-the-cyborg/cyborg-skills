@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-10T20:50:41.181Z",
+  "generated_at": "2026-08-10T22:14:50.620Z",
   "count": 3,
   "skills": [
     {
@@ -10,6 +10,13 @@
       "category_slug": "01-research-strategy",
       "topic": "בריף קמפיין",
       "description": "בריף קמפיין הסייבורג: בונה או מעדכן בריף קמפיין שיווקי מסודר בעברית דרך שיחה קצרה. הפעל כשרוצים בריף לקמפיין, לתכנן מודעה או מבצע, \"בוא נבנה בריף\". קורא קודם CLAUDE.md.",
+      "summary_he": "בשיחה קצרה מקבלים מסמך קמפיין מסודר: קהל יעד, מסר מרכזי, הצעה ושלוש זוויות שיווק, מוכן להעברה ישר לכתיבת המודעות.",
+      "audience_he": "מתאים לבעל עסק שמתכנן קמפיין פרסום חדש ורוצה למפות קהל, מסר והצעה לפני שמתחילים לכתוב מודעות.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -21,7 +28,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/campaign-brief",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/campaign-brief/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T19:36:01.000Z"
+      "updated_at": "2026-08-10T20:50:41.000Z"
     },
     {
       "name": "hook-generator",
@@ -30,6 +37,13 @@
       "category_slug": "02-copy-content",
       "topic": "הוקים וזוויות",
       "description": "מחולל הוקים הסייבורג: מייצר הוקים וזוויות פתיחה למודעות ולפוסטים בעברית. הפעל כשמבקשים הוק, פתיח, \"תן לי זווית\", או רעיון לפתיחת מודעה. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים עשרה רעיונות לפתיחת מודעה או פוסט, כל אחד בזווית שונה, ועליהם המלצה על שלושת החזקים ביותר לקהל שלכם.",
+      "audience_he": "מתאים לבעל עסק שצריך לכתוב מודעה או פוסט ונתקע בפתיחה, ורוצה כמה כיוונים לבחור ביניהם במקום דף ריק.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -41,7 +55,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hook-generator/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T19:36:01.000Z"
+      "updated_at": "2026-08-10T20:50:41.000Z"
     },
     {
       "name": "brand-palette",
@@ -50,6 +64,13 @@
       "category_slug": "03-creative-visual",
       "topic": "פלטת מותג וזהות",
       "description": "פלטת מותג הסייבורג: מייצר פלטת מותג (צבעים, טיפוגרפיה וטוקנים לשימוש) עם תצוגה חזותית לפתיחה בדפדפן. הפעל כשרוצים פלטת מותג, צבעי מותג, זהות ויזואלית, \"בנה לי פלטה\", או לפני הפקת באנרים ומודעות. קורא קודם CLAUDE.md.",
+      "summary_he": "מקבלים פלטת צבעים וטיפוגרפיה מסודרת לעסק, כולל קובץ תצוגה חזותי שאפשר לפתוח בדפדפן ולראות איך זה נראה בפועל.",
+      "audience_he": "מתאים לבעל עסק שבונה זהות ויזואלית מאפס, או רוצה לוודא שהמודעות, הבאנרים ודף הנחיתה נראים עקביים.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -61,7 +82,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/brand-palette/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T20:06:44.000Z"
+      "updated_at": "2026-08-10T20:50:41.000Z"
     }
   ]
 }

@@ -1,7 +1,7 @@
 # קטלוג הסקילים · The Cyborg
 
-| קטגוריה | נושא | סקיל | רמה | התקנה |
-|---|---|---|---|---|
-| מחקר ואסטרטגיה | בריף קמפיין | [בריף קמפיין הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/campaign-brief) | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/campaign-brief ~/.claude/skills/campaign-brief` |
-| קופי ותוכן | הוקים וזוויות | [מחולל הוקים הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator) | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/.claude/skills/hook-generator` |
-| קריאייטיב וויזואל | פלטת מותג וזהות | [פלטת מותג הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette) | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/brand-palette ~/.claude/skills/brand-palette` |
+| קטגוריה | נושא | סקיל | מה מקבלים | למי מתאים | רמה | התקנה |
+|---|---|---|---|---|---|---|
+| מחקר ואסטרטגיה | בריף קמפיין | [בריף קמפיין הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/campaign-brief) | בשיחה קצרה מקבלים מסמך קמפיין מסודר: קהל יעד, מסר מרכזי, הצעה ושלוש זוויות שיווק, מוכן להעברה ישר לכתיבת המודעות. | מתאים לבעל עסק שמתכנן קמפיין פרסום חדש ורוצה למפות קהל, מסר והצעה לפני שמתחילים לכתוב מודעות. | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/campaign-brief ~/.claude/skills/campaign-brief` |
+| קופי ותוכן | הוקים וזוויות | [מחולל הוקים הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator) | מקבלים עשרה רעיונות לפתיחת מודעה או פוסט, כל אחד בזווית שונה, ועליהם המלצה על שלושת החזקים ביותר לקהל שלכם. | מתאים לבעל עסק שצריך לכתוב מודעה או פוסט ונתקע בפתיחה, ורוצה כמה כיוונים לבחור ביניהם במקום דף ריק. | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/.claude/skills/hook-generator` |
+| קריאייטיב וויזואל | פלטת מותג וזהות | [פלטת מותג הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette) | מקבלים פלטת צבעים וטיפוגרפיה מסודרת לעסק, כולל קובץ תצוגה חזותי שאפשר לפתוח בדפדפן ולראות איך זה נראה בפועל. | מתאים לבעל עסק שבונה זהות ויזואלית מאפס, או רוצה לוודא שהמודעות, הבאנרים ודף הנחיתה נראים עקביים. | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/brand-palette ~/.claude/skills/brand-palette` |

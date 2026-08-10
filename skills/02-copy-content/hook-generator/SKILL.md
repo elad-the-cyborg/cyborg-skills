@@ -15,6 +15,12 @@ metadata:
   site: "https://thecyborg.co.il"
   version: "1.0.0"
   tags: "קופי, מודעות, הוקים"
+  summary_he: "מקבלים עשרה רעיונות לפתיחת מודעה או פוסט, כל אחד בזווית שונה, ועליהם המלצה על שלושת החזקים ביותר לקהל שלכם."
+  audience_he: "מתאים לבעל עסק שצריך לכתוב מודעה או פוסט ונתקע בפתיחה, ורוצה כמה כיוונים לבחור ביניהם במקום דף ריק."
+  safety:
+    writes_files: false
+    sends_external: false
+    touches_live_campaigns: false
 ---
 
 # מחולל הוקים הסייבורג

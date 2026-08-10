@@ -16,6 +16,12 @@ metadata:
   site: "https://thecyborg.co.il"
   version: "1.0.0"
   tags: "מותג, פלטה, זהות ויזואלית"
+  summary_he: "מקבלים פלטת צבעים וטיפוגרפיה מסודרת לעסק, כולל קובץ תצוגה חזותי שאפשר לפתוח בדפדפן ולראות איך זה נראה בפועל."
+  audience_he: "מתאים לבעל עסק שבונה זהות ויזואלית מאפס, או רוצה לוודא שהמודעות, הבאנרים ודף הנחיתה נראים עקביים."
+  safety:
+    writes_files: true
+    sends_external: false
+    touches_live_campaigns: false
 ---
 
 # פלטת מותג · The Cyborg
