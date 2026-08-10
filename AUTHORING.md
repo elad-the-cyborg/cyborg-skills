@@ -23,13 +23,48 @@
   כדי להסביר את הכלל, עוטפים אותו ב-code span עם backticks, בדיוק כמו בשורה 79 של
   `skills/01-research-strategy/campaign-brief/SKILL.md`.
 - **license**: חייב להיות `MIT` בדיוק. אין חריגים.
-- **metadata**: אובייקט עם תשעה שדות חובה, כולם מחרוזת: `title_he`, `category`,
+- **metadata**: אובייקט עם אחד עשר שדות מחרוזת חובה: `title_he`, `category`,
   `category_slug`, `topic`, `level` (אחד מ-`beginner`, `intermediate`, `advanced`),
-  `visibility` (`public` או `booster`), `author`, `site`, `version`. שדה `tags`
-  אופציונלי: מחרוזת מופרדת בפסיקים, שהקטלוג הופך אוטומטית לרשימה. `category_slug`
-  חייב להיות זהה בדיוק לשם תיקיית הקטגוריה שבה יושב הסקיל (למשל סקיל תחת
-  `skills/02-copy-content/...` חייב `category_slug: "02-copy-content"`), אחרת
-  `npm run validate` נכשל.
+  `visibility` (`public` או `booster`), `author`, `site`, `version`, `summary_he`,
+  `audience_he`. שדה `tags` אופציונלי: מחרוזת מופרדת בפסיקים, שהקטלוג הופך אוטומטית
+  לרשימה. `category_slug` חייב להיות זהה בדיוק לשם תיקיית הקטגוריה שבה יושב הסקיל
+  (למשל סקיל תחת `skills/02-copy-content/...` חייב `category_slug: "02-copy-content"`),
+  אחרת `npm run validate` נכשל. בנוסף, `metadata.safety` הוא אובייקט חובה (לא
+  מחרוזת) עם שלושה שדות בוליאניים: ראו "שדה `safety`" למטה.
+
+  **`summary_he` ו-`audience_he` הם קופי שיווקי ללקוח, לא ל-Claude.** האתר
+  הציבורי מציג אותם ישירות לבעל עסק שלא טכני, בכרטיס הסקיל ובראש דף הסקיל.
+  זה שונה מהותית מ-`description`, שנכתב כדי שסוכן ידע מתי להפעיל את הסקיל
+  (ולכן מכיל ביטויי הפעלה כמו "הפעל כש..." ואת "CLAUDE.md"), ומהגוף שנכתב
+  כדי שאדם יבצע את הסקיל צעד אחר צעד.
+  - **`summary_he`**: משפט אחד שאומר מה הלקוח **מקבל** בפועל (לא מה הסקיל
+    "עושה" מנקודת מבט טכנית, ולא כמה אנחנו טובים). לדוגמה טובה: "מקבלים עשרה
+    רעיונות לפתיחת מודעה, כל אחד בזווית שונה." אסור לו: לחזור על `title_he`
+    (הכותרת כבר מוצגת מעל הכרטיס, חזרה עליה היא כפילות מיותרת), להכיל ביטוי
+    הפעלה כמו "הפעל כש", או להזכיר `CLAUDE.md` (הערת מימוש שלא מעניינת לקוח).
+    `npm run validate` בודק את כל אלה כשגיאה קשה, וכן בודק שאין בו מקף מפריד
+    (ראו למטה) ושאינו עובר 320 תווים.
+  - **`audience_he`**: שורה קצרה אחת שעונה "למי זה מתאים" במונחים עסקיים
+    קונקרטיים, למשל "מתאים לבעל עסק שצריך לכתוב מודעה או פוסט ונתקע בפתיחה."
+    `npm run validate` בודק שאין בו מקף מפריד ושאינו עובר 200 תווים.
+  - **חשוב: `summary_he`/`audience_he` הם היוצא מן הכלל היחיד ההפוך.** בעוד
+    ש-`description` הוא השדה היחיד בריפו שמותר בו מקף מפריד, `summary_he`
+    ו-`audience_he` **אסורים** במקף מפריד בדיוק כמו גוף הסקיל, למרות שהם
+    בתוך בלוק ה-YAML. אל תעתיקו את מוסכמת ה-`description` לשדות האלה.
+
+  **שדה `safety`**: אובייקט (לא מחרוזת) עם שלושה שדות בוליאניים חובה:
+  `writes_files`, `sends_external`, `touches_live_campaigns`. האתר הופך אותו
+  למשפט בטיחות אמיתי לכל סקיל, במקום הבטחה גורפת אחת שמוצגת על כל הסקילים
+  (והופכת לשקר ברגע שסקיל אחד כן כותב או שולח משהו). קובעים כל ערך **לפי
+  קריאה בפועל** של גוף ה-`SKILL.md` של הסקיל עצמו, לא לפי הנחה:
+  - `writes_files: true` אם יש בגוף הסקיל שורה שמורה לכתוב קובץ לדיסק (למשל
+    "כתוב קובץ בשם..."), גם אם זה מרגיש תמים כמו קובץ טקסט זמני.
+  - `sends_external: true` אם הסקיל שולח משהו החוצה בפועל (מייל, הודעה,
+    פרסום, קריאת רשת יוצאת).
+  - `touches_live_campaigns: true` אם הסקיל נוגע, מפעיל, עוצר או משנה קמפיין
+    חי בפועל (לא רק מייצר טיוטה או המלצה).
+
+  דייקו. משפט הבטיחות באתר נשען על הערכים האלה בעיני זר שלא בדק בעצמו.
 
 `scripts/validate.mjs` בודק את כל השדות האלה ונכשל אם משהו חסר או לא תקין. הרצה:
 `npm run validate`.
@@ -84,13 +119,19 @@
 
 ## 5. תהליך העבודה של המפעיל
 
-1. `npm run new-skill name=... category_slug=... category="..." topic="..." title_he="..." level=... one_liner="..." trigger="..." step1_title="..." example_prompt="..." [tags="..."]`
+1. `npm run new-skill name=... category_slug=... category="..." topic="..." title_he="..." level=... one_liner="..." trigger="..." step1_title="..." example_prompt="..." summary_he="..." audience_he="..." writes_files=false sends_external=false touches_live_campaigns=false [tags="..."]`
 
    כל הארגומנטים האלה חובה, חוץ מ-`tags` שהוא אופציונלי. הסקריפט (`scripts/new-skill.mjs`)
-   יוצר תיקייה חדשה תחת `skills/<category_slug>/<name>/` עם `SKILL.md` ו-`INSTALL.md`
-   כבר ממולאים מהתבנית (`templates/SKILL.md.template`, `templates/INSTALL.md.template`).
+   מסרב לרוץ אם `writes_files`/`sends_external`/`touches_live_campaigns` אינם בדיוק
+   `true` או `false`. הסקריפט יוצר תיקייה חדשה תחת `skills/<category_slug>/<name>/`
+   עם `SKILL.md` ו-`INSTALL.md` כבר ממולאים מהתבנית (`templates/SKILL.md.template`,
+   `templates/INSTALL.md.template`). שימו לב: בשלב הזה עדיין לא כתבתם את גוף הסקיל,
+   אז ערכי `writes_files`/`sends_external`/`touches_live_campaigns` שהזנתם כאן הם
+   ניחוש ראשוני בלבד. חובה לחזור ולוודא אותם בסוף מול הגוף שכתבתם בפועל (שלב 2 למטה),
+   ולתקן ב-`SKILL.md` אם התברר שהם לא מדויקים.
 2. **כתיבת הגוף.** משלימים ידנית את שלבי העבודה (שלב 1 ואילך) בקובץ `SKILL.md`, לפי
-   המתכון בסעיף 2 למעלה.
+   המתכון בסעיף 2 למעלה. בסיום, לוודא ש-`summary_he`, `audience_he` ו-`safety`
+   בפרונטמאטר עדיין מדויקים ביחס לגוף הסופי שנכתב.
 3. `npm run validate`: מריצים עד שהסקיל מקבל ✅. כל שגיאה מודפסת עם הסיבה המדויקת שלה.
 4. `npm run build`: בונה מחדש את `catalog.json` ואת `CATALOG.md` מכל הסקילים
    התקינים במאגר. אם סקיל כלשהו לא תקין, גם אם הוא לא הסקיל שכתבת עכשיו, הסקריפט
