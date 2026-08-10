@@ -19,6 +19,13 @@ export function toCatalogEntry({ data, updated_at }) {
     category_slug: m.category_slug,
     topic: m.topic,
     description: String(data.description).trim(),
+    summary_he: String(m.summary_he).trim(),
+    audience_he: String(m.audience_he).trim(),
+    safety: {
+      writes_files: !!m.safety?.writes_files,
+      sends_external: !!m.safety?.sends_external,
+      touches_live_campaigns: !!m.safety?.touches_live_campaigns,
+    },
     level: m.level,
     visibility: m.visibility,
     tags,
@@ -43,10 +50,10 @@ function escapeCell(value) {
 export function renderCatalogMd(entries) {
   const lines = [
     '# קטלוג הסקילים · The Cyborg', '',
-    '| קטגוריה | נושא | סקיל | רמה | התקנה |', '|---|---|---|---|---|',
+    '| קטגוריה | נושא | סקיל | מה מקבלים | למי מתאים | רמה | התקנה |', '|---|---|---|---|---|---|---|',
   ]
   for (const e of entries) {
-    lines.push(`| ${escapeCell(e.category)} | ${escapeCell(e.topic)} | [${escapeCell(e.title_he)}](${e.github_url}) | ${e.level} | \`${e.install_command}\` |`)
+    lines.push(`| ${escapeCell(e.category)} | ${escapeCell(e.topic)} | [${escapeCell(e.title_he)}](${e.github_url}) | ${escapeCell(e.summary_he)} | ${escapeCell(e.audience_he)} | ${e.level} | \`${e.install_command}\` |`)
   }
   lines.push('')
   return lines.join('\n')
