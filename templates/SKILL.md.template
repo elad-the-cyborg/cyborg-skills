@@ -16,6 +16,7 @@ metadata:
   tags: "{{tags}}"
   summary_he: "{{summary_he}}"
   audience_he: "{{audience_he}}"
+  site_gate: "open"
   safety:
     writes_files: {{writes_files}}
     sends_external: {{sends_external}}

@@ -42,6 +42,26 @@ test('toCatalogEntry maps summary_he, audience_he and safety', () => {
   assert.deepEqual(e.safety, { writes_files: false, sends_external: false, touches_live_campaigns: false })
 })
 
+// --- site_gate (optional, fail-open: only the literal "gated" ever gates) ---
+
+test('toCatalogEntry defaults site_gate to "open" when the field is missing', () => {
+  const e = toCatalogEntry(skill)
+  assert.equal(e.site_gate, 'open')
+})
+
+test('toCatalogEntry carries through an explicit "gated" value', () => {
+  const gated = { ...skill, data: { ...skill.data, metadata: { ...skill.data.metadata, site_gate: 'gated' } } }
+  const e = toCatalogEntry(gated)
+  assert.equal(e.site_gate, 'gated')
+})
+
+test('toCatalogEntry treats any value other than the exact string "gated" as open (typo, wrong case, non-string)', () => {
+  for (const value of ['Gated', 'GATED', 'email', true, '']) {
+    const withValue = { ...skill, data: { ...skill.data, metadata: { ...skill.data.metadata, site_gate: value } } }
+    assert.equal(toCatalogEntry(withValue).site_gate, 'open', `site_gate ${JSON.stringify(value)} should default to open`)
+  }
+})
+
 test('buildCatalog produces stable shape and sorts', () => {
   const b = skill
   const a = { ...skill, data: { ...skill.data, name: 'audience-researcher', metadata: { ...skill.data.metadata, category_slug: '01-research-strategy' } } }
@@ -51,10 +71,11 @@ test('buildCatalog produces stable shape and sorts', () => {
   assert.equal(json.skills[0].category_slug, '01-research-strategy') // sorted first
 })
 
-test('renderCatalogMd renders a normal row with category, topic, title link, summary, audience, level and install command', () => {
+test('renderCatalogMd groups each skill under a "## category" heading, with topic, title link, summary, audience, level and install command in the row', () => {
   const entry = toCatalogEntry(skill)
   const md = renderCatalogMd([entry])
-  assert.ok(md.includes('| קופי ותוכן | הוקים וזוויות |'))
+  assert.ok(md.includes('## קופי ותוכן'))
+  assert.ok(md.includes('| הוקים וזוויות |'))
   assert.ok(md.includes('[מחולל הוקים הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator)'))
   assert.ok(md.includes('מקבלים עשרה רעיונות לפתיחת מודעה, כל אחד בזווית שונה.'))
   assert.ok(md.includes('מתאים לבעל עסק שנתקע בפתיחה של מודעה או פוסט.'))
@@ -62,7 +83,24 @@ test('renderCatalogMd renders a normal row with category, topic, title link, sum
   assert.ok(md.includes('`npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/.claude/skills/hook-generator`'))
 })
 
-test('renderCatalogMd escapes pipe characters in cell values so they cannot break the table', () => {
+test('renderCatalogMd puts two skills from the same category under one heading, not two', () => {
+  const second = { ...skill, data: { ...skill.data, name: 'ad-editor', metadata: { ...skill.data.metadata, title_he: 'עורך מודעות', topic: 'עריכה והגהה' } } }
+  const md = renderCatalogMd([toCatalogEntry(skill), toCatalogEntry(second)])
+  const headingCount = (md.match(/## קופי ותוכן/g) || []).length
+  assert.equal(headingCount, 1)
+  assert.ok(md.includes('הוקים וזוויות'))
+  assert.ok(md.includes('עריכה והגהה'))
+})
+
+test('renderCatalogMd opens a new heading per category, in the order the (already category-sorted) entries arrive', () => {
+  const other = { ...skill, data: { ...skill.data, name: 'campaign-brief', metadata: { ...skill.data.metadata, category: 'מחקר ואסטרטגיה', category_slug: '01-research-strategy', topic: 'בריף קמפיין', title_he: 'בריף קמפיין' } } }
+  const md = renderCatalogMd([toCatalogEntry(other), toCatalogEntry(skill)])
+  const researchIdx = md.indexOf('## מחקר ואסטרטגיה')
+  const copyIdx = md.indexOf('## קופי ותוכן')
+  assert.ok(researchIdx !== -1 && copyIdx !== -1 && researchIdx < copyIdx)
+})
+
+test('renderCatalogMd escapes pipe characters in table cells but not in the category heading', () => {
   const withPipe = {
     ...skill,
     data: {
@@ -76,12 +114,31 @@ test('renderCatalogMd escapes pipe characters in cell values so they cannot brea
   }
   const entry = toCatalogEntry(withPipe)
   const md = renderCatalogMd([entry])
-  assert.ok(md.includes('קופי \\| תוכן'))
+  assert.ok(md.includes('## קופי | תוכן')) // heading: not a table cell, no escaping needed
   assert.ok(md.includes('הוק \\| מהיר'))
   assert.ok(md.includes('תקציר \\| עם פס'))
   assert.ok(md.includes('קהל \\| עם פס'))
-  assert.ok(!md.includes('קופי | תוכן'))
   assert.ok(!md.includes('הוק | מהיר'))
   assert.ok(!md.includes('תקציר | עם פס'))
   assert.ok(!md.includes('קהל | עם פס'))
+})
+
+test('renderCatalogMd opens with an intro line stating the live skill and category counts', () => {
+  const md = renderCatalogMd([toCatalogEntry(skill)])
+  assert.ok(md.includes('1 סקילים חיים כרגע') || md.includes('סקיל אחד חי כרגע'))
+})
+
+test('renderCatalogMd puts a blank line between one category\'s table and the next category\'s heading', () => {
+  const other = { ...skill, data: { ...skill.data, name: 'campaign-brief', metadata: { ...skill.data.metadata, category: 'מחקר ואסטרטגיה', category_slug: '01-research-strategy', topic: 'בריף קמפיין', title_he: 'בריף קמפיין' } } }
+  const md = renderCatalogMd([toCatalogEntry(other), toCatalogEntry(skill)])
+  const lines = md.split('\n')
+  const nextHeadingIdx = lines.findIndex(l => l === '## קופי ותוכן')
+  assert.ok(nextHeadingIdx > 0)
+  assert.equal(lines[nextHeadingIdx - 1], '')
+})
+
+test('renderCatalogMd always shows the real install command in full, regardless of the skill\'s site_gate value (the repo itself never gates)', () => {
+  const gated = { ...skill, data: { ...skill.data, metadata: { ...skill.data.metadata, site_gate: 'gated' } } }
+  const md = renderCatalogMd([toCatalogEntry(gated)])
+  assert.ok(md.includes('`npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/.claude/skills/hook-generator`'))
 })
