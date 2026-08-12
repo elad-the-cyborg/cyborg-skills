@@ -12,7 +12,7 @@ const goodData = {
   license: 'MIT',
 }
 const goodBody = `# איך מייצרים סט הוקים למודעה בעשרים דקות\n\nתוכן המדריך כאן. בהמשך הדרך מתקינים את hook-generator כדי להריץ את זה שוב על כל מוצר.\n`
-const skillNames = ['hook-generator', 'campaign-brief', 'brand-palette']
+const skillNames = ['hook-generator']
 
 test('valid guide has no errors', () => {
   const r = validateGuide({ dirName: 'ad-hooks-in-20-minutes', data: goodData, body: goodBody, skillNames })

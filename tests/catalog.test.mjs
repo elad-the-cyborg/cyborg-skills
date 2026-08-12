@@ -96,7 +96,7 @@ test('renderCatalogMd puts two skills from the same category under one heading, 
 })
 
 test('renderCatalogMd opens a new heading per category, in the order the (already category-sorted) entries arrive', () => {
-  const other = { ...skill, data: { ...skill.data, name: 'campaign-brief', metadata: { ...skill.data.metadata, category: 'מחקר ואסטרטגיה', category_slug: '01-research-strategy', topic: 'בריף קמפיין', title_he: 'בריף קמפיין' } } }
+  const other = { ...skill, data: { ...skill.data, name: 'audience-researcher', metadata: { ...skill.data.metadata, category: 'מחקר ואסטרטגיה', category_slug: '01-research-strategy', topic: 'מחקר קהל', title_he: 'מחקר קהל' } } }
   const md = renderCatalogMd([toCatalogEntry(other), toCatalogEntry(skill)])
   const researchIdx = md.indexOf('## מחקר ואסטרטגיה')
   const copyIdx = md.indexOf('## קופי ותוכן')
@@ -132,7 +132,7 @@ test('renderCatalogMd opens with an intro line stating the live skill and catego
 })
 
 test('renderCatalogMd puts a blank line between one category\'s table and the next category\'s heading', () => {
-  const other = { ...skill, data: { ...skill.data, name: 'campaign-brief', metadata: { ...skill.data.metadata, category: 'מחקר ואסטרטגיה', category_slug: '01-research-strategy', topic: 'בריף קמפיין', title_he: 'בריף קמפיין' } } }
+  const other = { ...skill, data: { ...skill.data, name: 'audience-researcher', metadata: { ...skill.data.metadata, category: 'מחקר ואסטרטגיה', category_slug: '01-research-strategy', topic: 'מחקר קהל', title_he: 'מחקר קהל' } } }
   const md = renderCatalogMd([toCatalogEntry(other), toCatalogEntry(skill)])
   const lines = md.split('\n')
   const nextHeadingIdx = lines.findIndex(l => l === '## קופי ותוכן')
