@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-12T22:11:17.676Z",
-  "count": 4,
+  "generated_at": "2026-08-12T22:23:01.187Z",
+  "count": 8,
   "skills": [
     {
       "name": "competitor-radar",
@@ -29,7 +29,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/competitor-radar",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/competitor-radar/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:11:17.628Z"
+      "updated_at": "2026-08-12T22:12:26.000Z"
     },
     {
       "name": "findability-audit",
@@ -58,7 +58,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/findability-audit",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/findability-audit/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:11:17.638Z"
+      "updated_at": "2026-08-12T22:12:26.000Z"
     },
     {
       "name": "first-impression-audit",
@@ -86,7 +86,36 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/first-impression-audit",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/first-impression-audit/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:11:17.647Z"
+      "updated_at": "2026-08-12T22:12:26.000Z"
+    },
+    {
+      "name": "google-search-ads-copy",
+      "title_he": "קופי למודעות חיפוש בגוגל",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "topic": "קופי למודעות חיפוש בגוגל",
+      "description": "קופי למודעות חיפוש בגוגל — מייצר כותרות ותיאורים למודעת חיפוש בגוגל בתוך מגבלת התווים המדויקת, לפי כוונת החיפוש. הפעל כשמבקשים קופי למודעת גוגל, מודעת חיפוש, כותרות ותיאורים לגוגל אדס. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים חמש עשרה כותרות וארבעה תיאורים למודעת חיפוש בגוגל, כל אחד בתוך מגבלת התווים המדויקת של גוגל, בנויים לענות בדיוק על מה שהמחפש הקליד.",
+      "audience_he": "מתאים לבעל עסק שמריץ או שוקל להריץ מודעות חיפוש בגוגל, ורוצה קופי שמדבר ישירות לכוונה שמאחורי החיפוש במקום מודעה כללית שמתאימה לכל דבר.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "קופי",
+        "גוגל",
+        "מודעות חיפוש",
+        "גוגל אדס"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/google-search-ads-copy ~/.claude/skills/google-search-ads-copy",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/google-search-ads-copy",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/google-search-ads-copy/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:23:01.133Z"
     },
     {
       "name": "hook-generator",
@@ -115,6 +144,93 @@
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hook-generator/INSTALL.md",
       "version": "1.0.0",
       "updated_at": "2026-08-12T19:21:50.000Z"
+    },
+    {
+      "name": "landing-page-copy",
+      "title_he": "קופי לדף נחיתה",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "topic": "קופי לדף נחיתה",
+      "description": "קופי לדף נחיתה — בונה מבנה וקופי לדף נחיתה לפי שאלות המבקר בזמן אמת, לא לפי תבנית קבועה של סעיפים. הפעל כשמבקשים קופי לדף נחיתה, מבנה לדף נחיתה, טקסט לדף מכירה. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים קופי מלא לדף נחיתה, בנוי לפי סדר השאלות שמבקר אמיתי שואל על ההצעה הספציפית שלכם, לא לפי תבנית קבועה של סעיפים שמעתיקה כל דף לכל עסק.",
+      "audience_he": "מתאים לבעל עסק שבונה דף נחיתה או דף מכירה, ורוצה קופי שמדבר לרצף המחשבות האמיתי של המבקר שלו, בין אם זה רופא שיניים ובין אם זה שירות B2B.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "advanced",
+      "visibility": "public",
+      "tags": [
+        "קופי",
+        "דף נחיתה",
+        "המרות"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/landing-page-copy ~/.claude/skills/landing-page-copy",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/landing-page-copy",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/landing-page-copy/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:23:01.152Z"
+    },
+    {
+      "name": "meta-ads-copy",
+      "title_he": "קופי למודעות מטא",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "topic": "קופי למודעות מטא",
+      "description": "קופי למודעות מטא — מייצר כמה גרסאות קופי למודעת פייסבוק ואינסטגרם, מותאמות לפיד ולגלילה בנייד. הפעל כשמבקשים קופי למודעת פייסבוק או אינסטגרם, טקסט ראשי, כותרת או תיאור למטא. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים חמש גרסאות קופי שלמות למודעת פייסבוק או אינסטגרם, כל אחת עם טקסט ראשי, כותרת ותיאור, בנויות להיקרא בשנייה וחצי מתוך גלילה בנייד.",
+      "audience_he": "מתאים לבעל עסק שמעלה בעצמו מודעות במטא ורוצה כמה גרסאות מוכנות לבדיקה, לא רק מודעה אחת שהוא מנחש אם תעבוד.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "beginner",
+      "visibility": "public",
+      "tags": [
+        "קופי",
+        "מטא",
+        "פייסבוק",
+        "אינסטגרם",
+        "מודעות"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/meta-ads-copy ~/.claude/skills/meta-ads-copy",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/meta-ads-copy",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/meta-ads-copy/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:23:01.161Z"
+    },
+    {
+      "name": "taboola-ads-copy",
+      "title_he": "קופי למודעות טאבולה",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "topic": "קופי למודעות טאבולה",
+      "description": "קופי למודעות טאבולה — מייצר כותרות ותמונות מוצעות למודעת טאבולה שמעוררות סקרנות אמיתית בלי קליקבייט. הפעל כשמבקשים קופי למודעת טאבולה, מודעה נייטיב, כותרת לתוכן ממומן. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים שמונה כותרות למודעת טאבולה, כל אחת עם כיוון תמונה מוצע ונימוק למה היא לא חוצה לקליקבייט, כדי שהמודעה תיקרא כמו תוכן ולא כמו פרסומת שנדחית.",
+      "audience_he": "מתאים לבעל עסק שמפרסם או שוקל לפרסם באתרי תוכן דרך טאבולה, ורוצה כותרות שמסקרנות באמת בלי לשרוף אמון או להיתקע בבדיקת האישור.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "קופי",
+        "טאבולה",
+        "נייטיב",
+        "כותרות"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/taboola-ads-copy ~/.claude/skills/taboola-ads-copy",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/taboola-ads-copy",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/taboola-ads-copy/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:23:01.169Z"
     }
   ],
   "guides": [
