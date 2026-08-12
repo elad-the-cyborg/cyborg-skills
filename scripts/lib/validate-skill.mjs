@@ -98,7 +98,7 @@ const HEBREW_PROCLITICS = 'והבלמשכ'
 //    word list, because this check is warnings-only and every warning is
 //    read by a human before it means anything; recall matters more than
 //    precision here.
-function markerToRegExp(marker) {
+export function markerToRegExp(marker) {
   const escaped = marker.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const pattern = escaped.replace(/\s+/g, '\\s+')
   const boundary = '[\\p{L}\\p{N}_]'
