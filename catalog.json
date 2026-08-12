@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-12T22:40:07.631Z",
+  "generated_at": "2026-08-12T22:51:50.812Z",
   "count": 10,
   "skills": [
     {
@@ -260,7 +260,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/instagram-carousel",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/instagram-carousel/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:40:07.605Z"
+      "updated_at": "2026-08-12T22:40:24.000Z"
     },
     {
       "name": "video-editing",
@@ -290,7 +290,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/video-editing",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/video-editing/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:40:07.614Z"
+      "updated_at": "2026-08-12T22:40:24.000Z"
     }
   ],
   "guides": [
@@ -304,6 +304,50 @@
       "highlight": false,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/ad-hooks-in-20-minutes/GUIDE.md",
       "updated_at": "2026-08-12T19:50:16.000Z"
+    },
+    {
+      "name": "being-found-by-ai-assistants",
+      "title_he": "להיות הבחירה שהבינה המלאכותית ממליצה עליה",
+      "summary_he": "מסביר במילים פשוטות למה דירוג טוב בגוגל לא מבטיח שתופיעו כשמישהו שואל צ'אט בינה מלאכותית, ומה בפועל גורם למנוע להמליץ עליכם במקום על המתחרה.",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "related_skill": "findability-audit",
+      "highlight": false,
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/being-found-by-ai-assistants/GUIDE.md",
+      "updated_at": "2026-08-12T22:51:50.778Z"
+    },
+    {
+      "name": "carousel-people-swipe-to-the-end",
+      "title_he": "קרוסלה לאינסטגרם שגוללים בה עד הסוף",
+      "summary_he": "מסביר מה חייב לקרות בשקף הראשון כדי שאצבע תעצור, איך שומרים על הסיפור זורם באמצע, ומה מבקשים בשקף האחרון כדי שהגלילה תהפוך לפעולה.",
+      "category": "קריאייטיב וויזואל",
+      "category_slug": "03-creative-visual",
+      "related_skill": "instagram-carousel",
+      "highlight": false,
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/carousel-people-swipe-to-the-end/GUIDE.md",
+      "updated_at": "2026-08-12T22:51:50.787Z"
+    },
+    {
+      "name": "landing-page-that-gets-enquiries",
+      "title_he": "דף נחיתה שאנשים באמת משאירים בו פרטים",
+      "summary_he": "עובר על השאלות שמבקר אמיתי שואל בראש שלו לפני שהוא משאיר פרטים, ומראה איך לענות עליהן לפי הסדר שבו הן עולות אצלו, לא לפי תבנית קבועה.",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "related_skill": "landing-page-copy",
+      "highlight": false,
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/landing-page-that-gets-enquiries/GUIDE.md",
+      "updated_at": "2026-08-12T22:51:50.795Z"
+    },
+    {
+      "name": "looking-at-competitors-properly",
+      "title_he": "איך מסתכלים על המתחרים בלי להתעלם ובלי להעתיק",
+      "summary_he": "מראה דרך שלישית מעבר להתעלמות או העתקה: מה כדאי לבדוק אצל מתחרים, מה לעשות אחרת בכוונה, ולמה חיקוי המוביל בשוק הוא בדרך כלל הטעות היקרה ביותר לעסק קטן.",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "related_skill": "competitor-radar",
+      "highlight": false,
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-properly/GUIDE.md",
+      "updated_at": "2026-08-12T22:51:50.803Z"
     },
     {
       "name": "safe-use-of-claude-code",
