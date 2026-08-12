@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-10T22:14:50.620Z",
+  "generated_at": "2026-08-12T19:21:17.854Z",
   "count": 3,
   "skills": [
     {
@@ -17,6 +17,7 @@
         "sends_external": false,
         "touches_live_campaigns": false
       },
+      "site_gate": "open",
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -28,7 +29,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/campaign-brief",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/campaign-brief/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-10T20:50:41.000Z"
+      "updated_at": "2026-08-10T22:15:12.000Z"
     },
     {
       "name": "hook-generator",
@@ -44,6 +45,7 @@
         "sends_external": false,
         "touches_live_campaigns": false
       },
+      "site_gate": "open",
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -55,7 +57,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hook-generator/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-10T20:50:41.000Z"
+      "updated_at": "2026-08-10T22:15:12.000Z"
     },
     {
       "name": "brand-palette",
@@ -71,6 +73,7 @@
         "sends_external": false,
         "touches_live_campaigns": false
       },
+      "site_gate": "open",
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -82,7 +85,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/brand-palette/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-10T20:50:41.000Z"
+      "updated_at": "2026-08-10T22:15:12.000Z"
     }
   ]
 }
