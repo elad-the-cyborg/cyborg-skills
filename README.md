@@ -41,7 +41,7 @@ npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/
 
 | # | קטגוריה | נושאים | סטטוס |
 |---|---------|--------|-------|
-| 1 | מחקר ואסטרטגיה | מחקר קהל, מחקר מתחרים, בריף קמפיין | בתכנון |
+| 1 | מחקר ואסטרטגיה | מחקר מתחרים, נראות בחיפוש ובבינה מלאכותית, רושם ראשוני באתר | 3 סקילים חיים: [`competitor-radar`](skills/01-research-strategy/competitor-radar), [`findability-audit`](skills/01-research-strategy/findability-audit), [`first-impression-audit`](skills/01-research-strategy/first-impression-audit) |
 | 2 | קופי ותוכן | הוקים וזוויות, עריכה והגהה, מיילים וניוזלטרים | מחולל הוקים חי: [`hook-generator`](skills/02-copy-content/hook-generator) |
 | 3 | קריאייטיב וויזואל | פלטת מותג, קונספט קריאייטיב, פרומפטים לתמונות AI | בתכנון |
 | 4 | דפי נחיתה ובנייה | בניית דף נחיתה, בניית אפליקציות, בקרת המרות | בתכנון |

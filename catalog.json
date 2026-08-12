@@ -1,8 +1,93 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-12T21:54:44.219Z",
-  "count": 1,
+  "generated_at": "2026-08-12T22:11:17.676Z",
+  "count": 4,
   "skills": [
+    {
+      "name": "competitor-radar",
+      "title_he": "מכ״ם מתחרים הסייבורג",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "topic": "מחקר מתחרים",
+      "description": "מכ״ם מתחרים הסייבורג — סוקר מתחרים שהעסק כבר מכיר, או עוזר לאתר אותם, ומחזיר מה כל אחד מבטיח, איך הוא מתמחר ומתמצב את עצמו, מה הוא אומר במודעות, ובסוף רשימת פעולה מדורגת של מה לעשות אחרת כדי לבלוט. הפעל כשמבקשים ניתוח מתחרים, השוואה מול מתחרים, או \"מה המתחרים שלי עושים\". קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים ניתוח של עד חמישה מתחרים: מה כל אחד מבטיח, איך הוא מתמחר ומתמצב את עצמו, מה הוא אומר במודעות, ובסוף רשימה מדורגת של מה לעשות אחרת כדי לבלוט.",
+      "audience_he": "מתאים לבעל עסק שרוצה לדעת איפה הוא עומד מול המתחרים לפני שכותב מודעה או קובע מחיר, גם אם יש לו רק תחושה כללית מי הם.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": true,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "מתחרים",
+        "מיצוב",
+        "אסטרטגיה"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/competitor-radar ~/.claude/skills/competitor-radar",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/competitor-radar",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/competitor-radar/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:11:17.628Z"
+    },
+    {
+      "name": "findability-audit",
+      "title_he": "בודק הנראות הסייבורג",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "topic": "נראות בחיפוש ובבינה מלאכותית",
+      "description": "בודק הנראות הסייבורג — בודק אתר עסק גם מול חיפוש רגיל בגוגל וגם מול הדרך שבה כלי בינה מלאכותית עונים לשאלות, ומחזיר את שלושת התיקונים החשובים ביותר בעברית פשוטה, בלי מונחים טכניים שלא הוסברו. הפעל כשמבקשים אודיט SEO, בדיקת GEO או AEO, \"למה אני לא עולה בגוגל\", או \"האם ChatGPT מכיר אותי\". קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים בדיקה של האתר משתי זוויות: האם גוגל מוצא ומבין אותו, והאם כלי בינה מלאכותית כמו ChatGPT היו יכולים לצטט אתכם כתשובה, ובסוף שלושה תיקונים מדורגים לפי השפעה.",
+      "audience_he": "מתאים לבעל עסק שרוצה להבין למה הוא לא נמצא בגוגל או בצ׳אט של בינה מלאכותית, בלי לדעת מראש שום מונח טכני.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": true,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "advanced",
+      "visibility": "public",
+      "tags": [
+        "SEO",
+        "GEO",
+        "AEO",
+        "נראות"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/findability-audit ~/.claude/skills/findability-audit",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/findability-audit",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/findability-audit/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:11:17.638Z"
+    },
+    {
+      "name": "first-impression-audit",
+      "title_he": "בודק הרושם הראשוני הסייבורג",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "topic": "רושם ראשוני באתר",
+      "description": "בודק הרושם הראשוני הסייבורג — בודק את דף הבית או דף הנחיתה מנקודת המבט של מבקר חדש, לא מנקודת המבט של מנוע חיפוש, ומחזיר איפה הרושם הראשוני נופל ואיפה מבקרים עוזבים לפני שיוצרים קשר. הפעל כשמבקשים בדיקת חוויית משתמש, ביקורת על האתר, או \"האם האתר שלי משכנע\". קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים בדיקה של הרושם שהאתר יוצר על מבקר חדש: מה ברור כבר בשניות הראשונות, למי הוא פונה, ואיפה אנשים עוזבים בלי ליצור קשר.",
+      "audience_he": "מתאים לבעל עסק עם אתר או דף נחיתה קיים, שרוצה להבין למה מבקרים לא הופכים ללקוחות.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": true,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "beginner",
+      "visibility": "public",
+      "tags": [
+        "CRO",
+        "חוויית משתמש",
+        "אתר"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/first-impression-audit ~/.claude/skills/first-impression-audit",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/first-impression-audit",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/first-impression-audit/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:11:17.647Z"
+    },
     {
       "name": "hook-generator",
       "title_he": "מחולל הוקים הסייבורג",
@@ -53,7 +138,7 @@
       "related_skill": null,
       "highlight": true,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/safe-use-of-claude-code/GUIDE.md",
-      "updated_at": "2026-08-12T21:54:44.219Z"
+      "updated_at": "2026-08-12T21:54:47.000Z"
     }
   ],
   "links": [

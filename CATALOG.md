@@ -1,6 +1,14 @@
 # קטלוג הסקילים · The Cyborg
 
-סקיל אחד חי כרגע, פרוסים על פני קטגוריה אחת. לכל סקיל יש כאן קישור לתיקייה בגיטהאב ופקודת התקנה מוכנה להעתקה. הפקודה גלויה תמיד בעמוד הזה, גם אם באתר השיווקי אותו סקיל מוצג מאחורי טופס מייל.
+4 סקילים חיים כרגע, פרוסים על פני 2 קטגוריות. לכל סקיל יש כאן קישור לתיקייה בגיטהאב ופקודת התקנה מוכנה להעתקה. הפקודה גלויה תמיד בעמוד הזה, גם אם באתר השיווקי אותו סקיל מוצג מאחורי טופס מייל.
+
+## מחקר ואסטרטגיה
+
+| נושא | סקיל | מה מקבלים | למי מתאים | רמה | התקנה |
+|---|---|---|---|---|---|
+| מחקר מתחרים | [מכ״ם מתחרים הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/competitor-radar) | מקבלים ניתוח של עד חמישה מתחרים: מה כל אחד מבטיח, איך הוא מתמחר ומתמצב את עצמו, מה הוא אומר במודעות, ובסוף רשימה מדורגת של מה לעשות אחרת כדי לבלוט. | מתאים לבעל עסק שרוצה לדעת איפה הוא עומד מול המתחרים לפני שכותב מודעה או קובע מחיר, גם אם יש לו רק תחושה כללית מי הם. | intermediate | `npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/competitor-radar ~/.claude/skills/competitor-radar` |
+| נראות בחיפוש ובבינה מלאכותית | [בודק הנראות הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/findability-audit) | מקבלים בדיקה של האתר משתי זוויות: האם גוגל מוצא ומבין אותו, והאם כלי בינה מלאכותית כמו ChatGPT היו יכולים לצטט אתכם כתשובה, ובסוף שלושה תיקונים מדורגים לפי השפעה. | מתאים לבעל עסק שרוצה להבין למה הוא לא נמצא בגוגל או בצ׳אט של בינה מלאכותית, בלי לדעת מראש שום מונח טכני. | advanced | `npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/findability-audit ~/.claude/skills/findability-audit` |
+| רושם ראשוני באתר | [בודק הרושם הראשוני הסייבורג](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/first-impression-audit) | מקבלים בדיקה של הרושם שהאתר יוצר על מבקר חדש: מה ברור כבר בשניות הראשונות, למי הוא פונה, ואיפה אנשים עוזבים בלי ליצור קשר. | מתאים לבעל עסק עם אתר או דף נחיתה קיים, שרוצה להבין למה מבקרים לא הופכים ללקוחות. | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/first-impression-audit ~/.claude/skills/first-impression-audit` |
 
 ## קופי ותוכן
 
