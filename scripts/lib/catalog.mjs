@@ -40,12 +40,62 @@ export function toCatalogEntry({ data, updated_at }) {
   }
 }
 
-export function buildCatalog(skills, now) {
+// Guides and links are simpler than skills: a guide has no install
+// command of its own (that lives on its related skill), and a link isn't
+// installed at all, so neither gets the full deriveUrls() treatment.
+export function deriveGuideUrls(name) {
+  return {
+    github_url: `https://github.com/${REPO}/blob/main/guides/${name}/GUIDE.md`,
+  }
+}
+
+// A guide's frontmatter is already flat (see validate-guide.mjs), so this is
+// mostly a pass-through plus the derived github_url/updated_at, the same
+// pattern deriveUrls()/toCatalogEntry() use for skills.
+export function toGuideCatalogEntry({ data, updated_at }) {
+  return {
+    name: data.name,
+    title_he: data.title_he,
+    summary_he: String(data.summary_he).trim(),
+    category: data.category,
+    category_slug: data.category_slug,
+    related_skill: data.related_skill ?? null,
+    ...deriveGuideUrls(data.name),
+    updated_at,
+  }
+}
+
+// A link has no derived fields at all (no install command, no repo URL): it
+// points entirely outward, at a third-party tool. This just trims the
+// customer-facing strings, the same hygiene toCatalogEntry() applies to a
+// skill's description/summary_he/audience_he.
+export function toLinkCatalogEntry(link) {
+  return {
+    name: link.name,
+    title: String(link.title).trim(),
+    url: link.url,
+    summary_he: String(link.summary_he).trim(),
+    group: link.group,
+    pricing_he: String(link.pricing_he).trim(),
+    hebrew_support: link.hebrew_support,
+  }
+}
+
+export function buildCatalog(skills, guides, links, now) {
   const entries = skills
     .map(toCatalogEntry)
     .sort((x, y) => (x.category_slug + x.name).localeCompare(y.category_slug + y.name, 'en'))
-  const json = { version: '1.0', generated_at: now, count: entries.length, skills: entries }
-  return { json, markdown: renderCatalogMd(entries) }
+  const guideEntries = guides
+    .map(toGuideCatalogEntry)
+    .sort((x, y) => x.name.localeCompare(y.name, 'en'))
+  const linkEntries = links
+    .map(toLinkCatalogEntry)
+    .sort((x, y) => x.name.localeCompare(y.name, 'en'))
+  const json = {
+    version: '1.0', generated_at: now, count: entries.length,
+    skills: entries, guides: guideEntries, links: linkEntries,
+  }
+  return { json, markdown: renderCatalogMd(entries, guideEntries, linkEntries) }
 }
 
 function escapeCell(value) {
@@ -61,6 +111,18 @@ function heCountCategories(n) {
   if (n === 1) return 'קטגוריה אחת'
   return `${n} קטגוריות`
 }
+
+function heCountGuides(n) {
+  if (n === 1) return 'מדריך אחד חי כרגע'
+  return `${n} מדריכים חיים כרגע`
+}
+
+// Human-facing Hebrew labels for the link enums. Falls back to the raw
+// value for anything not yet in the map, so a future group/support value
+// the validator accepts still renders instead of silently disappearing.
+const GROUP_LABELS_HE = { video: 'וידאו', text: 'טקסט וכתיבה' }
+const HEBREW_SUPPORT_LABELS_HE = { full: 'מלאה', partial: 'חלקית', none: 'אין' }
+function heLabel(map, value) { return map[value] ?? value }
 
 // Renders the catalog as a table grouped under a "## category" heading per
 // category, instead of one flat table with a repeated category column. This
@@ -78,7 +140,7 @@ function heCountCategories(n) {
 // gating mechanism of its own, so the honest thing is to never pretend to
 // gate something a visitor can already see in the skill's own SKILL.md two
 // clicks away.
-export function renderCatalogMd(entries) {
+export function renderCatalogMd(entries, guideEntries = [], linkEntries = []) {
   const categoryCount = new Set(entries.map(e => e.category_slug)).size
   const lines = [
     '# קטלוג הסקילים · The Cyborg', '',
@@ -98,5 +160,34 @@ export function renderCatalogMd(entries) {
     lines.push(`| ${escapeCell(e.topic)} | [${escapeCell(e.title_he)}](${e.github_url}) | ${escapeCell(e.summary_he)} | ${escapeCell(e.audience_he)} | ${e.level} | \`${e.install_command}\` |`)
   }
   lines.push('')
+
+  lines.push('## מדריכים', '')
+  if (guideEntries.length === 0) {
+    lines.push('אין עדיין מדריכים במאגר.', '')
+  } else {
+    lines.push(
+      `${heCountGuides(guideEntries.length)}. כל מדריך הוא תוכן עריכתי בעברית שמלמד עבודה אמיתית, ` +
+      'ולרוב מוביל להתקנת הסקיל שקשור אליו.',
+      '',
+    )
+    lines.push('| מדריך | מה מקבלים | קטגוריה | סקיל קשור |', '|---|---|---|---|')
+    for (const g of guideEntries) {
+      const related = g.related_skill ? `\`${escapeCell(g.related_skill)}\`` : 'אין'
+      lines.push(`| [${escapeCell(g.title_he)}](${g.github_url}) | ${escapeCell(g.summary_he)} | ${escapeCell(g.category)} | ${related} |`)
+    }
+    lines.push('')
+  }
+
+  lines.push('## כלים מומלצים', '')
+  if (linkEntries.length === 0) {
+    lines.push('הרשימה עוד ריקה, כלים מומלצים מתווספים בקרוב לאחר בדיקה ואישור.', '')
+  } else {
+    lines.push('| כלי | מה מקבלים | קבוצה | מחיר | תמיכה בעברית |', '|---|---|---|---|---|')
+    for (const l of linkEntries) {
+      lines.push(`| [${escapeCell(l.title)}](${l.url}) | ${escapeCell(l.summary_he)} | ${escapeCell(heLabel(GROUP_LABELS_HE, l.group))} | ${escapeCell(l.pricing_he)} | ${escapeCell(heLabel(HEBREW_SUPPORT_LABELS_HE, l.hebrew_support))} |`)
+    }
+    lines.push('')
+  }
+
   return lines.join('\n')
 }
