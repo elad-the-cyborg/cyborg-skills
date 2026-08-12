@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-12T21:49:51.227Z",
+  "generated_at": "2026-08-12T21:54:44.219Z",
   "count": 1,
   "skills": [
     {
@@ -40,8 +40,20 @@
       "category": "קופי ותוכן",
       "category_slug": "02-copy-content",
       "related_skill": "hook-generator",
+      "highlight": false,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/ad-hooks-in-20-minutes/GUIDE.md",
       "updated_at": "2026-08-12T19:50:16.000Z"
+    },
+    {
+      "name": "safe-use-of-claude-code",
+      "title_he": "זהירות בשימוש בקלוד קוד",
+      "summary_he": "שבעה כללים פשוטים שמונעים את הנזקים היקרים באמת: מפתחות שדולפים, הרשאות שנפתחו לרווחה, וקבצים שנמחקו בלי דרך חזרה.",
+      "category": "יסודות ובטיחות",
+      "category_slug": "00-foundations",
+      "related_skill": null,
+      "highlight": true,
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/safe-use-of-claude-code/GUIDE.md",
+      "updated_at": "2026-08-12T21:54:44.219Z"
     }
   ],
   "links": [

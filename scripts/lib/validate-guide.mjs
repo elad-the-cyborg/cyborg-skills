@@ -11,7 +11,11 @@
 import { markerToRegExp } from './validate-skill.mjs'
 
 const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
-const RESERVED = ['anthropic', 'claude']
+// A skill's name may not contain these, because a skill is invoked by name and a
+// name like "claude-helper" reads as an official component. A guide is editorial
+// writing ABOUT tools, so naming one after the tool it explains is ordinary
+// descriptive use and belongs in the URL. Only the vendor name stays reserved.
+const RESERVED = ['anthropic']
 const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
 const SUMMARY_MAX = 320
 

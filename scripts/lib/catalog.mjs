@@ -60,6 +60,11 @@ export function toGuideCatalogEntry({ data, updated_at }) {
     category: data.category,
     category_slug: data.category_slug,
     related_skill: data.related_skill ?? null,
+    // A guide may ask the site to single it out visually. Only an explicit
+    // `true` counts, so a typo or a missing field renders as an ordinary guide
+    // rather than shouting for attention. Reserved for the safety guide and
+    // anything else a reader would be worse off skipping.
+    highlight: data.highlight === true,
     ...deriveGuideUrls(data.name),
     updated_at,
   }

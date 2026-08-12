@@ -30,10 +30,18 @@ test('uppercase name is rejected', () => {
   assert.ok(r.errors.some(e => e.includes('name')))
 })
 
-test('reserved word claude is rejected', () => {
-  const data = { ...goodData, name: 'claude-guide' }
-  const r = validateGuide({ dirName: 'claude-guide', data, body: goodBody, skillNames })
+test('reserved word anthropic is rejected', () => {
+  const data = { ...goodData, name: 'anthropic-guide' }
+  const r = validateGuide({ dirName: 'anthropic-guide', data, body: goodBody, skillNames })
   assert.ok(r.errors.some(e => e.includes('reserved')))
+})
+
+// A guide explains a tool, so naming it after that tool is descriptive, not a
+// claim to be part of it. Skills keep the stricter rule; see validate-skill.mjs.
+test('a guide may be named after the tool it explains', () => {
+  const data = { ...goodData, name: 'safe-use-of-claude-code' }
+  const r = validateGuide({ dirName: 'safe-use-of-claude-code', data, body: goodBody, skillNames })
+  assert.deepEqual(r.errors, [])
 })
 
 test('non-MIT license is rejected', () => {
