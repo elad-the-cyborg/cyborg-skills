@@ -6,11 +6,15 @@ import { fileURLToPath } from 'node:url'
 import { parseFrontmatter } from './lib/frontmatter.mjs'
 import { buildCatalog } from './lib/catalog.mjs'
 import { validateSkill } from './lib/validate-skill.mjs'
+import { validateGuide } from './lib/validate-guide.mjs'
+import { validateLinks } from './lib/validate-links.mjs'
 import { loadForbiddenMarkers } from './lib/forbidden-markers.mjs'
 
 const run = promisify(execFile)
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const SKILLS_DIR = join(ROOT, 'skills')
+const GUIDES_DIR = join(ROOT, 'guides')
+const LINKS_FILE = join(ROOT, 'links', 'links.json')
 const forbiddenMarkers = await loadForbiddenMarkers(ROOT)
 
 async function exists(p) { try { await access(p); return true } catch { return false } }
@@ -67,19 +71,79 @@ for (const cat of cats.filter(d => d.isDirectory())) {
   }
 }
 
-if (invalidSkills.length > 0) {
-  for (const { skill, errors } of invalidSkills) {
-    console.error(`✖ ${skill}:`)
-    for (const err of errors) {
-      console.error(`  - ${err}`)
+// Guides may reference a skill by name (related_skill); checked against
+// every skill name seen above, valid or not, same as the duplicate-name
+// check does for skills themselves.
+const skillNames = [...seenNames.keys()]
+
+const guides = []
+const invalidGuides = []
+if (await exists(GUIDES_DIR)) {
+  const guideDirs = await readdir(GUIDES_DIR, { withFileTypes: true })
+  for (const g of guideDirs.filter(d => d.isDirectory())) {
+    const gPath = join(GUIDES_DIR, g.name)
+    const md = await readFile(join(gPath, 'GUIDE.md'), 'utf8').catch(() => null)
+    if (!md) {
+      invalidGuides.push({ guide: g.name, errors: ['no GUIDE.md'], warnings: [] })
+      continue
+    }
+    const { data, body } = parseFrontmatter(md)
+    const validation = validateGuide({ dirName: g.name, data, body, skillNames, forbiddenMarkers })
+
+    if (validation.errors.length > 0) {
+      invalidGuides.push({ guide: g.name, ...validation })
+    } else {
+      for (const warning of validation.warnings) {
+        console.warn(`Warning: guide ${g.name}: ${warning}`)
+      }
+      const updated_at = await gitUpdatedAt(join('guides', g.name))
+      guides.push({ data, updated_at })
     }
   }
+}
+
+let links = []
+let linksError = null
+if (await exists(LINKS_FILE)) {
+  const raw = await readFile(LINKS_FILE, 'utf8')
+  let parsed
+  try {
+    parsed = JSON.parse(raw)
+  } catch (err) {
+    linksError = [`links/links.json is not valid JSON (${err.message})`]
+  }
+  if (!linksError) {
+    const validation = validateLinks(parsed)
+    for (const warning of validation.warnings) {
+      console.warn(`Warning: links/links.json: ${warning}`)
+    }
+    if (validation.errors.length > 0) {
+      linksError = validation.errors
+    } else {
+      links = parsed
+    }
+  }
+}
+
+if (invalidSkills.length > 0 || invalidGuides.length > 0 || linksError) {
+  for (const { skill, errors } of invalidSkills) {
+    console.error(`✖ ${skill}:`)
+    for (const err of errors) console.error(`  - ${err}`)
+  }
+  for (const { guide, errors } of invalidGuides) {
+    console.error(`✖ guide ${guide}:`)
+    for (const err of errors) console.error(`  - ${err}`)
+  }
+  if (linksError) {
+    console.error('✖ links/links.json:')
+    for (const err of linksError) console.error(`  - ${err}`)
+  }
   console.error('')
-  console.error('Run `npm run validate` to check all skills.')
+  console.error('Run `npm run validate` to check all skills, guides and links.')
   process.exit(1)
 }
 
-const { json, markdown } = buildCatalog(skills, new Date().toISOString())
+const { json, markdown } = buildCatalog(skills, guides, links, new Date().toISOString())
 await writeFile(join(ROOT, 'catalog.json'), JSON.stringify(json, null, 2) + '\n')
 await writeFile(join(ROOT, 'CATALOG.md'), markdown)
-console.log(`Built catalog.json + CATALOG.md (${json.count} skills).`)
+console.log(`Built catalog.json + CATALOG.md (${json.count} skills, ${json.guides.length} guides, ${json.links.length} links).`)

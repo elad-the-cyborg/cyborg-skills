@@ -10,7 +10,8 @@
     "test": "node --test",
     "validate": "node scripts/validate.mjs",
     "build": "node scripts/build-catalog.mjs",
-    "new-skill": "node scripts/new-skill.mjs"
+    "new-skill": "node scripts/new-skill.mjs",
+    "new-guide": "node scripts/new-guide.mjs"
   },
   "dependencies": {
     "yaml": "^2.5.0"
