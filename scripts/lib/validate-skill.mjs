@@ -107,7 +107,39 @@ export function markerToRegExp(marker) {
   return new RegExp(`(?<=${lead})${pattern}(?!${boundary})`, 'iu')
 }
 
-export function validateSkill({ dirName, data, body, hasInstall, catDirName, forbiddenMarkers = [] }) {
+// Runs the dash ban against one file's body text and pushes a message that
+// names the file, so a hit in SKILL.md and a hit in INSTALL.md never look
+// like the same undifferentiated complaint. Code spans are stripped first
+// (see stripCode) so a file may quote the character it forbids.
+function checkDashBan(text, fileLabel, errors, note) {
+  const stripped = stripCode(text ?? '')
+  for (const dash of DASH_CHARS) {
+    if (stripped.includes(dash)) {
+      errors.push(`dash (${dash}) found in ${fileLabel} body prose; rephrase with a comma, period or colon${note ? ` (${note})` : ''}`)
+    }
+  }
+}
+
+// Runs the forbidden-marker denylist against one file's raw body text and
+// pushes a warning that names the file, for the same reason as checkDashBan
+// above. Unlike the dash ban this deliberately does NOT strip code spans:
+// existing behavior for SKILL.md never did either, and a marker hiding
+// inside a code span is still IP that needs a human's eyes.
+function checkForbiddenMarkers(text, fileLabel, forbiddenMarkers, warnings) {
+  for (const marker of forbiddenMarkers) {
+    // Defensive: an empty/whitespace-only marker would build an empty-
+    // pattern regexp that matches every string. loadForbiddenMarkers()
+    // already filters these out, but skip them here too so a caller
+    // passing an array in directly (as tests and other code do) can't
+    // trigger the same false-positive flood.
+    if (!marker || !marker.trim()) continue
+    if (markerToRegExp(marker).test(text ?? '')) {
+      warnings.push(`forbidden marker found in ${fileLabel} (review for IP): "${marker}"`)
+    }
+  }
+}
+
+export function validateSkill({ dirName, data, body, hasInstall, installBody = '', catDirName, forbiddenMarkers = [] }) {
   const errors = []
   const warnings = []
   const name = data?.name
@@ -183,22 +215,11 @@ export function validateSkill({ dirName, data, body, hasInstall, catDirName, for
   if (!/CLAUDE\.md/.test(body)) errors.push('no CLAUDE.md read step in body')
   if (!hasInstall) errors.push('INSTALL.md missing')
 
-  const strippedBody = stripCode(body)
-  for (const dash of DASH_CHARS) {
-    if (strippedBody.includes(dash)) {
-      errors.push(`dash (${dash}) found in body prose; rephrase with a comma, period or colon (em/en dash is allowed only in the frontmatter description)`)
-    }
-  }
+  checkDashBan(body, 'SKILL.md', errors, 'em/en dash is allowed only in the frontmatter description')
+  if (hasInstall) checkDashBan(installBody, 'INSTALL.md', errors)
 
-  for (const marker of forbiddenMarkers) {
-    // Defensive: an empty/whitespace-only marker would build an empty-
-    // pattern regexp that matches every string. loadForbiddenMarkers()
-    // already filters these out, but skip them here too so a caller
-    // passing an array in directly (as tests and other code do) can't
-    // trigger the same false-positive flood.
-    if (!marker || !marker.trim()) continue
-    if (markerToRegExp(marker).test(body)) warnings.push(`forbidden marker found (review for IP): "${marker}"`)
-  }
+  checkForbiddenMarkers(body, 'SKILL.md', forbiddenMarkers, warnings)
+  if (hasInstall) checkForbiddenMarkers(installBody, 'INSTALL.md', forbiddenMarkers, warnings)
 
   for (const { re, msg } of DENYLIST) {
     if (re.test(body)) warnings.push(`safety: ${msg}`)

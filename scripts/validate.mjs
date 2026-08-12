@@ -43,8 +43,9 @@ if (!(await exists(SKILLS_DIR))) {
     const md = await readFile(join(path, 'SKILL.md'), 'utf8').catch(() => null)
     if (md === null) { console.error(`❌ ${dirName}: no SKILL.md`); hadError = true; continue }
     const { data, body } = parseFrontmatter(md)
-    const hasInstall = await exists(join(path, 'INSTALL.md'))
-    const { errors, warnings } = validateSkill({ dirName, data, body, hasInstall, catDirName, forbiddenMarkers })
+    const installBody = await readFile(join(path, 'INSTALL.md'), 'utf8').catch(() => null)
+    const hasInstall = installBody !== null
+    const { errors, warnings } = validateSkill({ dirName, data, body, hasInstall, installBody, catDirName, forbiddenMarkers })
 
     const name = data?.name
     if (name && typeof name === 'string') {

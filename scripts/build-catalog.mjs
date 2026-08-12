@@ -47,8 +47,9 @@ for (const cat of cats.filter(d => d.isDirectory())) {
       continue
     }
     const { data, body } = parseFrontmatter(md)
-    const hasInstall = await exists(join(skPath, 'INSTALL.md'))
-    const validation = validateSkill({ dirName: s.name, data, body, hasInstall, catDirName: cat.name, forbiddenMarkers })
+    const installBody = await readFile(join(skPath, 'INSTALL.md'), 'utf8').catch(() => null)
+    const hasInstall = installBody !== null
+    const validation = validateSkill({ dirName: s.name, data, body, hasInstall, installBody, catDirName: cat.name, forbiddenMarkers })
 
     const name = data?.name
     if (name && typeof name === 'string') {

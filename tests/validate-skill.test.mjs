@@ -384,3 +384,84 @@ test('metadata.site_gate with the wrong casing is a warning, never an error (fai
   assert.deepEqual(r.errors, [])
   assert.ok(r.warnings.some(w => w.includes('site_gate')))
 })
+
+// --- INSTALL.md body: same content checks as SKILL.md, file named in the message ---
+
+const goodInstallBody = '# התקנה\n\nהעתק את התיקייה ל-~/.claude/skills/.\n'
+
+test('clean INSTALL.md body alongside clean SKILL.md body produces no dash or marker errors/warnings', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true, installBody: goodInstallBody,
+    forbiddenMarkers: ['שיטת אקמה'],
+  })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('forbidden marker only in INSTALL.md is a warning naming INSTALL.md', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nמבוסס על שיטת אקמה',
+    forbiddenMarkers: ['שיטת אקמה'],
+  })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('forbidden') && w.includes('INSTALL.md')))
+})
+
+test('forbidden marker present in both SKILL.md and INSTALL.md produces a separate warning per file', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nמבוסס על שיטת אקמה', hasInstall: true,
+    installBody: goodInstallBody + '\nמבוסס על שיטת אקמה',
+    forbiddenMarkers: ['שיטת אקמה'],
+  })
+  assert.ok(r.warnings.some(w => w.includes('forbidden') && w.includes('SKILL.md')))
+  assert.ok(r.warnings.some(w => w.includes('forbidden') && w.includes('INSTALL.md')))
+  assert.equal(r.warnings.filter(w => w.includes('forbidden')).length, 2)
+})
+
+test('em dash only in INSTALL.md body is an error naming INSTALL.md', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nזה משפט עם מקף מפריד — בתוך הטקסט.',
+  })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('INSTALL.md')))
+})
+
+test('en dash only in INSTALL.md body is an error naming INSTALL.md', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nזה משפט עם מקף מפריד – בתוך הטקסט.',
+  })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('INSTALL.md')))
+})
+
+test('dash inside an inline code span in INSTALL.md is not an error', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nהתו `—` הוא מקף מפריד.',
+  })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
+test('dash inside a fenced code block in INSTALL.md is not an error', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\n```\nדוגמה עם — בפנים הבלוק\n```\n',
+  })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
+test('dash in SKILL.md body names SKILL.md in the error, distinct from an INSTALL.md hit', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nזה משפט עם מקף מפריד — בתוך הטקסט.', hasInstall: true,
+    installBody: goodInstallBody,
+  })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('SKILL.md')))
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('INSTALL.md')))
+})
+
+test('missing installBody (skill has no INSTALL.md) does not crash and reports only the missing-file error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: false })
+  assert.ok(r.errors.some(e => e.includes('INSTALL')))
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
