@@ -43,7 +43,7 @@ npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/
 |---|---------|--------|-------|
 | 1 | מחקר ואסטרטגיה | מחקר מתחרים, נראות בחיפוש ובבינה מלאכותית, רושם ראשוני באתר | 3 סקילים חיים: [`competitor-radar`](skills/01-research-strategy/competitor-radar), [`findability-audit`](skills/01-research-strategy/findability-audit), [`first-impression-audit`](skills/01-research-strategy/first-impression-audit) |
 | 2 | קופי ותוכן | הוקים וזוויות, קופי למודעות, קופי לדף נחיתה | 5 סקילים חיים: [`hook-generator`](skills/02-copy-content/hook-generator), [`meta-ads-copy`](skills/02-copy-content/meta-ads-copy), [`taboola-ads-copy`](skills/02-copy-content/taboola-ads-copy), [`google-search-ads-copy`](skills/02-copy-content/google-search-ads-copy), [`landing-page-copy`](skills/02-copy-content/landing-page-copy) |
-| 3 | קריאייטיב וויזואל | פלטת מותג, קונספט קריאייטיב, פרומפטים לתמונות AI | בתכנון |
+| 3 | קריאייטיב וויזואל | קרוסלות לאינסטגרם, עריכת וידאו לרשתות חברתיות, פלטת מותג וקונספט קריאייטיב | 2 סקילים חיים: [`instagram-carousel`](skills/03-creative-visual/instagram-carousel), [`video-editing`](skills/03-creative-visual/video-editing) |
 | 4 | דפי נחיתה ובנייה | בניית דף נחיתה, בניית אפליקציות, בקרת המרות | בתכנון |
 | 5 | קמפיינים ומדיה | מבנה קמפיין מטא, תוכנית מדיה, ניתוח ביצועים | בתכנון |
 | 6 | SEO / AEO / GEO | מחקר מילות מפתח, אופטימיזציית עמוד, נראות ב-AI | בתכנון |
