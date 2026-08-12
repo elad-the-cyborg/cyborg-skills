@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-12T22:23:01.187Z",
-  "count": 8,
+  "generated_at": "2026-08-12T22:40:07.631Z",
+  "count": 10,
   "skills": [
     {
       "name": "competitor-radar",
@@ -115,7 +115,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/google-search-ads-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/google-search-ads-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:23:01.133Z"
+      "updated_at": "2026-08-12T22:23:17.000Z"
     },
     {
       "name": "hook-generator",
@@ -171,7 +171,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/landing-page-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/landing-page-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:23:01.152Z"
+      "updated_at": "2026-08-12T22:23:17.000Z"
     },
     {
       "name": "meta-ads-copy",
@@ -201,7 +201,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/meta-ads-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/meta-ads-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:23:01.161Z"
+      "updated_at": "2026-08-12T22:23:17.000Z"
     },
     {
       "name": "taboola-ads-copy",
@@ -230,7 +230,67 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/taboola-ads-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/taboola-ads-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T22:23:01.169Z"
+      "updated_at": "2026-08-12T22:23:17.000Z"
+    },
+    {
+      "name": "instagram-carousel",
+      "title_he": "בניית קרוסלה לאינסטגרם",
+      "category": "קריאייטיב וויזואל",
+      "category_slug": "03-creative-visual",
+      "topic": "קרוסלות לאינסטגרם",
+      "description": "בניית קרוסלה לאינסטגרם — בונה קרוסלה שלמה לאינסטגרם, מרעיון ועד קבצי תמונה מוכנים להעלאה, עם עברית ימין לשמאל תקינה בכל שקף. הפעל כשמבקשים קרוסלה לאינסטגרם, קופי ועיצוב לשקפים, או פוסט קרוסלה. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים קרוסלה שלמה לאינסטגרם: קופי לכל שקף לפי סדר סיפור אחד ברור, וקבצי תמונה מוכנים להעלאה, עם עברית תקינה מימין לשמאל בלי טעויות כיוון.",
+      "audience_he": "מתאים לבעל עסק שרוצה קרוסלה מקצועית לאינסטגרם בעצמו, בלי מעצב ובלי תקלות של עברית הפוכה.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "קרוסלה",
+        "אינסטגרם",
+        "עיצוב",
+        "עברית",
+        "קופי"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/instagram-carousel ~/.claude/skills/instagram-carousel",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/instagram-carousel",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/instagram-carousel/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:40:07.605Z"
+    },
+    {
+      "name": "video-editing",
+      "title_he": "עריכת וידאו לסושיאל",
+      "category": "קריאייטיב וויזואל",
+      "category_slug": "03-creative-visual",
+      "topic": "עריכת וידאו לרשתות חברתיות",
+      "description": "עריכת וידאו לסושיאל — חותך, ממסגר לאנכי ומוסיף כתוביות בעברית לסרטון קיים, בלי לגעת בקובץ המקורי. הפעל כשמבקשים לחתוך סרטון, להפוך אותו לאנכי לרילס או סטורי, או להוסיף כתוביות. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים קליפ קצר ומוכן לסטורי או רילס: חיתוך מהסרטון המקורי, התאמה לפורמט אנכי, וכתוביות בעברית שנקראות נכון מימין לשמאל, בלי לגעת בקובץ המקורי.",
+      "audience_he": "מתאים לבעל עסק שצילם סרטון ארוך בנייד ורוצה קליפ קצר ואנכי עם כתוביות, בלי עורך וידאו ובלי תוכנה מקצועית.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "advanced",
+      "visibility": "public",
+      "tags": [
+        "וידאו",
+        "עריכה",
+        "רילס",
+        "כתוביות",
+        "עברית"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/video-editing ~/.claude/skills/video-editing",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/video-editing",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/video-editing/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T22:40:07.614Z"
     }
   ],
   "guides": [

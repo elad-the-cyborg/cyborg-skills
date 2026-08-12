@@ -1,6 +1,6 @@
 # קטלוג הסקילים · The Cyborg
 
-8 סקילים חיים כרגע, פרוסים על פני 2 קטגוריות. לכל סקיל יש כאן קישור לתיקייה בגיטהאב ופקודת התקנה מוכנה להעתקה. הפקודה גלויה תמיד בעמוד הזה, גם אם באתר השיווקי אותו סקיל מוצג מאחורי טופס מייל.
+10 סקילים חיים כרגע, פרוסים על פני 3 קטגוריות. לכל סקיל יש כאן קישור לתיקייה בגיטהאב ופקודת התקנה מוכנה להעתקה. הפקודה גלויה תמיד בעמוד הזה, גם אם באתר השיווקי אותו סקיל מוצג מאחורי טופס מייל.
 
 ## מחקר ואסטרטגיה
 
@@ -19,6 +19,13 @@
 | קופי לדף נחיתה | [קופי לדף נחיתה](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/landing-page-copy) | מקבלים קופי מלא לדף נחיתה, בנוי לפי סדר השאלות שמבקר אמיתי שואל על ההצעה הספציפית שלכם, לא לפי תבנית קבועה של סעיפים שמעתיקה כל דף לכל עסק. | מתאים לבעל עסק שבונה דף נחיתה או דף מכירה, ורוצה קופי שמדבר לרצף המחשבות האמיתי של המבקר שלו, בין אם זה רופא שיניים ובין אם זה שירות B2B. | advanced | `npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/landing-page-copy ~/.claude/skills/landing-page-copy` |
 | קופי למודעות מטא | [קופי למודעות מטא](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/meta-ads-copy) | מקבלים חמש גרסאות קופי שלמות למודעת פייסבוק או אינסטגרם, כל אחת עם טקסט ראשי, כותרת ותיאור, בנויות להיקרא בשנייה וחצי מתוך גלילה בנייד. | מתאים לבעל עסק שמעלה בעצמו מודעות במטא ורוצה כמה גרסאות מוכנות לבדיקה, לא רק מודעה אחת שהוא מנחש אם תעבוד. | beginner | `npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/meta-ads-copy ~/.claude/skills/meta-ads-copy` |
 | קופי למודעות טאבולה | [קופי למודעות טאבולה](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/taboola-ads-copy) | מקבלים שמונה כותרות למודעת טאבולה, כל אחת עם כיוון תמונה מוצע ונימוק למה היא לא חוצה לקליקבייט, כדי שהמודעה תיקרא כמו תוכן ולא כמו פרסומת שנדחית. | מתאים לבעל עסק שמפרסם או שוקל לפרסם באתרי תוכן דרך טאבולה, ורוצה כותרות שמסקרנות באמת בלי לשרוף אמון או להיתקע בבדיקת האישור. | intermediate | `npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/taboola-ads-copy ~/.claude/skills/taboola-ads-copy` |
+
+## קריאייטיב וויזואל
+
+| נושא | סקיל | מה מקבלים | למי מתאים | רמה | התקנה |
+|---|---|---|---|---|---|
+| קרוסלות לאינסטגרם | [בניית קרוסלה לאינסטגרם](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/instagram-carousel) | מקבלים קרוסלה שלמה לאינסטגרם: קופי לכל שקף לפי סדר סיפור אחד ברור, וקבצי תמונה מוכנים להעלאה, עם עברית תקינה מימין לשמאל בלי טעויות כיוון. | מתאים לבעל עסק שרוצה קרוסלה מקצועית לאינסטגרם בעצמו, בלי מעצב ובלי תקלות של עברית הפוכה. | intermediate | `npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/instagram-carousel ~/.claude/skills/instagram-carousel` |
+| עריכת וידאו לרשתות חברתיות | [עריכת וידאו לסושיאל](https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/video-editing) | מקבלים קליפ קצר ומוכן לסטורי או רילס: חיתוך מהסרטון המקורי, התאמה לפורמט אנכי, וכתוביות בעברית שנקראות נכון מימין לשמאל, בלי לגעת בקובץ המקורי. | מתאים לבעל עסק שצילם סרטון ארוך בנייד ורוצה קליפ קצר ואנכי עם כתוביות, בלי עורך וידאו ובלי תוכנה מקצועית. | advanced | `npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/video-editing ~/.claude/skills/video-editing` |
 
 ## מדריכים
 
