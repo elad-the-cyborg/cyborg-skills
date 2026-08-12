@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-12T19:21:17.854Z",
+  "generated_at": "2026-08-12T19:49:17.803Z",
   "count": 3,
   "skills": [
     {
@@ -29,7 +29,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/campaign-brief",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/campaign-brief/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-10T22:15:12.000Z"
+      "updated_at": "2026-08-12T19:21:50.000Z"
     },
     {
       "name": "hook-generator",
@@ -57,7 +57,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hook-generator/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-10T22:15:12.000Z"
+      "updated_at": "2026-08-12T19:21:50.000Z"
     },
     {
       "name": "brand-palette",
@@ -85,7 +85,20 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/brand-palette/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-10T22:15:12.000Z"
+      "updated_at": "2026-08-12T19:21:50.000Z"
     }
-  ]
+  ],
+  "guides": [
+    {
+      "name": "ad-hooks-in-20-minutes",
+      "title_he": "איך כותבים עשרה הוקים למודעה בעשרים דקות",
+      "summary_he": "מדריך מעשי שמראה איך לצאת מדף ריק לעשרה כיווני פתיחה למודעה, ולדעת בדיוק אילו שלושה לבחור.",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "related_skill": "hook-generator",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/ad-hooks-in-20-minutes/GUIDE.md",
+      "updated_at": "2026-08-12T19:49:17.803Z"
+    }
+  ],
+  "links": []
 }
