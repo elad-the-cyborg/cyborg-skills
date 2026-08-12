@@ -5,9 +5,37 @@ const VISIBILITIES = ['public', 'booster']
 const REQUIRED_META = [
   'title_he', 'category', 'category_slug', 'topic',
   'level', 'visibility', 'author', 'site', 'version',
+  'summary_he', 'audience_he',
 ]
 const BRAND_MARKER = 'The Cyborg ·'
 const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
+
+// metadata.safety: a small, honest object describing what the skill actually
+// does, so the public site can render a per-skill safety sentence instead of
+// one hardcoded promise that becomes false the moment a skill writes or
+// sends something. Every key is required and must be a real boolean, and no
+// extra keys are allowed (a typo here should fail loud, not silently pass).
+const SAFETY_KEYS = ['writes_files', 'sends_external', 'touches_live_campaigns']
+
+// metadata.site_gate: optional, and deliberately NOT in REQUIRED_META. Tells
+// the public site whether to show this skill's install command openly or
+// put a mailing-list email form in front of it first. Under the repo's
+// current philosophy there are no access tiers and nothing here is secret,
+// so the default must be open: a skill with the field missing or malformed
+// has to render openly, never gated, so a mistake fails toward openness
+// instead of toward a broken gate. That fail-open behavior lives in
+// scripts/lib/catalog.mjs (only the exact string "gated" flips it); here we
+// only flag an unrecognized value as a warning, for a human to notice and
+// fix, never a hard error that blocks validation.
+const SITE_GATE_VALUES = ['open', 'gated']
+
+// summary_he/audience_he are customer-facing marketing copy, read by a
+// non-technical business owner on the public site: no trigger phrasing
+// ("הפעל כש..."), no implementation notes (CLAUDE.md), and no repeating the
+// title that already sits right above it on the card.
+const TRIGGER_PHRASE = 'הפעל כש'
+const SUMMARY_MAX = 320
+const AUDIENCE_MAX = 200
 
 // Safety denylist (warnings only): a skill body is read-only / draft-only by
 // default, so these patterns flag anything that looks like it wants to touch
@@ -70,7 +98,7 @@ const HEBREW_PROCLITICS = 'והבלמשכ'
 //    word list, because this check is warnings-only and every warning is
 //    read by a human before it means anything; recall matters more than
 //    precision here.
-function markerToRegExp(marker) {
+export function markerToRegExp(marker) {
   const escaped = marker.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   const pattern = escaped.replace(/\s+/g, '\\s+')
   const boundary = '[\\p{L}\\p{N}_]'
@@ -79,7 +107,39 @@ function markerToRegExp(marker) {
   return new RegExp(`(?<=${lead})${pattern}(?!${boundary})`, 'iu')
 }
 
-export function validateSkill({ dirName, data, body, hasInstall, catDirName, forbiddenMarkers = [] }) {
+// Runs the dash ban against one file's body text and pushes a message that
+// names the file, so a hit in SKILL.md and a hit in INSTALL.md never look
+// like the same undifferentiated complaint. Code spans are stripped first
+// (see stripCode) so a file may quote the character it forbids.
+function checkDashBan(text, fileLabel, errors, note) {
+  const stripped = stripCode(text ?? '')
+  for (const dash of DASH_CHARS) {
+    if (stripped.includes(dash)) {
+      errors.push(`dash (${dash}) found in ${fileLabel} body prose; rephrase with a comma, period or colon${note ? ` (${note})` : ''}`)
+    }
+  }
+}
+
+// Runs the forbidden-marker denylist against one file's raw body text and
+// pushes a warning that names the file, for the same reason as checkDashBan
+// above. Unlike the dash ban this deliberately does NOT strip code spans:
+// existing behavior for SKILL.md never did either, and a marker hiding
+// inside a code span is still IP that needs a human's eyes.
+function checkForbiddenMarkers(text, fileLabel, forbiddenMarkers, warnings) {
+  for (const marker of forbiddenMarkers) {
+    // Defensive: an empty/whitespace-only marker would build an empty-
+    // pattern regexp that matches every string. loadForbiddenMarkers()
+    // already filters these out, but skip them here too so a caller
+    // passing an array in directly (as tests and other code do) can't
+    // trigger the same false-positive flood.
+    if (!marker || !marker.trim()) continue
+    if (markerToRegExp(marker).test(text ?? '')) {
+      warnings.push(`forbidden marker found in ${fileLabel} (review for IP): "${marker}"`)
+    }
+  }
+}
+
+export function validateSkill({ dirName, data, body, hasInstall, installBody = '', catDirName, forbiddenMarkers = [] }) {
   const errors = []
   const warnings = []
   const name = data?.name
@@ -110,26 +170,56 @@ export function validateSkill({ dirName, data, body, hasInstall, catDirName, for
     errors.push(`metadata.category_slug "${meta.category_slug}" does not match category directory "${catDirName}"`)
   }
 
+  if (meta.summary_he !== undefined && meta.summary_he !== null && String(meta.summary_he).trim() !== '') {
+    const summary = String(meta.summary_he)
+    if (summary.length > SUMMARY_MAX) errors.push(`metadata.summary_he exceeds ${SUMMARY_MAX} chars`)
+    if (meta.title_he && summary.includes(String(meta.title_he))) {
+      errors.push('metadata.summary_he repeats metadata.title_he; say what the customer gets, not the title again')
+    }
+    if (summary.includes(TRIGGER_PHRASE)) {
+      errors.push(`metadata.summary_he contains a trigger phrase ("${TRIGGER_PHRASE}"); that belongs in description for the model, not customer copy`)
+    }
+    if (/CLAUDE\.md/i.test(summary)) {
+      errors.push('metadata.summary_he mentions CLAUDE.md; that is an implementation note, not customer copy')
+    }
+    for (const dash of DASH_CHARS) {
+      if (summary.includes(dash)) errors.push(`metadata.summary_he contains a dash (${dash}); rephrase with a comma, period or colon`)
+    }
+  }
+
+  if (meta.audience_he !== undefined && meta.audience_he !== null && String(meta.audience_he).trim() !== '') {
+    const audience = String(meta.audience_he)
+    if (audience.length > AUDIENCE_MAX) errors.push(`metadata.audience_he exceeds ${AUDIENCE_MAX} chars`)
+    for (const dash of DASH_CHARS) {
+      if (audience.includes(dash)) errors.push(`metadata.audience_he contains a dash (${dash}); rephrase with a comma, period or colon`)
+    }
+  }
+
+  if (meta.safety === undefined || meta.safety === null || typeof meta.safety !== 'object' || Array.isArray(meta.safety)) {
+    errors.push('metadata.safety missing or invalid (must be an object with writes_files, sends_external, touches_live_campaigns booleans)')
+  } else {
+    for (const k of SAFETY_KEYS) {
+      if (typeof meta.safety[k] !== 'boolean') errors.push(`metadata.safety.${k} missing or not a boolean`)
+    }
+    const extra = Object.keys(meta.safety).filter(k => !SAFETY_KEYS.includes(k))
+    if (extra.length) errors.push(`metadata.safety has unknown keys: ${extra.join(', ')}`)
+  }
+
+  if (meta.site_gate !== undefined && meta.site_gate !== null && String(meta.site_gate).trim() !== '') {
+    if (!SITE_GATE_VALUES.includes(meta.site_gate)) {
+      warnings.push(`metadata.site_gate has an unrecognized value ("${meta.site_gate}"); the site still renders this skill openly (fail-safe default), but the value should be "open" or "gated"`)
+    }
+  }
+
   if (!body.includes(BRAND_MARKER)) errors.push('brand banner missing (expected "The Cyborg ·")')
   if (!/CLAUDE\.md/.test(body)) errors.push('no CLAUDE.md read step in body')
   if (!hasInstall) errors.push('INSTALL.md missing')
 
-  const strippedBody = stripCode(body)
-  for (const dash of DASH_CHARS) {
-    if (strippedBody.includes(dash)) {
-      errors.push(`dash (${dash}) found in body prose; rephrase with a comma, period or colon (em/en dash is allowed only in the frontmatter description)`)
-    }
-  }
+  checkDashBan(body, 'SKILL.md', errors, 'em/en dash is allowed only in the frontmatter description')
+  if (hasInstall) checkDashBan(installBody, 'INSTALL.md', errors)
 
-  for (const marker of forbiddenMarkers) {
-    // Defensive: an empty/whitespace-only marker would build an empty-
-    // pattern regexp that matches every string. loadForbiddenMarkers()
-    // already filters these out, but skip them here too so a caller
-    // passing an array in directly (as tests and other code do) can't
-    // trigger the same false-positive flood.
-    if (!marker || !marker.trim()) continue
-    if (markerToRegExp(marker).test(body)) warnings.push(`forbidden marker found (review for IP): "${marker}"`)
-  }
+  checkForbiddenMarkers(body, 'SKILL.md', forbiddenMarkers, warnings)
+  if (hasInstall) checkForbiddenMarkers(installBody, 'INSTALL.md', forbiddenMarkers, warnings)
 
   for (const { re, msg } of DENYLIST) {
     if (re.test(body)) warnings.push(`safety: ${msg}`)

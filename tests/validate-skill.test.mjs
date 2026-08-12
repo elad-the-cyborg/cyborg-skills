@@ -11,6 +11,9 @@ const goodData = {
     category_slug: '02-copy-content', topic: 'הוקים וזוויות',
     level: 'beginner', visibility: 'public',
     author: 'The Cyborg', site: 'https://thecyborg.co.il', version: '1.0.0',
+    summary_he: 'מקבלים עשרה רעיונות לפתיחת מודעה, כל אחד בזווית שונה.',
+    audience_he: 'מתאים לבעל עסק שנתקע בפתיחה של מודעה או פוסט.',
+    safety: { writes_files: false, sends_external: false, touches_live_campaigns: false },
   },
 }
 const goodBody = `\n⚡ The Cyborg · מחולל הוקים הסייבורג\nקרא קודם את CLAUDE.md של העסק.\n`
@@ -264,4 +267,201 @@ test('instruction to send mail in body is a safety warning not an error', () => 
   const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody + '\nבסיום שלח מייל ללקוח עם הסיכום.', hasInstall: true })
   assert.deepEqual(r.errors, [])
   assert.ok(r.warnings.some(w => w.toLowerCase().includes('mail')))
+})
+
+// --- summary_he / audience_he / safety (customer-facing metadata) ---
+
+test('missing metadata.summary_he is an error', () => {
+  const md = { ...goodData.metadata }; delete md.summary_he
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('summary_he')))
+})
+
+test('missing metadata.audience_he is an error', () => {
+  const md = { ...goodData.metadata }; delete md.audience_he
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('audience_he')))
+})
+
+test('summary_he that repeats the skill title is an error', () => {
+  const md = { ...goodData.metadata, summary_he: 'מחולל הוקים הסייבורג עוזר לכם לכתוב מודעות.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('summary_he') && e.includes('title')))
+})
+
+test('summary_he containing a trigger phrase is an error', () => {
+  const md = { ...goodData.metadata, summary_he: 'הפעל כשרוצים לכתוב מודעה חדשה בעברית.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('summary_he') && e.toLowerCase().includes('trigger')))
+})
+
+test('summary_he mentioning CLAUDE.md is an error', () => {
+  const md = { ...goodData.metadata, summary_he: 'קורא קודם CLAUDE.md ואז מייצר עשרה רעיונות.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('summary_he') && e.includes('CLAUDE.md')))
+})
+
+test('em dash in summary_he is an error even though it is allowed in description', () => {
+  const md = { ...goodData.metadata, summary_he: 'מקבלים רעיונות לפתיחה — כל אחד בזווית שונה.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('summary_he') && e.toLowerCase().includes('dash')))
+})
+
+test('en dash in audience_he is an error', () => {
+  const md = { ...goodData.metadata, audience_he: 'מתאים לעסק קטן – בינוני שכותב מודעות.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('audience_he') && e.toLowerCase().includes('dash')))
+})
+
+test('missing metadata.safety is an error', () => {
+  const md = { ...goodData.metadata }; delete md.safety
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('safety')))
+})
+
+test('metadata.safety as a non-object is an error', () => {
+  const md = { ...goodData.metadata, safety: 'none of it' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('safety')))
+})
+
+test('metadata.safety missing writes_files is an error', () => {
+  const md = { ...goodData.metadata, safety: { sends_external: false, touches_live_campaigns: false } }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('safety.writes_files')))
+})
+
+test('metadata.safety with a non-boolean value is an error', () => {
+  const md = { ...goodData.metadata, safety: { writes_files: 'yes', sends_external: false, touches_live_campaigns: false } }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('safety.writes_files')))
+})
+
+test('metadata.safety with an unknown key is an error', () => {
+  const md = { ...goodData.metadata, safety: { writes_files: false, sends_external: false, touches_live_campaigns: false, deletes_files: false } }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('safety') && e.includes('deletes_files')))
+})
+
+test('metadata.safety with all three booleans present is valid', () => {
+  const md = { ...goodData.metadata, safety: { writes_files: true, sends_external: false, touches_live_campaigns: false } }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+})
+
+// --- site_gate (optional, fail-open: missing or malformed must never gate) ---
+
+test('missing metadata.site_gate is neither an error nor a warning', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('metadata.site_gate "open" is valid with no errors or warnings', () => {
+  const md = { ...goodData.metadata, site_gate: 'open' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('metadata.site_gate "gated" is valid with no errors or warnings', () => {
+  const md = { ...goodData.metadata, site_gate: 'gated' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('metadata.site_gate with an unrecognized value is a warning, never an error', () => {
+  const md = { ...goodData.metadata, site_gate: 'secret' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('site_gate')))
+})
+
+test('metadata.site_gate with the wrong casing is a warning, never an error (fail toward open, not a silent pass)', () => {
+  const md = { ...goodData.metadata, site_gate: 'Open' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('site_gate')))
+})
+
+// --- INSTALL.md body: same content checks as SKILL.md, file named in the message ---
+
+const goodInstallBody = '# התקנה\n\nהעתק את התיקייה ל-~/.claude/skills/.\n'
+
+test('clean INSTALL.md body alongside clean SKILL.md body produces no dash or marker errors/warnings', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true, installBody: goodInstallBody,
+    forbiddenMarkers: ['שיטת אקמה'],
+  })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('forbidden marker only in INSTALL.md is a warning naming INSTALL.md', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nמבוסס על שיטת אקמה',
+    forbiddenMarkers: ['שיטת אקמה'],
+  })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('forbidden') && w.includes('INSTALL.md')))
+})
+
+test('forbidden marker present in both SKILL.md and INSTALL.md produces a separate warning per file', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nמבוסס על שיטת אקמה', hasInstall: true,
+    installBody: goodInstallBody + '\nמבוסס על שיטת אקמה',
+    forbiddenMarkers: ['שיטת אקמה'],
+  })
+  assert.ok(r.warnings.some(w => w.includes('forbidden') && w.includes('SKILL.md')))
+  assert.ok(r.warnings.some(w => w.includes('forbidden') && w.includes('INSTALL.md')))
+  assert.equal(r.warnings.filter(w => w.includes('forbidden')).length, 2)
+})
+
+test('em dash only in INSTALL.md body is an error naming INSTALL.md', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nזה משפט עם מקף מפריד — בתוך הטקסט.',
+  })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('INSTALL.md')))
+})
+
+test('en dash only in INSTALL.md body is an error naming INSTALL.md', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nזה משפט עם מקף מפריד – בתוך הטקסט.',
+  })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('INSTALL.md')))
+})
+
+test('dash inside an inline code span in INSTALL.md is not an error', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nהתו `—` הוא מקף מפריד.',
+  })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
+test('dash inside a fenced code block in INSTALL.md is not an error', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\n```\nדוגמה עם — בפנים הבלוק\n```\n',
+  })
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
+})
+
+test('dash in SKILL.md body names SKILL.md in the error, distinct from an INSTALL.md hit', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nזה משפט עם מקף מפריד — בתוך הטקסט.', hasInstall: true,
+    installBody: goodInstallBody,
+  })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('SKILL.md')))
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('INSTALL.md')))
+})
+
+test('missing installBody (skill has no INSTALL.md) does not crash and reports only the missing-file error', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: false })
+  assert.ok(r.errors.some(e => e.includes('INSTALL')))
+  assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
 })

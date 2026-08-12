@@ -1,0 +1,16 @@
+---
+name: {{name}}
+title_he: "{{title_he}}"
+summary_he: "{{summary_he}}"
+category: "{{category}}"
+category_slug: "{{category_slug}}"
+related_skill: {{related_skill}}
+license: MIT
+---
+
+# {{title_he}}
+
+[גוף המדריך כאן: תוכן עריכתי אמיתי בעברית, לבעל עסק שאינו טכני. הליכה צעד אחר צעד
+על עבודה אמיתית, לא תיאור של מה שהסקיל "עושה". אם related_skill אינו null, המדריך
+חייב להזכיר את שמו בגוף (למשל תוך כדי הצגת פקודת ההתקנה שלו). ראו AUTHORING.md,
+סעיף המדריכים, ו-guides/ad-hooks-in-20-minutes/GUIDE.md כדוגמה מלאה.]

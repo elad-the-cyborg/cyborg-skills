@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-09T20:07:28.339Z",
+  "generated_at": "2026-08-12T21:17:39.145Z",
   "count": 3,
   "skills": [
     {
@@ -9,7 +9,15 @@
       "category": "מחקר ואסטרטגיה",
       "category_slug": "01-research-strategy",
       "topic": "בריף קמפיין",
-      "description": "בריף קמפיין הסייבורג — בונה או מעדכן בריף קמפיין שיווקי מסודר בעברית דרך שיחה קצרה. הפעל כשרוצים בריף לקמפיין, לתכנן מודעה או מבצע, \"בוא נבנה בריף\". קורא קודם CLAUDE.md.",
+      "description": "בריף קמפיין הסייבורג: בונה או מעדכן בריף קמפיין שיווקי מסודר בעברית דרך שיחה קצרה. הפעל כשרוצים בריף לקמפיין, לתכנן מודעה או מבצע, \"בוא נבנה בריף\". קורא קודם CLAUDE.md.",
+      "summary_he": "בשיחה קצרה מקבלים מסמך קמפיין מסודר: קהל יעד, מסר מרכזי, הצעה ושלוש זוויות שיווק, מוכן להעברה ישר לכתיבת המודעות.",
+      "audience_he": "מתאים לבעל עסק שמתכנן קמפיין פרסום חדש ורוצה למפות קהל, מסר והצעה לפני שמתחילים לכתוב מודעות.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -21,7 +29,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/campaign-brief",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/campaign-brief/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T19:36:01.000Z"
+      "updated_at": "2026-08-12T19:21:50.000Z"
     },
     {
       "name": "hook-generator",
@@ -29,7 +37,15 @@
       "category": "קופי ותוכן",
       "category_slug": "02-copy-content",
       "topic": "הוקים וזוויות",
-      "description": "מחולל הוקים הסייבורג — מייצר הוקים וזוויות פתיחה למודעות ולפוסטים בעברית. הפעל כשמבקשים הוק, פתיח, \"תן לי זווית\", או רעיון לפתיחת מודעה. קורא קודם CLAUDE.md אם קיים.",
+      "description": "מחולל הוקים הסייבורג: מייצר הוקים וזוויות פתיחה למודעות ולפוסטים בעברית. הפעל כשמבקשים הוק, פתיח, \"תן לי זווית\", או רעיון לפתיחת מודעה. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים עשרה רעיונות לפתיחת מודעה או פוסט, כל אחד בזווית שונה, ועליהם המלצה על שלושת החזקים ביותר לקהל שלכם.",
+      "audience_he": "מתאים לבעל עסק שצריך לכתוב מודעה או פוסט ונתקע בפתיחה, ורוצה כמה כיוונים לבחור ביניהם במקום דף ריק.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -41,7 +57,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hook-generator/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T19:36:01.000Z"
+      "updated_at": "2026-08-12T19:21:50.000Z"
     },
     {
       "name": "brand-palette",
@@ -49,7 +65,15 @@
       "category": "קריאייטיב וויזואל",
       "category_slug": "03-creative-visual",
       "topic": "פלטת מותג וזהות",
-      "description": "פלטת מותג הסייבורג — מייצר פלטת מותג (צבעים, טיפוגרפיה וטוקנים לשימוש) עם תצוגה חזותית לפתיחה בדפדפן. הפעל כשרוצים פלטת מותג, צבעי מותג, זהות ויזואלית, \"בנה לי פלטה\", או לפני הפקת באנרים ומודעות. קורא קודם CLAUDE.md.",
+      "description": "פלטת מותג הסייבורג: מייצר פלטת מותג (צבעים, טיפוגרפיה וטוקנים לשימוש) עם תצוגה חזותית לפתיחה בדפדפן. הפעל כשרוצים פלטת מותג, צבעי מותג, זהות ויזואלית, \"בנה לי פלטה\", או לפני הפקת באנרים ומודעות. קורא קודם CLAUDE.md.",
+      "summary_he": "מקבלים פלטת צבעים וטיפוגרפיה מסודרת לעסק, כולל קובץ תצוגה חזותי שאפשר לפתוח בדפדפן ולראות איך זה נראה בפועל.",
+      "audience_he": "מתאים לבעל עסק שבונה זהות ויזואלית מאפס, או רוצה לוודא שהמודעות, הבאנרים ודף הנחיתה נראים עקביים.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
       "level": "beginner",
       "visibility": "public",
       "tags": [
@@ -61,7 +85,93 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/brand-palette/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-09T20:06:44.000Z"
+      "updated_at": "2026-08-12T19:21:50.000Z"
+    }
+  ],
+  "guides": [
+    {
+      "name": "ad-hooks-in-20-minutes",
+      "title_he": "איך כותבים עשרה הוקים למודעה בעשרים דקות",
+      "summary_he": "מדריך מעשי שמראה איך לצאת מדף ריק לעשרה כיווני פתיחה למודעה, ולדעת בדיוק אילו שלושה לבחור.",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "related_skill": "hook-generator",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/ad-hooks-in-20-minutes/GUIDE.md",
+      "updated_at": "2026-08-12T19:50:16.000Z"
+    }
+  ],
+  "links": [
+    {
+      "name": "canva",
+      "title": "Canva",
+      "url": "https://canva.com",
+      "summary_he": "בונים בעצמכם עיצוב מקצועי, למודעה, לפוסט או למצגת, מתוך תבנית מוכנה, בלי צורך במעצב ובלי להתחיל מדף ריק.",
+      "group": "text",
+      "pricing_he": "יש מסלול חינמי לשימוש שוטף, לא רק ניסיון. Pro כ-15 דולר למשתמש לחודש, Business כ-20 דולר. תוסף ליצירת תמונות נוסף עולה כ-100 דולר לחודש.",
+      "hebrew_support": "partial"
+    },
+    {
+      "name": "elevenlabs",
+      "title": "ElevenLabs",
+      "url": "https://elevenlabs.io",
+      "summary_he": "מקבלים קריינות טבעית וברורה בעברית לכל סרטון, מודעה או פודקאסט, בלי לשכור קריין ובלי להקליט בעצמכם.",
+      "group": "video",
+      "pricing_he": "חינם: כ-10,000 קרדיטים לחודש (כ-10 דקות דיבור), בלי רישיון מסחרי. Creator ב-22 דולר לחודש הוא המסלול הזול ביותר לשימוש עסקי בפועל.",
+      "hebrew_support": "full"
+    },
+    {
+      "name": "gamma",
+      "title": "Gamma",
+      "url": "https://gamma.app",
+      "summary_he": "כותבים לגאמה כותרת ורעיון בעברית, והיא בונה עבורכם מצגת שלמה עם עיצוב, תוך דקות, בלי לפתוח PowerPoint.",
+      "group": "text",
+      "pricing_he": "חינם: 400 קרדיטים בהרשמה, עד 10 שקפים לפרומפט, עם סימן מים של גאמה. Plus ב-9 דולר לחודש, Pro ב-18 דולר, Ultra ב-90 דולר.",
+      "hebrew_support": "partial"
+    },
+    {
+      "name": "heygen",
+      "title": "HeyGen",
+      "url": "https://heygen.com",
+      "summary_he": "מקבלים סרטון עם אווטאר מדבר בעברית תוך דקות, בלי לצלם את עצמכם ובלי אולפן.",
+      "group": "video",
+      "pricing_he": "חינם: 3 סרטונים בחודש, דקה כל אחד, עם סימן מים. Creator מ-29 דולר לחודש (24 בחיוב שנתי) בלי סימן מים. Pro 49 דולר, Business מ-149 דולר לחודש.",
+      "hebrew_support": "partial"
+    },
+    {
+      "name": "higgsfield",
+      "title": "Higgsfield",
+      "url": "https://higgsfield.ai",
+      "summary_he": "מזינים תמונת מוצר או רעיון למודעה ומקבלים סרטון קצר עם תנועת מצלמה קולנועית, בלי לצלם וידאו בפועל.",
+      "group": "video",
+      "pricing_he": "מסלול כניסה כ-15 דולר לחודש (200 קרדיטים, לא כל המודלים). Plus כ-39 דולר לחודש בחיוב שנתי, מאומת ישירות מהחשבון. מסלול חינמי אמיתי מוטל בספק.",
+      "hebrew_support": "none"
+    },
+    {
+      "name": "nano-banana-pro",
+      "title": "Nano Banana Pro (Google Gemini)",
+      "url": "https://gemini.google.com",
+      "summary_he": "מקבלים תמונה שיווקית שיש בה טקסט עברי שכתוב נכון ולא מבולגן, משהו שרוב כלי יצירת התמונות בעולם עדיין לא מצליחים לעשות.",
+      "group": "text",
+      "pricing_he": "חינם: כ-2 תמונות באיכות גבוהה ביום, אחר כך איכות נמוכה יותר. Google AI Plus ב-19 שקל לחודש, Pro ב-74.9 שקל (המסלול הרלוונטי), Ultra מ-390 שקל.",
+      "hebrew_support": "full"
+    },
+    {
+      "name": "opusclip",
+      "title": "OpusClip",
+      "url": "https://opus.pro",
+      "summary_he": "מזינים הקלטה ארוכה, כמו וובינר, ראיון או שידור, ומקבלים ממנה כמה קטעים קצרים מוכנים לרשתות החברתיות, בלי לשבת ולערוך בעצמכם.",
+      "group": "video",
+      "pricing_he": "חינם: 60 דקות עיבוד בחודש, עם סימן מים שפג אחרי 3 ימים. Starter ב-15 דולר לחודש מסיר את סימן המים. Pro ב-29 דולר לחודש.",
+      "hebrew_support": "partial"
+    },
+    {
+      "name": "veed",
+      "title": "Veed.io",
+      "url": "https://veed.io",
+      "summary_he": "לוקחים סרטון קיים והופכים אותו תוך דקות לפוסט קצר עם כתוביות בעברית, כדי שאנשים יבינו את התוכן גם בלי להפעיל קול.",
+      "group": "video",
+      "pricing_he": "דף התמחור לא נטען ישירות באימות. לפי כמה מקורות: מסלול חינמי קיים, מסלול אמצעי כ-18 עד 24 דולר לחודש, Pro כ-29 עד 30 דולר. לבדוק מול האתר בזמן אמת.",
+      "hebrew_support": "partial"
     }
   ]
 }

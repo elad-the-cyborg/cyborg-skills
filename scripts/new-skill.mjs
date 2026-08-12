@@ -5,13 +5,27 @@ import { fillTemplate } from './lib/template.mjs'
 
 // Usage: node scripts/new-skill.mjs name=hook-generator category_slug=02-copy-content \
 //   category="קופי ותוכן" topic="הוקים וזוויות" title_he="מחולל הוקים הסייבורג" level=beginner \
-//   one_liner="..." trigger="..." step1_title="..." example_prompt="..." [tags="..."]
+//   one_liner="..." trigger="..." step1_title="..." example_prompt="..." \
+//   summary_he="..." audience_he="..." \
+//   writes_files=false sends_external=false touches_live_campaigns=false [tags="..."]
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const args = Object.fromEntries(process.argv.slice(2).map(a => {
   const i = a.indexOf('='); return [a.slice(0, i), a.slice(i + 1)]
 }))
-for (const req of ['name', 'category_slug', 'category', 'topic', 'title_he', 'level', 'one_liner', 'trigger', 'step1_title', 'example_prompt']) {
+for (const req of [
+  'name', 'category_slug', 'category', 'topic', 'title_he', 'level',
+  'one_liner', 'trigger', 'step1_title', 'example_prompt',
+  'summary_he', 'audience_he', 'writes_files', 'sends_external', 'touches_live_campaigns',
+]) {
   if (!args[req]) { console.error(`missing arg: ${req}`); process.exit(1) }
+}
+// safety flags must be literal YAML booleans, not arbitrary strings, since
+// they get written unquoted into the frontmatter template.
+for (const boolArg of ['writes_files', 'sends_external', 'touches_live_campaigns']) {
+  if (args[boolArg] !== 'true' && args[boolArg] !== 'false') {
+    console.error(`arg ${boolArg} must be exactly "true" or "false" (got: ${args[boolArg]}). Read the skill's own body before guessing.`)
+    process.exit(1)
+  }
 }
 const vars = { tags: '', ...args }
 const dir = join(ROOT, 'skills', args.category_slug, args.name)

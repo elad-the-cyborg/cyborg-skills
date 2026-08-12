@@ -1,0 +1,32 @@
+# מפעיל בנייה מחדש של thecyborg.co.il כשמשהו בסקילים משתנה, כדי שפאנל הסקילים
+# יתעדכן לבד. ה-Deploy Hook נשמר כסוד בשם SITE_DEPLOY_HOOK. אם הסוד לא הוגדר,
+# הצעד מדלג בשקט ולא מכשיל את הריפו.
+#
+# אבטחה: ה-URL של ה-Deploy Hook מוזרם דרך משתנה סביבה (env: HOOK) ולעולם לא
+# מודפס, לא ב-echo ולא בפלט שגיאה. אסור להוסיף כאן -v/--verbose או set -x,
+# ואסור להדפיס את $HOOK בשום צעד, כי הריפו הזה ציבורי.
+name: notify-site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+      - 'catalog.json'
+      - 'CATALOG.md'
+
+jobs:
+  rebuild-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger the website deploy hook
+        env:
+          HOOK: ${{ secrets.SITE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "SITE_DEPLOY_HOOK is not set yet, skipping."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK" > /dev/null
+          echo "Deploy hook triggered."
