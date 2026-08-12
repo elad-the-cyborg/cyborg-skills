@@ -348,3 +348,39 @@ test('metadata.safety with all three booleans present is valid', () => {
   const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
   assert.deepEqual(r.errors, [])
 })
+
+// --- site_gate (optional, fail-open: missing or malformed must never gate) ---
+
+test('missing metadata.site_gate is neither an error nor a warning', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('metadata.site_gate "open" is valid with no errors or warnings', () => {
+  const md = { ...goodData.metadata, site_gate: 'open' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('metadata.site_gate "gated" is valid with no errors or warnings', () => {
+  const md = { ...goodData.metadata, site_gate: 'gated' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
+})
+
+test('metadata.site_gate with an unrecognized value is a warning, never an error', () => {
+  const md = { ...goodData.metadata, site_gate: 'secret' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('site_gate')))
+})
+
+test('metadata.site_gate with the wrong casing is a warning, never an error (fail toward open, not a silent pass)', () => {
+  const md = { ...goodData.metadata, site_gate: 'Open' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('site_gate')))
+})

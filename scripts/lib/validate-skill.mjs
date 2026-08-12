@@ -17,6 +17,18 @@ const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
 // extra keys are allowed (a typo here should fail loud, not silently pass).
 const SAFETY_KEYS = ['writes_files', 'sends_external', 'touches_live_campaigns']
 
+// metadata.site_gate: optional, and deliberately NOT in REQUIRED_META. Tells
+// the public site whether to show this skill's install command openly or
+// put a mailing-list email form in front of it first. Under the repo's
+// current philosophy there are no access tiers and nothing here is secret,
+// so the default must be open: a skill with the field missing or malformed
+// has to render openly, never gated, so a mistake fails toward openness
+// instead of toward a broken gate. That fail-open behavior lives in
+// scripts/lib/catalog.mjs (only the exact string "gated" flips it); here we
+// only flag an unrecognized value as a warning, for a human to notice and
+// fix, never a hard error that blocks validation.
+const SITE_GATE_VALUES = ['open', 'gated']
+
 // summary_he/audience_he are customer-facing marketing copy, read by a
 // non-technical business owner on the public site: no trigger phrasing
 // ("הפעל כש..."), no implementation notes (CLAUDE.md), and no repeating the
@@ -159,6 +171,12 @@ export function validateSkill({ dirName, data, body, hasInstall, catDirName, for
     }
     const extra = Object.keys(meta.safety).filter(k => !SAFETY_KEYS.includes(k))
     if (extra.length) errors.push(`metadata.safety has unknown keys: ${extra.join(', ')}`)
+  }
+
+  if (meta.site_gate !== undefined && meta.site_gate !== null && String(meta.site_gate).trim() !== '') {
+    if (!SITE_GATE_VALUES.includes(meta.site_gate)) {
+      warnings.push(`metadata.site_gate has an unrecognized value ("${meta.site_gate}"); the site still renders this skill openly (fail-safe default), but the value should be "open" or "gated"`)
+    }
   }
 
   if (!body.includes(BRAND_MARKER)) errors.push('brand banner missing (expected "The Cyborg ·")')
