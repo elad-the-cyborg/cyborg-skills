@@ -150,7 +150,7 @@ export function renderCatalogMd(entries, guideEntries = [], linkEntries = []) {
   const lines = [
     '# קטלוג הסקילים · The Cyborg', '',
     `${heCountSkills(entries.length)}, פרוסים על פני ${heCountCategories(categoryCount)}. ` +
-    'לכל סקיל יש כאן קישור לתיקייה בגיטהאב ופקודת התקנה מוכנה להעתקה. ' +
+    'לכל סקיל יש כאן קישור לתיקייה ב-GitHub ופקודת התקנה מוכנה להעתקה. ' +
     'הפקודה גלויה תמיד בעמוד הזה, גם אם באתר השיווקי אותו סקיל מוצג מאחורי טופס מייל.',
     '',
   ]
