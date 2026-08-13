@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-13T06:11:18.268Z",
+  "generated_at": "2026-08-13T13:44:29.632Z",
   "count": 10,
   "skills": [
     {
@@ -152,7 +152,7 @@
       "category_slug": "02-copy-content",
       "topic": "קופי לדף נחיתה",
       "description": "קופי לדף נחיתה — בונה מבנה וקופי לדף נחיתה לפי שאלות המבקר בזמן אמת, לא לפי תבנית קבועה של סעיפים. הפעל כשמבקשים קופי לדף נחיתה, מבנה לדף נחיתה, טקסט לדף מכירה. קורא קודם CLAUDE.md אם קיים.",
-      "summary_he": "מקבלים קופי מלא לדף נחיתה, בנוי לפי סדר השאלות שמבקר אמיתי שואל על ההצעה הספציפית שלכם, לא לפי תבנית קבועה של סעיפים שמעתיקה כל דף לכל עסק.",
+      "summary_he": "מקבלים קופי מלא לדף נחיתה, בנוי לפי סדר השאלות שמבקר אמיתי שואל על ההצעה הספציפית שלכם ועל הקהל שמגיע אליה, כך שהדף מרגיש מדויק לעסק שלכם.",
       "audience_he": "מתאים לבעל עסק שבונה דף נחיתה או דף מכירה, ורוצה קופי שמדבר לרצף המחשבות האמיתי של המבקר שלו, בין אם זה רופא שיניים ובין אם זה שירות B2B.",
       "safety": {
         "writes_files": false,
@@ -171,7 +171,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/landing-page-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/landing-page-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:31.000Z"
+      "updated_at": "2026-08-13T13:44:28.000Z"
     },
     {
       "name": "meta-ads-copy",
@@ -336,18 +336,18 @@
       "related_skill": "landing-page-copy",
       "highlight": false,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/landing-page-that-gets-enquiries/GUIDE.md",
-      "updated_at": "2026-08-12T23:54:44.000Z"
+      "updated_at": "2026-08-13T13:44:28.000Z"
     },
     {
       "name": "looking-at-competitors-properly",
-      "title_he": "איך מסתכלים על המתחרים בלי להתעלם ובלי להעתיק",
-      "summary_he": "מראה דרך שלישית מעבר להתעלמות או העתקה: מה כדאי לבדוק אצל מתחרים, מה לעשות אחרת בכוונה, ולמה חיקוי המוביל בשוק הוא בדרך כלל הטעות היקרה ביותר לעסק קטן.",
+      "title_he": "איך בודקים מתחרים ומוצאים את הפער הפנוי",
+      "summary_he": "עובר על ארבעה דברים שכדאי לבדוק אצל כל מתחרה, מהמבטיח שלו ועד מה שהוא בכלל לא אומר, ומראה איך להפוך את התובנות האלה למשפט השיווקי שמושך לקוחות דווקא אליכם.",
       "category": "מחקר ואסטרטגיה",
       "category_slug": "01-research-strategy",
       "related_skill": "competitor-radar",
       "highlight": false,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-properly/GUIDE.md",
-      "updated_at": "2026-08-12T23:54:44.000Z"
+      "updated_at": "2026-08-13T13:44:28.000Z"
     },
     {
       "name": "safe-use-of-claude-code",
