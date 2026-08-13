@@ -18,7 +18,6 @@ license: MIT
    (למי זה מתאים).
 3. הרץ `npm run new-skill name=... category_slug=... category="..." topic="..." title_he="..." level=... summary_he="..." audience_he="..." writes_files=... sends_external=... touches_live_campaigns=...` (כל הארגומנטים ב-`AUTHORING.md` סעיף 5 חובה).
 4. כתוב את גוף הסקיל בעברית לפי המבנה הקבוע ולפי המתודה המקורית של הסייבורג בלבד.
-   לעולם לא לפתוח או להעתיק שיטה חיצונית או חומר של צד שלישי כרפרנס.
 5. **חזור וקרא את הגוף שכתבת** ועדכן את שלושת דגלי `metadata.safety`
    (`writes_files`, `sends_external`, `touches_live_campaigns`) כך שישקפו בדיוק
    מה שהסקיל עושה בפועל, לא ניחוש משלב 3. אם יש שורה שכותבת קובץ, `writes_files: true`.
