@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-13T14:15:41.258Z",
+  "generated_at": "2026-08-13T14:19:07.475Z",
   "count": 10,
   "skills": [
     {
@@ -37,7 +37,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/competitor-radar",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/competitor-radar/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:16.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "findability-audit",
@@ -74,7 +74,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/findability-audit",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/findability-audit/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:16.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "first-impression-audit",
@@ -110,7 +110,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/first-impression-audit",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/first-impression-audit/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:16.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "google-search-ads-copy",
@@ -146,7 +146,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/google-search-ads-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/google-search-ads-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:31.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "hook-generator",
@@ -181,7 +181,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hook-generator",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hook-generator/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:31.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "landing-page-copy",
@@ -217,7 +217,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/landing-page-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/landing-page-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-13T13:44:28.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "meta-ads-copy",
@@ -255,7 +255,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/meta-ads-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/meta-ads-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:31.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "taboola-ads-copy",
@@ -292,7 +292,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/taboola-ads-copy",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/taboola-ads-copy/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:54:31.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "instagram-carousel",
@@ -330,7 +330,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/instagram-carousel",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/instagram-carousel/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:53:52.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
       "name": "video-editing",
@@ -368,7 +368,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/video-editing",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/video-editing/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-12T23:53:52.000Z"
+      "updated_at": "2026-08-13T14:18:59.000Z"
     }
   ],
   "guides": [
