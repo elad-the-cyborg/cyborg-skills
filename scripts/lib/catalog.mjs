@@ -21,6 +21,8 @@ export function toCatalogEntry({ data, updated_at }) {
     description: String(data.description).trim(),
     summary_he: String(m.summary_he).trim(),
     audience_he: String(m.audience_he).trim(),
+    what_it_does_he: Array.isArray(m.what_it_does_he) ? m.what_it_does_he.map(s => String(s).trim()) : [],
+    how_it_helps_he: String(m.how_it_helps_he).trim(),
     safety: {
       writes_files: !!m.safety?.writes_files,
       sends_external: !!m.safety?.sends_external,
@@ -160,9 +162,13 @@ export function renderCatalogMd(entries, guideEntries = [], linkEntries = []) {
       if (currentSlug !== null) lines.push('') // blank line between the previous table and the next heading
       currentSlug = e.category_slug
       lines.push(`## ${e.category}`, '')
-      lines.push('| נושא | סקיל | מה מקבלים | למי מתאים | רמה | התקנה |', '|---|---|---|---|---|---|')
+      lines.push(
+        '| נושא | סקיל | מה מקבלים | למי מתאים | מה זה כולל | למה זה עוזר | רמה | התקנה |',
+        '|---|---|---|---|---|---|---|---|',
+      )
     }
-    lines.push(`| ${escapeCell(e.topic)} | [${escapeCell(e.title_he)}](${e.github_url}) | ${escapeCell(e.summary_he)} | ${escapeCell(e.audience_he)} | ${e.level} | \`${e.install_command}\` |`)
+    const whatItDoes = e.what_it_does_he.map(escapeCell).join('<br>')
+    lines.push(`| ${escapeCell(e.topic)} | [${escapeCell(e.title_he)}](${e.github_url}) | ${escapeCell(e.summary_he)} | ${escapeCell(e.audience_he)} | ${whatItDoes} | ${escapeCell(e.how_it_helps_he)} | ${e.level} | \`${e.install_command}\` |`)
   }
   lines.push('')
 

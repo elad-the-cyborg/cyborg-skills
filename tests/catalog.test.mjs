@@ -16,6 +16,12 @@ const skill = {
       author: 'The Cyborg', site: 'https://thecyborg.co.il', version: '1.0.0',
       summary_he: 'מקבלים עשרה רעיונות לפתיחת מודעה, כל אחד בזווית שונה.',
       audience_he: 'מתאים לבעל עסק שנתקע בפתיחה של מודעה או פוסט.',
+      what_it_does_he: [
+        'שואל שלוש שאלות קצרות על המוצר, הקהל והכאב שהוא פותר.',
+        'מייצר עשרה הוקים לפתיחת מודעה או פוסט, כל אחד מזווית שונה.',
+        'ממליץ על שלושת ההוקים החזקים ביותר לקהל הספציפי.',
+      ],
+      how_it_helps_he: 'חוסך את השלב הכי תקוע בכתיבת קופי, ונותן כמה זוויות אמיתיות לבדוק מול קהל במקום לנחש לבד.',
       safety: { writes_files: false, sends_external: false, touches_live_campaigns: false },
     },
   },
@@ -43,6 +49,16 @@ test('toCatalogEntry maps summary_he, audience_he and safety', () => {
   assert.equal(e.summary_he, 'מקבלים עשרה רעיונות לפתיחת מודעה, כל אחד בזווית שונה.')
   assert.equal(e.audience_he, 'מתאים לבעל עסק שנתקע בפתיחה של מודעה או פוסט.')
   assert.deepEqual(e.safety, { writes_files: false, sends_external: false, touches_live_campaigns: false })
+})
+
+test('toCatalogEntry maps what_it_does_he as an array and how_it_helps_he as a trimmed string', () => {
+  const e = toCatalogEntry(skill)
+  assert.deepEqual(e.what_it_does_he, [
+    'שואל שלוש שאלות קצרות על המוצר, הקהל והכאב שהוא פותר.',
+    'מייצר עשרה הוקים לפתיחת מודעה או פוסט, כל אחד מזווית שונה.',
+    'ממליץ על שלושת ההוקים החזקים ביותר לקהל הספציפי.',
+  ])
+  assert.equal(e.how_it_helps_he, 'חוסך את השלב הכי תקוע בכתיבת קופי, ונותן כמה זוויות אמיתיות לבדוק מול קהל במקום לנחש לבד.')
 })
 
 // --- site_gate (optional, fail-open: only the literal "gated" ever gates) ---
@@ -138,6 +154,21 @@ test('renderCatalogMd puts a blank line between one category\'s table and the ne
   const nextHeadingIdx = lines.findIndex(l => l === '## קופי ותוכן')
   assert.ok(nextHeadingIdx > 0)
   assert.equal(lines[nextHeadingIdx - 1], '')
+})
+
+test('renderCatalogMd includes each what_it_does_he item and the how_it_helps_he paragraph in the skill row', () => {
+  const entry = toCatalogEntry(skill)
+  const md = renderCatalogMd([entry])
+  for (const item of entry.what_it_does_he) {
+    assert.ok(md.includes(item), `expected md to include what_it_does_he item: ${item}`)
+  }
+  assert.ok(md.includes(entry.how_it_helps_he))
+})
+
+test('renderCatalogMd joins multiple what_it_does_he items with <br> inside one table cell', () => {
+  const entry = toCatalogEntry(skill)
+  const md = renderCatalogMd([entry])
+  assert.ok(md.includes(entry.what_it_does_he.join('<br>')))
 })
 
 test('renderCatalogMd always shows the real install command in full, regardless of the skill\'s site_gate value (the repo itself never gates)', () => {

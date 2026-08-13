@@ -5,7 +5,7 @@ const VISIBILITIES = ['public', 'booster']
 const REQUIRED_META = [
   'title_he', 'category', 'category_slug', 'topic',
   'level', 'visibility', 'author', 'site', 'version',
-  'summary_he', 'audience_he',
+  'summary_he', 'audience_he', 'how_it_helps_he',
 ]
 const BRAND_MARKER = 'The Cyborg ·'
 const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
@@ -36,6 +36,17 @@ const SITE_GATE_VALUES = ['open', 'gated']
 const TRIGGER_PHRASE = 'הפעל כש'
 const SUMMARY_MAX = 320
 const AUDIENCE_MAX = 200
+
+// what_it_does_he / how_it_helps_he are the two detail fields the public
+// skill page renders below summary_he/audience_he, so a non-technical reader
+// can decide whether to install a skill without opening SKILL.md: the
+// concrete list of what happens, and a short paragraph on the business
+// payoff. Same customer-facing rules as summary_he/audience_he (no dash, no
+// trigger phrase, no CLAUDE.md), plus their own shape rules below.
+const WHAT_IT_DOES_MIN_ITEMS = 3
+const WHAT_IT_DOES_MAX_ITEMS = 5
+const WHAT_IT_DOES_ITEM_MAX = 260
+const HOW_IT_HELPS_MAX = 600
 
 // Safety denylist (warnings only): a skill body is read-only / draft-only by
 // default, so these patterns flag anything that looks like it wants to touch
@@ -192,6 +203,60 @@ export function validateSkill({ dirName, data, body, hasInstall, installBody = '
     if (audience.length > AUDIENCE_MAX) errors.push(`metadata.audience_he exceeds ${AUDIENCE_MAX} chars`)
     for (const dash of DASH_CHARS) {
       if (audience.includes(dash)) errors.push(`metadata.audience_he contains a dash (${dash}); rephrase with a comma, period or colon`)
+    }
+  }
+
+  // metadata.what_it_does_he is a small array, not a plain string, so it
+  // can't share REQUIRED_META's generic presence check (mirrors how
+  // metadata.safety below gets its own dedicated block instead of being
+  // folded into REQUIRED_META).
+  if (meta.what_it_does_he === undefined || meta.what_it_does_he === null) {
+    errors.push('metadata.what_it_does_he missing')
+  } else if (!Array.isArray(meta.what_it_does_he)) {
+    errors.push('metadata.what_it_does_he must be an array of strings, not a single string or object')
+  } else {
+    const items = meta.what_it_does_he
+    if (items.length < WHAT_IT_DOES_MIN_ITEMS || items.length > WHAT_IT_DOES_MAX_ITEMS) {
+      errors.push(`metadata.what_it_does_he must have between ${WHAT_IT_DOES_MIN_ITEMS} and ${WHAT_IT_DOES_MAX_ITEMS} items (got ${items.length})`)
+    }
+    items.forEach((item, i) => {
+      if (typeof item !== 'string' || !item.trim()) {
+        errors.push(`metadata.what_it_does_he[${i}] is empty`)
+        return
+      }
+      if (item.length > WHAT_IT_DOES_ITEM_MAX) {
+        errors.push(`metadata.what_it_does_he[${i}] exceeds ${WHAT_IT_DOES_ITEM_MAX} chars`)
+      }
+      if (item.includes(TRIGGER_PHRASE)) {
+        errors.push(`metadata.what_it_does_he[${i}] contains a trigger phrase ("${TRIGGER_PHRASE}"); that belongs in description for the model, not customer copy`)
+      }
+      if (/CLAUDE\.md/i.test(item)) {
+        errors.push(`metadata.what_it_does_he[${i}] mentions CLAUDE.md; that is an implementation note, not customer copy`)
+      }
+      for (const dash of DASH_CHARS) {
+        if (item.includes(dash)) errors.push(`metadata.what_it_does_he[${i}] contains a dash (${dash}); rephrase with a comma, period or colon`)
+      }
+    })
+  }
+
+  if (meta.how_it_helps_he !== undefined && meta.how_it_helps_he !== null && String(meta.how_it_helps_he).trim() !== '') {
+    if (typeof meta.how_it_helps_he !== 'string') {
+      errors.push('metadata.how_it_helps_he must be a single string, not an array or object')
+    } else {
+      const howItHelps = meta.how_it_helps_he
+      if (howItHelps.length > HOW_IT_HELPS_MAX) errors.push(`metadata.how_it_helps_he exceeds ${HOW_IT_HELPS_MAX} chars`)
+      if (meta.title_he && howItHelps.includes(String(meta.title_he))) {
+        errors.push('metadata.how_it_helps_he repeats metadata.title_he; say what changes for the owner, not the title again')
+      }
+      if (howItHelps.includes(TRIGGER_PHRASE)) {
+        errors.push(`metadata.how_it_helps_he contains a trigger phrase ("${TRIGGER_PHRASE}"); that belongs in description for the model, not customer copy`)
+      }
+      if (/CLAUDE\.md/i.test(howItHelps)) {
+        errors.push('metadata.how_it_helps_he mentions CLAUDE.md; that is an implementation note, not customer copy')
+      }
+      for (const dash of DASH_CHARS) {
+        if (howItHelps.includes(dash)) errors.push(`metadata.how_it_helps_he contains a dash (${dash}); rephrase with a comma, period or colon`)
+      }
     }
   }
 

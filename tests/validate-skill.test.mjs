@@ -13,6 +13,12 @@ const goodData = {
     author: 'The Cyborg', site: 'https://thecyborg.co.il', version: '1.0.0',
     summary_he: 'מקבלים עשרה רעיונות לפתיחת מודעה, כל אחד בזווית שונה.',
     audience_he: 'מתאים לבעל עסק שנתקע בפתיחה של מודעה או פוסט.',
+    what_it_does_he: [
+      'שואל שלוש שאלות קצרות על המוצר, הקהל והכאב שהוא פותר.',
+      'מייצר עשרה הוקים לפתיחת מודעה או פוסט, כל אחד מזווית שונה.',
+      'ממליץ על שלושת ההוקים החזקים ביותר לקהל הספציפי.',
+    ],
+    how_it_helps_he: 'חוסך את השלב הכי תקוע בכתיבת קופי, ונותן כמה זוויות אמיתיות לבדוק מול קהל במקום לנחש לבד.',
     safety: { writes_files: false, sends_external: false, touches_live_campaigns: false },
   },
 }
@@ -346,6 +352,127 @@ test('metadata.safety with an unknown key is an error', () => {
 test('metadata.safety with all three booleans present is valid', () => {
   const md = { ...goodData.metadata, safety: { writes_files: true, sends_external: false, touches_live_campaigns: false } }
   const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+})
+
+// --- what_it_does_he / how_it_helps_he (customer-facing detail fields) ---
+
+test('missing metadata.what_it_does_he is an error', () => {
+  const md = { ...goodData.metadata }; delete md.what_it_does_he
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he')))
+})
+
+test('what_it_does_he as a string instead of an array is an error', () => {
+  const md = { ...goodData.metadata, what_it_does_he: 'מייצר עשרה הוקים.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he') && e.toLowerCase().includes('array')))
+})
+
+test('what_it_does_he with only 2 items is an error (needs 3 to 5)', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['פריט ראשון.', 'פריט שני.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he')))
+})
+
+test('what_it_does_he with 6 items is an error (needs 3 to 5)', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['אחד.', 'שתיים.', 'שלוש.', 'ארבע.', 'חמש.', 'שש.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he')))
+})
+
+test('what_it_does_he with 3 items is valid', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['אחד עומד בפני עצמו.', 'שתיים עומד בפני עצמו.', 'שלוש עומד בפני עצמו.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+})
+
+test('what_it_does_he with 5 items is valid', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['אחד.', 'שתיים.', 'שלוש.', 'ארבע.', 'חמש.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.deepEqual(r.errors, [])
+})
+
+test('an empty string item inside what_it_does_he is an error', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['פריט ראשון תקין.', '  ', 'פריט שלישי תקין.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he')))
+})
+
+test('a what_it_does_he item exceeding the max length is an error', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['תקין.', 'תקין גם כן.', 'א'.repeat(300)] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he')))
+})
+
+test('em dash inside a what_it_does_he item is an error', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['תקין ראשון.', 'תקין שני.', 'פריט עם מקף מפריד — בפנים.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he') && e.toLowerCase().includes('dash')))
+})
+
+test('a what_it_does_he item containing a trigger phrase is an error', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['תקין ראשון.', 'תקין שני.', 'הפעל כשרוצים לכתוב מודעה.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he') && e.toLowerCase().includes('trigger')))
+})
+
+test('a what_it_does_he item mentioning CLAUDE.md is an error', () => {
+  const md = { ...goodData.metadata, what_it_does_he: ['תקין ראשון.', 'תקין שני.', 'קורא קודם CLAUDE.md ומייצר רעיונות.'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('what_it_does_he') && e.includes('CLAUDE.md')))
+})
+
+test('missing metadata.how_it_helps_he is an error', () => {
+  const md = { ...goodData.metadata }; delete md.how_it_helps_he
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he')))
+})
+
+test('how_it_helps_he as an array instead of a string is an error', () => {
+  const md = { ...goodData.metadata, how_it_helps_he: ['לא', 'מחרוזת'] }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he')))
+})
+
+test('how_it_helps_he that repeats the skill title is an error', () => {
+  const md = { ...goodData.metadata, how_it_helps_he: 'מחולל הוקים הסייבורג עוזר לכם לכתוב מודעות טובות יותר.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he') && e.includes('title')))
+})
+
+test('how_it_helps_he containing a trigger phrase is an error', () => {
+  const md = { ...goodData.metadata, how_it_helps_he: 'הפעל כשרוצים לכתוב מודעה חדשה בעברית ותרוויחו זמן.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he') && e.toLowerCase().includes('trigger')))
+})
+
+test('how_it_helps_he mentioning CLAUDE.md is an error', () => {
+  const md = { ...goodData.metadata, how_it_helps_he: 'קורא קודם CLAUDE.md ואז חוסך לכם זמן על כתיבה.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he') && e.includes('CLAUDE.md')))
+})
+
+test('em dash in how_it_helps_he is an error', () => {
+  const md = { ...goodData.metadata, how_it_helps_he: 'חוסך זמן על כתיבה — ונותן כמה כיוונים לבחור ביניהם.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he') && e.toLowerCase().includes('dash')))
+})
+
+test('en dash in how_it_helps_he is an error', () => {
+  const md = { ...goodData.metadata, how_it_helps_he: 'חוסך זמן על כתיבה – ונותן כמה כיוונים לבחור ביניהם.' }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he') && e.toLowerCase().includes('dash')))
+})
+
+test('how_it_helps_he exceeding the max length is an error', () => {
+  const md = { ...goodData.metadata, how_it_helps_he: 'א'.repeat(700) }
+  const r = validateSkill({ dirName: 'hook-generator', data: { ...goodData, metadata: md }, body: goodBody, hasInstall: true })
+  assert.ok(r.errors.some(e => e.includes('how_it_helps_he')))
+})
+
+test('valid what_it_does_he and how_it_helps_he together produce no errors', () => {
+  const r = validateSkill({ dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true })
   assert.deepEqual(r.errors, [])
 })
 

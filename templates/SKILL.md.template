@@ -16,6 +16,9 @@ metadata:
   tags: "{{tags}}"
   summary_he: "{{summary_he}}"
   audience_he: "{{audience_he}}"
+  what_it_does_he:
+    {{what_it_does_he_yaml}}
+  how_it_helps_he: "{{how_it_helps_he}}"
   site_gate: "open"
   safety:
     writes_files: {{writes_files}}
