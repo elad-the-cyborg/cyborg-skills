@@ -5,6 +5,7 @@ summary_he: "עובר על השאלות שמבקר אמיתי שואל בראש 
 category: "קופי ותוכן"
 category_slug: "02-copy-content"
 related_skill: landing-page-copy
+steps_label: "פרק"
 license: MIT
 ---
 

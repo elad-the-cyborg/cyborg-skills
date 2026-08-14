@@ -5,6 +5,7 @@ summary_he: "מסביר במילים פשוטות למה דירוג טוב בג�
 category: "מחקר ואסטרטגיה"
 category_slug: "01-research-strategy"
 related_skill: findability-audit
+steps_label: "פרק"
 license: MIT
 ---
 

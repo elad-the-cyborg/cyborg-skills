@@ -98,7 +98,9 @@ if (await exists(GUIDES_DIR)) {
         console.warn(`Warning: guide ${g.name}: ${warning}`)
       }
       const updated_at = await gitUpdatedAt(join('guides', g.name))
-      guides.push({ data, updated_at })
+      // body, not just data: the guide's text is the product here, and the
+      // catalog is what the website reads (see toGuideCatalogEntry).
+      guides.push({ data, body, updated_at })
     }
   }
 }

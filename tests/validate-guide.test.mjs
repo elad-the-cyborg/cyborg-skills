@@ -11,7 +11,7 @@ const goodData = {
   related_skill: 'hook-generator',
   license: 'MIT',
 }
-const goodBody = `# איך מייצרים סט הוקים למודעה בעשרים דקות\n\nתוכן המדריך כאן. בהמשך הדרך מתקינים את hook-generator כדי להריץ את זה שוב על כל מוצר.\n`
+const goodBody = `# איך מייצרים סט הוקים למודעה בעשרים דקות\n\nתוכן המדריך כאן. בהמשך הדרך מתקינים את hook-generator כדי להריץ את זה שוב על כל מוצר.\n\n## שלב ראשון\n\nגוף.\n\n## שלב שני\n\nגוף.\n\n## שלב שלישי\n\nגוף.\n`
 const skillNames = ['hook-generator']
 
 test('valid guide has no errors', () => {
@@ -112,7 +112,7 @@ test('missing related_skill key is an error', () => {
 
 test('related_skill explicitly null is valid', () => {
   const data = { ...goodData, related_skill: null }
-  const body = `# איך מייצרים סט הוקים למודעה בעשרים דקות\n\nתוכן המדריך כאן, בלי סקיל ספציפי.\n`
+  const body = `# איך מייצרים סט הוקים למודעה בעשרים דקות\n\nתוכן המדריך כאן, בלי סקיל ספציפי.\n\n## שלב ראשון\n\nגוף.\n\n## שלב שני\n\nגוף.\n\n## שלב שלישי\n\nגוף.\n`
   const r = validateGuide({ dirName: 'ad-hooks-in-20-minutes', data, body, skillNames })
   assert.deepEqual(r.errors, [])
 })
@@ -162,4 +162,19 @@ test('forbidden marker in body is a warning not an error', () => {
   })
   assert.deepEqual(r.errors, [])
   assert.ok(r.warnings.some(w => w.includes('forbidden')))
+})
+
+test('body needs at least three sections, they become the steps on the site', () => {
+  const thin = `# כותרת\n\nפתיח. בהמשך מתקינים את hook-generator.\n\n## שלב יחיד\n\nגוף.\n`
+  const r = validateGuide({ dirName: 'ad-hooks-in-20-minutes', data: goodData, body: thin, skillNames })
+  assert.ok(r.errors.some(e => e.includes('section')), JSON.stringify(r.errors))
+})
+
+test('steps_label is optional but must be a short word when present', () => {
+  const withLabel = { ...goodData, steps_label: 'כלל' }
+  assert.deepEqual(validateGuide({ dirName: 'ad-hooks-in-20-minutes', data: withLabel, body: goodBody, skillNames }).errors, [])
+
+  const sentence = { ...goodData, steps_label: 'השלב הבא במדריך הזה' }
+  const r = validateGuide({ dirName: 'ad-hooks-in-20-minutes', data: sentence, body: goodBody, skillNames })
+  assert.ok(r.errors.some(e => e.includes('steps_label')), JSON.stringify(r.errors))
 })

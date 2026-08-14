@@ -189,6 +189,7 @@ const guide = {
     related_skill: 'hook-generator',
     license: 'MIT',
   },
+  body: '# איך מייצרים סט הוקים למודעה בעשרים דקות\n\nפתיח.\n\n## שלב ראשון\n\nגוף א.\n\n## שלב שני\n\nגוף ב.\n',
   updated_at: '2026-08-10T00:00:00.000Z',
 }
 
@@ -207,6 +208,20 @@ test('toGuideCatalogEntry maps the flat guide fields', () => {
   assert.equal(e.related_skill, 'hook-generator')
   assert.equal(e.github_url, 'https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/ad-hooks-in-20-minutes/GUIDE.md')
   assert.equal(e.updated_at, '2026-08-10T00:00:00.000Z')
+})
+
+test('toGuideCatalogEntry carries the guide body as an article the site can render', () => {
+  const e = toGuideCatalogEntry(guide)
+  assert.deepEqual(e.intro, [{ type: 'p', html: 'פתיח.' }])
+  assert.equal(e.steps.length, 2)
+  assert.equal(e.steps[0].title, 'שלב ראשון')
+  assert.ok(e.read_minutes >= 2)
+})
+
+test('toGuideCatalogEntry defaults steps_label and honours an explicit one', () => {
+  assert.equal(toGuideCatalogEntry(guide).steps_label, 'שלב')
+  const labelled = { ...guide, data: { ...guide.data, steps_label: 'כלל' } }
+  assert.equal(toGuideCatalogEntry(labelled).steps_label, 'כלל')
 })
 
 test('toGuideCatalogEntry carries related_skill: null through as null, not a string', () => {

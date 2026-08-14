@@ -18,6 +18,8 @@ const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
 const RESERVED = ['anthropic']
 const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
 const SUMMARY_MAX = 320
+const MIN_SECTIONS = 3
+const STEPS_LABEL_MAX = 12
 
 // A guide's frontmatter is deliberately flat (unlike a skill's nested
 // `metadata` block): a guide has far fewer fields and no agent-facing
@@ -94,6 +96,30 @@ export function validateGuide({ dirName, data, body, skillNames = [], forbiddenM
     errors.push('body is empty')
   } else if (!/^#\s+\S/m.test(trimmedBody)) {
     errors.push('body has no H1 heading (expected a line starting with "# ")')
+  }
+
+  // The website renders a guide as an article whose "##" sections become the
+  // steps a reader clicks through, so those headings are structure, not
+  // decoration: a guide with one or two of them arrives on the site as a wall
+  // of text with a step control that has nothing to control. Three is the
+  // floor at which the format earns itself.
+  const sectionCount = (trimmedBody.match(/^##\s+\S/gm) ?? []).length
+  if (trimmedBody && sectionCount < MIN_SECTIONS) {
+    errors.push(`body has ${sectionCount} "## " section(s); a guide needs at least ${MIN_SECTIONS}, they become the steps a reader moves between on the site`)
+  }
+
+  // steps_label: what one section is called to the reader ("שלב"/"כלל"/"פרק").
+  // Optional, and deliberately not an enum: the right word depends on the guide.
+  // Only the shape is checked, so a typo can't put a sentence in a chip.
+  if ('steps_label' in (data ?? {})) {
+    const label = data.steps_label
+    if (typeof label !== 'string' || !label.trim()) {
+      errors.push('steps_label must be a non-empty string (omit it to use the default)')
+    } else if (label.trim().length > STEPS_LABEL_MAX) {
+      errors.push(`steps_label exceeds ${STEPS_LABEL_MAX} chars; it is one word shown beside a number`)
+    } else {
+      checkDash(label, 'steps_label', errors)
+    }
   }
 
   const strippedBody = stripCode(body ?? '')

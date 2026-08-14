@@ -1,3 +1,5 @@
+import { parseGuideBody } from './guide-body.mjs'
+
 const REPO = 'elad-the-cyborg/cyborg-skills'
 
 export function deriveUrls(categorySlug, name) {
@@ -54,7 +56,16 @@ export function deriveGuideUrls(name) {
 // A guide's frontmatter is already flat (see validate-guide.mjs), so this is
 // mostly a pass-through plus the derived github_url/updated_at, the same
 // pattern deriveUrls()/toCatalogEntry() use for skills.
-export function toGuideCatalogEntry({ data, updated_at }) {
+//
+// The one thing it does NOT just pass through is the body. A guide is editorial
+// writing, and until now the catalog carried only its metadata, so the website
+// could do nothing with a guide except link out to this repo: a business owner
+// following "read the guide" landed in a code host, looking at raw Markdown.
+// parseGuideBody() turns the body into the article itself (intro + one entry per
+// "##" heading), so the guide reads as a guide on the site and GitHub goes back
+// to being where the file happens to live.
+export function toGuideCatalogEntry({ data, body, updated_at }) {
+  const article = parseGuideBody(body)
   return {
     name: data.name,
     title_he: data.title_he,
@@ -62,6 +73,14 @@ export function toGuideCatalogEntry({ data, updated_at }) {
     category: data.category,
     category_slug: data.category_slug,
     related_skill: data.related_skill ?? null,
+    // What one "##" section is called on the site: a step in a how-to, a rule in
+    // the safety guide, a chapter in an explainer. Defaults to the how-to word,
+    // which is what most guides are; a guide that is not a sequence of actions
+    // says so in its own frontmatter rather than being mislabelled.
+    steps_label: typeof data.steps_label === 'string' && data.steps_label.trim() ? data.steps_label.trim() : 'שלב',
+    read_minutes: article.read_minutes,
+    intro: article.intro,
+    steps: article.steps,
     // A guide may ask the site to single it out visually. Only an explicit
     // `true` counts, so a typo or a missing field renders as an ordinary guide
     // rather than shouting for attention. Reserved for the safety guide and
