@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-15T19:23:50.352Z",
+  "generated_at": "2026-08-15T19:27:34.507Z",
   "count": 11,
   "skills": [
     {
@@ -543,7 +543,7 @@
       "highlight": false,
       "episode": 10,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/a-day-in-the-life-of-a-cyborg/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "ad-hooks-in-20-minutes",
@@ -899,7 +899,7 @@
       "highlight": false,
       "episode": 4,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/brand-voice-in-claude/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "carousel-people-swipe-to-the-end",
@@ -1098,7 +1098,7 @@
       "highlight": false,
       "episode": 5,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-gmail-for-invoices/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "connecting-meta-for-campaigns",
@@ -1198,7 +1198,7 @@
       "highlight": false,
       "episode": 9,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-meta-for-campaigns/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "hebrew-that-comes-out-professional",
@@ -1354,7 +1354,7 @@
       "highlight": false,
       "episode": 3,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/hebrew-that-comes-out-professional/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "landing-page-that-gets-enquiries",
@@ -1657,7 +1657,7 @@
       "highlight": false,
       "episode": 7,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-with-radar/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "pre-meeting-research-in-15-minutes",
@@ -1801,7 +1801,7 @@
       "highlight": false,
       "episode": 2,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/pre-meeting-research-in-15-minutes/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "producing-price-quotes-faster",
@@ -1913,7 +1913,7 @@
       "highlight": false,
       "episode": 1,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/producing-price-quotes-faster/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "replying-to-client-emails-in-brand-voice",
@@ -2029,7 +2029,7 @@
       "highlight": false,
       "episode": 6,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/replying-to-client-emails-in-brand-voice/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     },
     {
       "name": "safe-use-of-claude-code",
@@ -2301,7 +2301,7 @@
       "highlight": false,
       "episode": 8,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/site-status-report-with-findability/GUIDE.md",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-15T19:25:41.000Z"
     }
   ],
   "links": [
@@ -2367,6 +2367,16 @@
       "group": "video",
       "pricing_he": "חינם: עד 60 דקות עיבוד בחודש, עם סימן מים, והפרויקט נסגר לגישה אחרי 3 ימים. Starter ב-15 דולר לחודש מסיר את סימן המים. Pro ב-29 דולר לחודש.",
       "hebrew_support": "partial"
+    },
+    {
+      "name": "usekonvert",
+      "title": "useKonvert",
+      "url": "https://usekonvert.com/?via=elad",
+      "summary_he": "כלי עיצוב לבניית מודעות ובאנרים בעברית בתוך דקות, עם תבניות מוכנות ועריכה נוחה בדפדפן, בלי לפתוח Photoshop.",
+      "group": "text",
+      "pricing_he": "יש לבדוק בדף התמחור באתר.",
+      "hebrew_support": "partial",
+      "pinned": true
     },
     {
       "name": "veed",

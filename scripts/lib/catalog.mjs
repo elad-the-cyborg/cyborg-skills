@@ -111,6 +111,12 @@ export function toLinkCatalogEntry(link) {
     group: link.group,
     pricing_he: String(link.pricing_he).trim(),
     hebrew_support: link.hebrew_support,
+    /* pinned הוא השדה היחיד כאן שאינו טקסט לקוח: הוא קובע איזה כלי עולה לראש הקבוצה
+       באתר. הוא נכתב רק כשהוא true בדיוק, כדי שכל שאר הקישורים יישארו זהים בדיוק
+       לפורמט הקודם שלהם בקטלוג. בלי המעבר הזה השדה נבלע כאן ולא מגיע לאתר, וזה בדיוק
+       מה שקרה ל-useKonvert: הוא סומן כמומלץ בעותק המקומי של האתר, אבל הקטלוג החי
+       הגיע בלעדיו והכלי נעלם מהעמוד. */
+    ...(link.pinned === true ? { pinned: true } : {}),
   }
 }
 

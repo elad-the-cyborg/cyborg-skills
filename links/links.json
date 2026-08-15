@@ -1,5 +1,15 @@
 [
   {
+    "name": "usekonvert",
+    "title": "useKonvert",
+    "url": "https://usekonvert.com/?via=elad",
+    "summary_he": "כלי עיצוב לבניית מודעות ובאנרים בעברית בתוך דקות, עם תבניות מוכנות ועריכה נוחה בדפדפן, בלי לפתוח Photoshop.",
+    "group": "text",
+    "pricing_he": "יש לבדוק בדף התמחור באתר.",
+    "hebrew_support": "partial",
+    "pinned": true
+  },
+  {
     "name": "heygen",
     "title": "HeyGen",
     "url": "https://heygen.com",
