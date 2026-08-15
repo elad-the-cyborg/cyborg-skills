@@ -5,6 +5,7 @@ summary_he: "מסביר איך לוודא שהעברית שיוצאת מקלוד
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: "instagram-carousel"
+episode: 3
 steps_label: "פרק"
 license: MIT
 ---

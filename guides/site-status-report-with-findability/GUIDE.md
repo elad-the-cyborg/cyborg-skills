@@ -5,6 +5,7 @@ summary_he: "איך משתמשים בסקיל findability-audit של הסייב�
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: "findability-audit"
+episode: 8
 steps_label: "פרק"
 license: MIT
 ---

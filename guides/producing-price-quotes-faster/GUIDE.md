@@ -5,6 +5,7 @@ summary_he: "איך לתת לקלוד את המחירון, את הטון של ה
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: null
+episode: 1
 steps_label: "פרק"
 license: MIT
 ---

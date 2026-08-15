@@ -86,6 +86,13 @@ export function toGuideCatalogEntry({ data, body, updated_at }) {
     // rather than shouting for attention. Reserved for the safety guide and
     // anything else a reader would be worse off skipping.
     highlight: data.highlight === true,
+    // Position in the ten-part learning progression for business owners. A guide
+    // that belongs to it declares its number; every other guide leaves the field
+    // out and stays an ordinary standalone guide. Only a whole number counts, so
+    // a typo drops the guide out of the sequence instead of wedging it in at a
+    // meaningless position. The sequence has no name on the site: it is an order,
+    // not a brand.
+    episode: Number.isInteger(data.episode) && data.episode > 0 ? data.episode : null,
     ...deriveGuideUrls(data.name),
     updated_at,
   }

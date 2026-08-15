@@ -5,6 +5,7 @@ summary_he: "מסביר איך לתת לקלוד את שם החברה ואת ש�
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: null
+episode: 2
 steps_label: "פרק"
 license: MIT
 ---
