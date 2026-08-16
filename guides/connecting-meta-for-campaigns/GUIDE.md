@@ -5,7 +5,7 @@ summary_he: "איך לחבר את חשבון המודעות של מטא לקלו
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: null
-episode: 9
+episode: 11
 steps_label: "פרק"
 license: MIT
 ---

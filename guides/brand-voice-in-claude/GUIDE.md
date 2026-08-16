@@ -5,7 +5,7 @@ summary_he: "מסביר איך קובץ אחד שכותבים פעם אחת מפ
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: brand-voice-setup
-episode: 4
+episode: 2
 steps_label: "פרק"
 license: MIT
 ---

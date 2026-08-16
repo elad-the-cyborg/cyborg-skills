@@ -5,7 +5,7 @@ summary_he: "איך לחבר את חשבון הגימייל לקלוד עם הר
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: null
-episode: 5
+episode: 7
 steps_label: "פרק"
 license: MIT
 ---

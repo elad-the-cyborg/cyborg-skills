@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-16T05:20:58.036Z",
+  "generated_at": "2026-08-16T16:08:48.133Z",
   "count": 11,
   "skills": [
     {
@@ -366,7 +366,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/instagram-carousel",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/instagram-carousel/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-13T14:18:59.000Z"
+      "updated_at": "2026-08-16T05:21:25.000Z"
     },
     {
       "name": "video-editing",
@@ -404,7 +404,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/video-editing",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/video-editing/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-13T14:18:59.000Z"
+      "updated_at": "2026-08-16T05:21:25.000Z"
     }
   ],
   "guides": [
@@ -541,7 +541,7 @@
         }
       ],
       "highlight": false,
-      "episode": 10,
+      "episode": 12,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/a-day-in-the-life-of-a-cyborg/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -897,7 +897,7 @@
         }
       ],
       "highlight": false,
-      "episode": 4,
+      "episode": 2,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/brand-voice-in-claude/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -994,7 +994,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/carousel-people-swipe-to-the-end/GUIDE.md",
-      "updated_at": "2026-08-14T11:58:08.000Z"
+      "updated_at": "2026-08-16T05:21:25.000Z"
     },
     {
       "name": "connecting-gmail-for-invoices",
@@ -1096,7 +1096,7 @@
         }
       ],
       "highlight": false,
-      "episode": 5,
+      "episode": 7,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-gmail-for-invoices/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -1196,7 +1196,7 @@
         }
       ],
       "highlight": false,
-      "episode": 9,
+      "episode": 11,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-meta-for-campaigns/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -1352,7 +1352,7 @@
         }
       ],
       "highlight": false,
-      "episode": 3,
+      "episode": 6,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/hebrew-that-comes-out-professional/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -1655,7 +1655,7 @@
         }
       ],
       "highlight": false,
-      "episode": 7,
+      "episode": 9,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-with-radar/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -1799,7 +1799,7 @@
         }
       ],
       "highlight": false,
-      "episode": 2,
+      "episode": 5,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/pre-meeting-research-in-15-minutes/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -1911,7 +1911,7 @@
         }
       ],
       "highlight": false,
-      "episode": 1,
+      "episode": 4,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/producing-price-quotes-faster/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -2027,7 +2027,7 @@
         }
       ],
       "highlight": false,
-      "episode": 6,
+      "episode": 8,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/replying-to-client-emails-in-brand-voice/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     },
@@ -2191,7 +2191,7 @@
         }
       ],
       "highlight": true,
-      "episode": null,
+      "episode": 3,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/safe-use-of-claude-code/GUIDE.md",
       "updated_at": "2026-08-14T11:58:08.000Z"
     },
@@ -2299,7 +2299,7 @@
         }
       ],
       "highlight": false,
-      "episode": 8,
+      "episode": 10,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/site-status-report-with-findability/GUIDE.md",
       "updated_at": "2026-08-15T19:25:41.000Z"
     }

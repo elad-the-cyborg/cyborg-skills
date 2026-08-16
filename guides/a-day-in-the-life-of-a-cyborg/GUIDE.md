@@ -5,7 +5,7 @@ summary_he: "פרק סיכום שמדגים את הרוטינה היומית ש�
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: null
-episode: 10
+episode: 12
 steps_label: "פרק"
 license: MIT
 ---
