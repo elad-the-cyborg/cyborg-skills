@@ -5,7 +5,7 @@ description: >-
 license: MIT
 metadata:
   title_he: "עריכת וידאו לסושיאל"
-  category: "קריאייטיב וויזואל"
+  category: "עיצוב ועריכת וידאו"
   category_slug: "03-creative-visual"
   topic: "עריכת וידאו לרשתות חברתיות"
   level: "advanced"

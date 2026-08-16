@@ -5,7 +5,7 @@ description: >-
 license: MIT
 metadata:
   title_he: "בניית קרוסלה לאינסטגרם"
-  category: "קריאייטיב וויזואל"
+  category: "עיצוב ועריכת וידאו"
   category_slug: "03-creative-visual"
   topic: "קרוסלות לאינסטגרם"
   level: "intermediate"

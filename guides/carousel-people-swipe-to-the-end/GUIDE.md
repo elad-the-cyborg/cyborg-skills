@@ -2,7 +2,7 @@
 name: carousel-people-swipe-to-the-end
 title_he: "קרוסלה לאינסטגרם שגוללים בה עד הסוף"
 summary_he: "מסביר מה חייב לקרות בשקף הראשון כדי שאצבע תעצור, איך שומרים על הסיפור זורם באמצע, ומה מבקשים בשקף האחרון כדי שהגלילה תהפוך לפעולה."
-category: "קריאייטיב וויזואל"
+category: "עיצוב ועריכת וידאו"
 category_slug: "03-creative-visual"
 related_skill: instagram-carousel
 steps_label: "פרק"
