@@ -178,3 +178,19 @@ test('steps_label is optional but must be a short word when present', () => {
   const r = validateGuide({ dirName: 'ad-hooks-in-20-minutes', data: sentence, body: goodBody, skillNames })
   assert.ok(r.errors.some(e => e.includes('steps_label')), JSON.stringify(r.errors))
 })
+
+test('owner name in a guide body is an error, same ban the skills carry', () => {
+  const r = validateGuide({
+    dirName: 'ad-hooks-in-20-minutes', data: goodData,
+    body: goodBody + '\nאלעד מסביר את זה במדריך.', skillNames: [],
+  })
+  assert.ok(r.errors.some(e => e.includes('אלעד')))
+})
+
+test('owner name glued to a proclitic in a guide body is caught too', () => {
+  const r = validateGuide({
+    dirName: 'ad-hooks-in-20-minutes', data: goodData,
+    body: goodBody + '\nכתבו לאלעד בתגובות.', skillNames: [],
+  })
+  assert.ok(r.errors.some(e => e.includes('אלעד')))
+})

@@ -592,3 +592,57 @@ test('missing installBody (skill has no INSTALL.md) does not crash and reports o
   assert.ok(r.errors.some(e => e.includes('INSTALL')))
   assert.ok(!r.errors.some(e => e.toLowerCase().includes('dash')))
 })
+
+// The owner-name ban. Four finished skills once reached review addressing the
+// repo owner by name, and every existing check passed them, because they were
+// all about shape. These pin the forms that actually shipped.
+test('owner name in SKILL.md body is an error', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nהצג אלעד את הטיוטה.', hasInstall: true,
+    installBody: goodInstallBody,
+  })
+  assert.ok(r.errors.some(e => e.includes('אלעד') && e.includes('SKILL.md')))
+})
+
+test('owner name glued to a Hebrew proclitic is still caught', () => {
+  for (const form of ['לאלעד', 'שאלעד', 'ואלעד', 'מאלעד']) {
+    const r = validateSkill({
+      dirName: 'hook-generator', data: goodData, body: `${goodBody}\nהצג ${form} את הטיוטה.`, hasInstall: true,
+      installBody: goodInstallBody,
+    })
+    assert.ok(r.errors.some(e => e.includes('אלעד')), `missed the proclitic form ${form}`)
+  }
+})
+
+test('owner name inside a code block is still an error, unlike the dash ban', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\n```\nשלום אלעד\n```\n', hasInstall: true,
+    installBody: goodInstallBody,
+  })
+  assert.ok(r.errors.some(e => e.includes('אלעד')))
+})
+
+test('owner name in INSTALL.md names INSTALL.md, distinct from a SKILL.md hit', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nשלח את הקובץ לאלעד.',
+  })
+  assert.ok(r.errors.some(e => e.includes('אלעד') && e.includes('INSTALL.md')))
+  assert.ok(!r.errors.some(e => e.includes('אלעד') && e.includes('SKILL.md')))
+})
+
+test('a longer word that merely contains the name is not flagged', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody + '\nהמוצר נועד לקהל אלעדים רבים.', hasInstall: true,
+    installBody: goodInstallBody,
+  })
+  assert.ok(!r.errors.some(e => e.includes('אלעד')))
+})
+
+test('the install command org name does not trip the ban', () => {
+  const r = validateSkill({
+    dirName: 'hook-generator', data: goodData, body: goodBody, hasInstall: true,
+    installBody: goodInstallBody + '\nnpx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/.claude/skills/hook-generator\n',
+  })
+  assert.deepEqual(r.errors, [])
+})

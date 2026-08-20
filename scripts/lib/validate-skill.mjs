@@ -10,6 +10,20 @@ const REQUIRED_META = [
 const BRAND_MARKER = 'The Cyborg ·'
 const DASH_CHARS = ['—', '–'] // em dash (U+2014) and en dash (U+2013)
 
+// A skill in this repo is installed by strangers, so its body must address
+// "המשתמש" and never the repo owner by name. Four skills once shipped to
+// review addressing him directly, and nothing here caught it: every other
+// check is about shape, not about who the text thinks it is talking to.
+//
+// Hebrew spellings only, deliberately. The Latin "elad" appears inside the
+// GitHub org in every install command (elad-the-cyborg/cyborg-skills), so
+// banning it would fail every well-formed INSTALL.md in the repo.
+//
+// First name only, also deliberately. The org name already publishes it, so
+// listing it here reveals nothing new. A surname would: this file is public,
+// and a denylist is a strange place to publish a name the repo never leaked.
+export const OWNER_NAMES = ['אלעד']
+
 // metadata.safety: a small, honest object describing what the skill actually
 // does, so the public site can render a per-skill safety sentence instead of
 // one hardcoded promise that becomes false the moment a skill writes or
@@ -127,6 +141,22 @@ function checkDashBan(text, fileLabel, errors, note) {
   for (const dash of DASH_CHARS) {
     if (stripped.includes(dash)) {
       errors.push(`dash (${dash}) found in ${fileLabel} body prose; rephrase with a comma, period or colon${note ? ` (${note})` : ''}`)
+    }
+  }
+}
+
+// Runs the owner-name ban against one file's body. Unlike the dash ban this
+// does NOT strip code spans: a personal name inside a fenced example is still
+// a personal name a stranger would read, and there is no legitimate reason to
+// quote one. An error rather than a warning, because the fix is always the
+// same one word and shipping it is worse than a red build.
+export function checkOwnerNames(text, fileLabel, errors) {
+  // markerToRegExp, not a hand-rolled boundary: the forms that actually
+  // shipped were "לאלעד" and "שאלעד", where a one-letter Hebrew proclitic
+  // glues onto the name. A plain word boundary misses every one of them.
+  for (const owner of OWNER_NAMES) {
+    if (markerToRegExp(owner).test(text ?? '')) {
+      errors.push(`personal name "${owner}" found in ${fileLabel}; a public skill addresses "המשתמש", never the author by name`)
     }
   }
 }
@@ -282,6 +312,9 @@ export function validateSkill({ dirName, data, body, hasInstall, installBody = '
 
   checkDashBan(body, 'SKILL.md', errors, 'em/en dash is allowed only in the frontmatter description')
   if (hasInstall) checkDashBan(installBody, 'INSTALL.md', errors)
+
+  checkOwnerNames(body, 'SKILL.md', errors)
+  if (hasInstall) checkOwnerNames(installBody, 'INSTALL.md', errors)
 
   checkForbiddenMarkers(body, 'SKILL.md', forbiddenMarkers, warnings)
   if (hasInstall) checkForbiddenMarkers(installBody, 'INSTALL.md', forbiddenMarkers, warnings)

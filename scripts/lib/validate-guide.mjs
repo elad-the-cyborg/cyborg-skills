@@ -8,7 +8,7 @@
 // handling, word-boundary lookarounds) with its own dedicated tests, so that
 // one is imported rather than re-derived, to avoid a second, subtly different
 // implementation of the same non-trivial regex.
-import { markerToRegExp } from './validate-skill.mjs'
+import { markerToRegExp, checkOwnerNames } from './validate-skill.mjs'
 
 const NAME_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
 // A skill's name may not contain these, because a skill is invoked by name and a
@@ -132,6 +132,11 @@ export function validateGuide({ dirName, data, body, skillNames = [], forbiddenM
   if (typeof body === 'string' && body.includes('/Users/')) {
     errors.push('body contains a literal /Users/ path; this repo is public, remove personal machine paths')
   }
+
+  // Same reasoning as the /Users/ check above, and the same ban the skill
+  // validator runs: a guide is read by strangers on the public site, so it
+  // addresses them, never the repo owner by name.
+  checkOwnerNames(body, 'body', errors)
 
   for (const marker of forbiddenMarkers) {
     if (!marker || !marker.trim()) continue
