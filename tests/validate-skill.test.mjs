@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { validateSkill } from '../scripts/lib/validate-skill.mjs'
+import { validateSkill, validateReferenceFile } from '../scripts/lib/validate-skill.mjs'
 
 const goodData = {
   name: 'hook-generator',
@@ -645,4 +645,39 @@ test('the install command org name does not trip the ban', () => {
     installBody: goodInstallBody + '\nnpx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/hook-generator ~/.claude/skills/hook-generator\n',
   })
   assert.deepEqual(r.errors, [])
+})
+
+// references/ files ship inside the installed skill and are read into context,
+// so they are as public as SKILL.md. The craft layer added thousands of lines
+// that no check was looking at until validateReferenceFile existed.
+test('reference file: dash in prose is an error naming the file', () => {
+  const r = validateReferenceFile({ fileLabel: 'references/craft.md', body: 'משפט עם מקף מפריד — בפנים.' })
+  assert.ok(r.errors.some(e => e.toLowerCase().includes('dash') && e.includes('references/craft.md')))
+})
+
+test('reference file: dash inside a code block is allowed, same as SKILL.md', () => {
+  const r = validateReferenceFile({ fileLabel: 'references/craft.md', body: '```\nדוגמה שלילית עם — בפנים\n```\n' })
+  assert.deepEqual(r.errors, [])
+})
+
+test('reference file: owner name is an error', () => {
+  const r = validateReferenceFile({ fileLabel: 'references/craft.md', body: 'הצג לאלעד את התוצר.' })
+  assert.ok(r.errors.some(e => e.includes('אלעד')))
+})
+
+test('reference file: a personal machine path is an error', () => {
+  const r = validateReferenceFile({ fileLabel: 'references/craft.md', body: 'קרא את /Users/someone/notes.md' })
+  assert.ok(r.errors.some(e => e.includes('/Users/')))
+})
+
+test('reference file: a forbidden marker is a warning, never a blocking error', () => {
+  const r = validateReferenceFile({ fileLabel: 'references/craft.md', body: 'השיטה של אקמה עובדת.', forbiddenMarkers: ['אקמה'] })
+  assert.deepEqual(r.errors, [])
+  assert.ok(r.warnings.some(w => w.includes('אקמה')))
+})
+
+test('reference file: clean craft text passes', () => {
+  const r = validateReferenceFile({ fileLabel: 'references/craft.md', body: '# כללי כתיבה\n\nלקרוא כל פסקה בקול, ולנסח מחדש מה שנתקעים עליו.\n' })
+  assert.deepEqual(r.errors, [])
+  assert.deepEqual(r.warnings, [])
 })

@@ -2,7 +2,7 @@ import { readdir, readFile, access } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseFrontmatter } from './lib/frontmatter.mjs'
-import { validateSkill } from './lib/validate-skill.mjs'
+import { validateSkill, validateReferenceFile } from './lib/validate-skill.mjs'
 import { validateGuide } from './lib/validate-guide.mjs'
 import { validateLinks } from './lib/validate-links.mjs'
 import { loadForbiddenMarkers } from './lib/forbidden-markers.mjs'
@@ -53,6 +53,20 @@ if (!(await exists(SKILLS_DIR))) {
         errors.push(`duplicate skill name "${name}": also used by ${seenNames.get(name)}`)
       } else {
         seenNames.set(name, path)
+      }
+    }
+
+    // references/ carries the craft layer and ships with the skill, so it is
+    // scanned under the same content rules rather than left as a blind spot.
+    const refsDir = join(path, 'references')
+    if (await exists(refsDir)) {
+      const refFiles = (await readdir(refsDir)).filter(f => f.endsWith('.md')).sort()
+      for (const f of refFiles) {
+        const refBody = await readFile(join(refsDir, f), 'utf8').catch(() => null)
+        if (refBody === null) continue
+        const r = validateReferenceFile({ fileLabel: `references/${f}`, body: refBody, forbiddenMarkers })
+        errors.push(...r.errors)
+        warnings.push(...r.warnings)
       }
     }
 

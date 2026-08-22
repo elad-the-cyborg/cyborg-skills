@@ -161,6 +161,26 @@ export function checkOwnerNames(text, fileLabel, errors) {
   }
 }
 
+// A skill's references/ files ship inside the installed folder and are read
+// aloud into the model's context, so they are every bit as public as SKILL.md.
+// Nothing validated them until the craft layer arrived and added thousands of
+// lines nobody was scanning: the dash ban, the owner-name ban and the
+// forbidden-marker denylist all silently stopped at the SKILL.md boundary.
+//
+// Deliberately NOT the full skill contract: a reference has no frontmatter, no
+// brand signature and no install step, so only the content rules apply.
+export function validateReferenceFile({ fileLabel, body, forbiddenMarkers = [] }) {
+  const errors = []
+  const warnings = []
+  checkDashBan(body, fileLabel, errors)
+  checkOwnerNames(body, fileLabel, errors)
+  checkForbiddenMarkers(body, fileLabel, forbiddenMarkers, warnings)
+  if (typeof body === 'string' && body.includes('/Users/')) {
+    errors.push(`literal /Users/ path found in ${fileLabel}; this repo is public, remove personal machine paths`)
+  }
+  return { errors, warnings }
+}
+
 // Runs the forbidden-marker denylist against one file's raw body text and
 // pushes a warning that names the file, for the same reason as checkDashBan
 // above. Unlike the dash ban this deliberately does NOT strip code spans:

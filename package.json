@@ -8,10 +8,11 @@
   },
   "scripts": {
     "test": "node --test",
-    "validate": "node scripts/validate.mjs",
+    "validate": "node scripts/sync-craft.mjs --check && node scripts/validate.mjs",
     "build": "node scripts/build-catalog.mjs",
     "new-skill": "node scripts/new-skill.mjs",
-    "new-guide": "node scripts/new-guide.mjs"
+    "new-guide": "node scripts/new-guide.mjs",
+    "sync-craft": "node scripts/sync-craft.mjs"
   },
   "dependencies": {
     "yaml": "^2.5.0"
