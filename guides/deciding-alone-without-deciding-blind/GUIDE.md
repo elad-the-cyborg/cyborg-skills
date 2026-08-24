@@ -5,8 +5,6 @@ summary_he: "איך מעבירים החלטה עסקית גדולה דרך שמ�
 category: "מחקר ואסטרטגיה"
 category_slug: "01-research-strategy"
 related_skill: the-cyborg-board-cyborgion
-episode: 13
-steps_label: "פרק"
 license: MIT
 ---
 

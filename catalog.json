@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-24T22:10:15.895Z",
+  "generated_at": "2026-08-24T22:11:28.784Z",
   "count": 20,
   "skills": [
     {
@@ -220,7 +220,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/the-cyborg-board-cyborgion",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/the-cyborg-board-cyborgion/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-08-24T22:10:15.640Z"
+      "updated_at": "2026-08-24T22:10:41.000Z"
     },
     {
       "name": "google-search-ads-copy",
@@ -1606,7 +1606,7 @@
       "category": "מחקר ואסטרטגיה",
       "category_slug": "01-research-strategy",
       "related_skill": "the-cyborg-board-cyborgion",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 7,
       "intro": [
         {
@@ -1805,9 +1805,9 @@
         }
       ],
       "highlight": false,
-      "episode": 13,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/deciding-alone-without-deciding-blind/GUIDE.md",
-      "updated_at": "2026-08-24T22:10:15.825Z"
+      "updated_at": "2026-08-24T22:10:41.000Z"
     },
     {
       "name": "hebrew-that-comes-out-professional",
