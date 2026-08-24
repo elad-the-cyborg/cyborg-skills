@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-22T19:12:11.283Z",
-  "count": 19,
+  "generated_at": "2026-08-24T22:10:15.895Z",
+  "count": 20,
   "skills": [
     {
       "name": "brand-voice-setup",
@@ -37,7 +37,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/brand-voice-setup",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/brand-voice-setup/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-15T15:51:34.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "safety-checkup",
@@ -73,7 +73,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/safety-checkup",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/safety-checkup/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "competitor-radar",
@@ -110,7 +110,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/competitor-radar",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/competitor-radar/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-13T14:18:59.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "findability-audit",
@@ -147,7 +147,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/findability-audit",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/findability-audit/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-13T14:18:59.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "first-impression-audit",
@@ -184,6 +184,43 @@
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/first-impression-audit/INSTALL.md",
       "version": "1.0.0",
       "updated_at": "2026-08-13T14:18:59.000Z"
+    },
+    {
+      "name": "the-cyborg-board-cyborgion",
+      "title_he": "הסייבורגיון · דירקטוריון הסייבורג",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "topic": "החלטות והתייעצות",
+      "description": "הסייבורגיון, דירקטוריון הסייבורג — מעביר התלבטות עסקית דרך שמונה דירקטורים, כל אחד עם נטייה פסיכולוגית אחרת כלפי רעיונות. הם עונים במקביל בלי לראות זה את זה, מתעמתים בארבעה זוגות מנוגדים, ואז מתכנסים לפסק דין אחד: ההחלטה, איפה יש הסכמה, איפה יש מחלוקת אמיתית, מה כולם פספסו, מה הצעד הראשון, ובאילו סימנים תדעו תוך שלושים יום שטעיתם. הפעל כשמבקשים להעביר רעיון לדירקטוריון, אומרים \"סייבורגיון\", \"חדר מלחמה\", \"תלחץ על הרעיון\", \"תבחן את זה מכל הכיוונים\", או כשמתלבטים בין אפשרויות עם מחיר אמיתי לטעות. לא להפעיל על שאלת ידע, על משימת כתיבה, ועל התלבטות בלי מחיר לטעות. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים החלטה אחת ברורה על התלבטות עסקית, אחרי שמונה נקודות מבט שונות התעמתו זו עם זו, ואיתה הצעד הראשון לשבוע הקרוב והסימנים שיגידו לכם תוך חודש שטעיתם.",
+      "audience_he": "מתאים לבעל עסק שעומד מול החלטה עם מחיר לטעות, כמו תמחור, קהל או השקת מוצר, ואין לו שותף לחדד מולו את החשיבה.",
+      "what_it_does_he": [
+        "מנסח את ההתלבטות לשאלה אחת נייטרלית, עם מה שמונח על הכף ומה תיחשב החלטה טובה.",
+        "מפעיל שמונה דירקטורים במקביל, כל אחד עם נטייה אחרת כלפי רעיונות, וכל אחד עונה מהזווית שלו בלבד.",
+        "מעמת ביניהם בארבעה זוגות מנוגדים, ובכל זוג קובע מי חזק יותר, במה כל צד טועה, ומה שניהם פספסו.",
+        "מסכם לפסק דירקטוריון אחד: ההחלטה, איפה יש הסכמה, איפה יש מחלוקת אמיתית, ומה הצעד הראשון.",
+        "מוסיף תנאי חרטה, כלומר הסימנים שיגידו תוך שלושים יום שההחלטה הייתה שגויה, ולצידם מדד ביטחון."
+      ],
+      "how_it_helps_he": "החלטה עסקית גדולה מתקבלת בדרך כלל מול עצמכם, ואז כל מה שלא חשבתם עליו מתגלה רק אחרי ששילמתם עליו. כאן מקבלים את הוויכוח לפני התשלום: שמונה זוויות שמושכות לכיוונים מנוגדים, ובסוף החלטה אחת שאפשר לפעול לפיה כבר השבוע. תנאי החרטה הם החלק שחוסך הכי הרבה, כי הם מגדירים מראש מתי לעצור, במקום להמשיך להזרים כסף לרעיון שכבר לא עובד.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "advanced",
+      "visibility": "public",
+      "tags": [
+        "החלטות",
+        "אסטרטגיה",
+        "דירקטוריון",
+        "התייעצות"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/the-cyborg-board-cyborgion ~/.claude/skills/the-cyborg-board-cyborgion",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/the-cyborg-board-cyborgion",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/the-cyborg-board-cyborgion/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-24T22:10:15.640Z"
     },
     {
       "name": "google-search-ads-copy",
@@ -255,7 +292,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/hebrew-copy-refiner",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/hebrew-copy-refiner/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "hook-generator",
@@ -513,7 +550,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/04-client-workflow/email-reply-in-brand-voice",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/04-client-workflow/email-reply-in-brand-voice/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T18:28:01.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "pre-meeting-prep",
@@ -550,7 +587,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/04-client-workflow/pre-meeting-prep",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/04-client-workflow/pre-meeting-prep/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T18:28:01.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "price-quote-generator",
@@ -587,7 +624,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/04-client-workflow/price-quote-generator",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/04-client-workflow/price-quote-generator/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T18:28:01.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "daily-cyborg-routine",
@@ -624,7 +661,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/05-operations/daily-cyborg-routine",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/05-operations/daily-cyborg-routine/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "gmail-invoice-sync",
@@ -662,7 +699,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/05-operations/gmail-invoice-sync",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/05-operations/gmail-invoice-sync/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "meta-ads-reader",
@@ -699,7 +736,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/05-operations/meta-ads-reader",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/05-operations/meta-ads-reader/INSTALL.md",
       "version": "2.0.0",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     }
   ],
   "guides": [
@@ -859,7 +896,7 @@
       "highlight": false,
       "episode": 12,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/a-day-in-the-life-of-a-cyborg/GUIDE.md",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "ad-hooks-in-20-minutes",
@@ -1095,7 +1132,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/being-found-by-ai-assistants/GUIDE.md",
-      "updated_at": "2026-08-14T11:58:08.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "brand-voice-in-claude",
@@ -1219,7 +1256,7 @@
       "highlight": false,
       "episode": 2,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/brand-voice-in-claude/GUIDE.md",
-      "updated_at": "2026-08-16T16:09:38.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "carousel-people-swipe-to-the-end",
@@ -1431,7 +1468,7 @@
       "highlight": false,
       "episode": 7,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-gmail-for-invoices/GUIDE.md",
-      "updated_at": "2026-08-20T18:28:01.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "connecting-meta-for-campaigns",
@@ -1560,7 +1597,217 @@
       "highlight": false,
       "episode": 11,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-meta-for-campaigns/GUIDE.md",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
+    },
+    {
+      "name": "deciding-alone-without-deciding-blind",
+      "title_he": "להחליט לבד, בלי להחליט בעיוורון",
+      "summary_he": "איך מעבירים החלטה עסקית גדולה דרך שמונה נקודות מבט שמושכות לכיוונים מנוגדים, ויוצאים עם תשובה אחת, צעד ראשון לשבוע, והסימנים המדידים שיגידו לכם תוך חודש שטעיתם.",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "related_skill": "the-cyborg-board-cyborgion",
+      "steps_label": "פרק",
+      "read_minutes": 7,
+      "intro": [
+        {
+          "type": "p",
+          "html": "ההחלטות הכי יקרות בעסק קטן מתקבלות בערך באותו אופן: בשתיים בלילה, מול תקרה, בראש של אדם אחד. להעלות מחיר או לא. לפתוח קו מוצר חדש או להעמיק בקיים. לוותר על הלקוח שמשלם הכי הרבה ולוקח הכי הרבה אנרגיה, או לסבול עוד שנה."
+        },
+        {
+          "type": "p",
+          "html": "מי שיש לו שותף מדבר איתו. מי שיש לו דירקטוריון מציג בפניו. מי שעובד לבד מדבר עם עצמו, וזו בעיה, כי בשיחה עם עצמכם אתם תמיד מסכימים איתכם. אתם גם תמיד מגיעים לאותן מסקנות, כי אותו ראש שאל את השאלה וגם ענה עליה."
+        },
+        {
+          "type": "p",
+          "html": "הפתרון המקובל הוא לשאול חבר. זה עוזר קצת, אבל פחות ממה שנדמה: חבר טוב רוצה שתרגישו טוב, אז הוא יאשר. חבר שהוא גם איש מקצוע יענה מהזווית של המקצוע שלו, ותקבלו תשובה אחת נוספת, לא שמונה. ולמעשה, זו בדיוק הבעיה שהמדריך הזה עוסק בה."
+        }
+      ],
+      "steps": [
+        {
+          "title": "למה ריבוי דעות לרוב לא עוזר",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "ננסה את הדבר המתבקש: לשאול חמישה אנשים במקום אחד. מה קורה בפועל."
+            },
+            {
+              "type": "p",
+              "html": "אתם מקבלים חמש תשובות שכולן מנומסות, כולן סבירות, שלוש מהן דומות זו לזו, וכולן מסתיימות ב&quot;אבל בסוף זו ההחלטה שלך&quot;. במקום להתלבט בין שתי אפשרויות אתם מתלבטים בין שבע. ההתייעצות הרחיבה את המניפה, וזה בדיוק ההפך ממה שהייתם צריכים."
+            },
+            {
+              "type": "p",
+              "html": "הסיבה היא שאנשים שנשאלים &quot;מה דעתך&quot; עונים מהמקום הבטוח: הם מאזנים, מגדרים, מציגים את שני הצדדים. אף אחד לא רוצה להיות זה שאמר בביטחון לך על הקיר. אבל <strong>תשובה מגודרת היא תשובה חסרת ערך</strong>, כי היא מחזירה לכם את העבודה שביקשתם עזרה בה."
+            },
+            {
+              "type": "p",
+              "html": "ויש סיבה שנייה, עמוקה יותר. חמישה אנשים שמסתכלים על אותו רעיון מתוך אותה נטייה בסיסית (לרצות שיצליח, למשל, או לחשוש מסיכון) ייתנו וריאציות על אותה תשובה. גיוון של תפקידים אינו גיוון של חשיבה. כדי לקבל מידע חדש צריך אנשים שרוצים דברים מנוגדים מהרעיון עוד לפני ששמעו מה הוא."
+            }
+          ]
+        },
+        {
+          "title": "הרעיון: לבנות מתח, לא לאסוף דעות",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "הנה השינוי בתפיסה, והוא כל העניין."
+            },
+            {
+              "type": "p",
+              "html": "אל תשאלו שמונה אנשים &quot;מה דעתך&quot;. במקום זה, תנו לשמונה <strong>נטיות מנוגדות</strong> לרוץ על אותה שאלה, כשכל אחת חייבת להישען במלוא הכוח על הזווית שלה ואסור לה לאזן. אחת מהן מחפשת אך ורק מה יישבר. אחת מחפשת אך ורק מה יכול לפרוץ. אחת לא מאמינה לשאלה עצמה. אחת רוצה לדעת מה עושים ביום שני בתשע בבוקר."
+            },
+            {
+              "type": "p",
+              "html": "ואז, וזה החלק הקריטי, מעמתים ביניהן בזוגות. לא &quot;מה כולם חושבים&quot;, אלא &quot;מי משתי העמדות האלה חזקה יותר, במה כל צד טועה, ומה שניהם פספסו&quot;."
+            },
+            {
+              "type": "p",
+              "html": "מהעימות הזה יוצא מידע שלא היה קיים באף חוות דעת בודדת. השורה &quot;מה שניהם פספסו&quot; היא בדרך כלל השורה הכי שווה בכל התהליך, כי היא היחידה שאף אחד לא היה מגיע אליה לבד."
+            }
+          ]
+        },
+        {
+          "title": "שמונה הנטיות",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "אלה שמונה הראשים שרצים על השאלה, מסודרים בארבעה זוגות שמושכים לכיוונים הפוכים:"
+            },
+            {
+              "type": "p",
+              "html": "<strong>זוג הסיכון.</strong> המפרק מניח שיש לרעיון כשל אחד שיהרוג אותו, ורוצה שיתגלה כאן ולא בשוק. המגדיל מניח שהרעיון נתפס קטן מדי, ומחפש את הגרסה שגדולה פי כמה."
+            },
+            {
+              "type": "p",
+              "html": "<strong>זוג החשיבה.</strong> השורש לא מאמין לשאלה שנשאלה, ומפרק אותה עד להנחות שבאמת חייבות להתקיים. המבצע אלרגי לתאוריה, ושואל רק מה קורה ביום שני בבוקר."
+            },
+            {
+              "type": "p",
+              "html": "<strong>זוג השוק.</strong> הלקוח בחדר יושב אך ורק בכיסא של הקונה: מעניין אותי, מובן לי, מוציא על זה כסף. החשב מתרגם הכול לשעות ולמזומן, ושואל מה לא ייעשה בגלל זה."
+            },
+            {
+              "type": "p",
+              "html": "<strong>זוג האופק.</strong> העין הטרייה לא יודעת כלום ומסרבת לתדרוך, ומגיבה רק למה שמונח מולה. הטווח הארוך שופט לפי איך זה ייראה בעוד שנתיים, ואם זה בונה נכס או עוד הליכון."
+            },
+            {
+              "type": "p",
+              "html": "שימו לב שאלה לא תפקידים. תפקיד מייצר ידע, נטייה מייצרת מתח, והמתח הוא מה שמוציא את המידע החדש."
+            }
+          ]
+        },
+        {
+          "title": "איך זה נראה על החלטה אמיתית",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "ניקח סטודיו כושר שכונתי בשמות דמה. מאמנת אחת, בלי צוות, 24 מנויות פעילות, 320 שקל לחודש. ההתלבטות: להעלות ל-450 ולהוסיף מעקב תזונה, או להשאיר מחיר ולפתוח קבוצת בוקר נוספת."
+            },
+            {
+              "type": "p",
+              "html": "בשיחה רגילה עם חבר זה נגמר ב&quot;תעלי מחיר, את שווה את זה&quot;. הנה מה שיוצא כשמריצים את זה דרך שמונה נטיות שמתעמתות."
+            },
+            {
+              "type": "p",
+              "html": "<strong>החשב</strong> מראה שגם אם שבע מנויות יעזבו, 17 מנויות ב-450 מכניסות יותר משכל 24 ב-320, ובפחות שעות עבודה. <strong>המפרק</strong> מצביע על כך שמעקב תזונה בלי הסמכה אמיתית הוא חשיפה, לא תוספת. <strong>הטווח הארוך</strong> מראה שקבוצה נוספת אינה צמיחה אלא שחיקה, כי היא מוסיפה שעות לנכס היחיד של העסק, שהוא האדם שמפעיל אותו."
+            },
+            {
+              "type": "p",
+              "html": "ואז מגיע העימות, ומשם מגיעות שתי השורות ששוות את כל התהליך: אף אחד מהשמונה לא שאל את 24 המנויות מה הן בכלל רוצות, ואף אחד לא שאל אם המאמנת עצמה נהנית לעסוק בתזונה, שזה גורם עסקי מובהק בעסק של אדם אחד, לא פינוק."
+            },
+            {
+              "type": "p",
+              "html": "התוצאה אינה &quot;תעלי מחיר&quot;. התוצאה היא: לדבר השבוע עם חמש מנויות ותיקות, ורק אז להחליט אם ההעלאה יוצאת עם תזונה או בלעדיה."
+            }
+          ]
+        },
+        {
+          "title": "החלק שאף אחד לא עושה: תנאי חרטה",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "זה החלק החשוב במדריך הזה, וגם זה שהכי קל לדלג עליו."
+            },
+            {
+              "type": "p",
+              "html": "החלטה בלי סימני עצירה מוגדרים מראש נמשכת הרבה מעבר לנקודה שבה כבר ברור שהיא לא עובדת. הסיבה פשוטה: בלי סימן שנקבע <strong>לפני</strong>, כל תוצאה גרועה מוסברת בדיעבד. עוד לא נתנו לזה מספיק זמן. העונה חלשה. היה חודש עמוס. וכך ממשיכים להזרים כסף וזמן לכיוון שנפסל כבר מזמן."
+            },
+            {
+              "type": "p",
+              "html": "תנאי חרטה תקין הוא מדיד, תחום בזמן, ואפשר לראות אותו בלי מערכת מדידה חדשה. במקרה של הסטודיו, למשל: אם שבע מנויות ומעלה עוזבות תוך 30 יום מההכרזה, ההחלטה הייתה שגויה, עוצרים ומציעים מסלול ביניים."
+            },
+            {
+              "type": "p",
+              "html": "שימו לב מה קרה כאן. &quot;אם זה לא יתפוס אני אחשוב מחדש&quot; היא לא החלטה, היא הבטחה לעצמכם. &quot;שבע מנויות תוך 30 יום&quot; היא החלטה, כי אפשר לספור אותה, ואי אפשר להתווכח איתה בשתיים בלילה."
+            },
+            {
+              "type": "p",
+              "html": "שניים עד שלושה תנאים כאלה. אחד לא מספיק, וחמישה איש לא יבדוק."
+            }
+          ]
+        },
+        {
+          "title": "איך מריצים את זה בפועל",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "את כל התהליך הזה אפשר להריץ ידנית, וזה ייקח לכם ערב שלם ומשמעת לא פשוטה: לכתוב שמונה חוות דעת בלי לתת לאחת להשפיע על השנייה זה קשה בדיוק כמו שזה נשמע."
+            },
+            {
+              "type": "p",
+              "html": "לכן בנינו את זה כסקיל שרץ בקלוד קוד. סקיל הוא הוראה מוכנה שנטענת לקלוד ואומרת לו איך לבצע משימה בצורה מסודרת, בלי שתצטרכו לנסח מחדש בכל פעם. הסקיל הזה נקרא the-cyborg-board-cyborgion, והוא מפעיל את שמונת הדירקטורים כשמונה תהליכים נפרדים שלא רואים זה את זה, ואז ארבעה בוררים על ארבעת הזוגות."
+            },
+            {
+              "type": "p",
+              "html": "ההתקנה היא שורה אחת. מעתיקים, מדביקים בטרמינל:"
+            },
+            {
+              "type": "code",
+              "text": "npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/the-cyborg-board-cyborgion ~/.claude/skills/the-cyborg-board-cyborgion"
+            },
+            {
+              "type": "p",
+              "html": "ואז פותחים את קלוד קוד וכותבים משהו כמו: &quot;תעביר לסייבורגיון: כדאי לי להעלות מחיר או להוסיף שירות&quot;. עובד גם עם &quot;חדר מלחמה&quot; ועם &quot;תלחץ על הרעיון הזה&quot;."
+            },
+            {
+              "type": "p",
+              "html": "מה שיחזור אליכם הוא מסמך אחד: ההחלטה במשפט, במה הדירקטורים הסכימו בלי לשמוע זה את זה, איפה נשארה מחלוקת אמיתית, מה כולם פספסו, פעולה אחת לשבוע הקרוב, תנאי החרטה, ומדד ביטחון שאומר לכם אם אתם מחזיקים מסקנה חזקה או ניחוש מלומד."
+            }
+          ]
+        },
+        {
+          "title": "שלושה דברים ששווה לדעת לפני שמריצים",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "<strong>ראשון: איכות הפלט תלויה באיכות ההקשר.</strong> שמונה זוויות על מידע חסר יישארו שמונה זוויות על מידע חסר. אם יש לכם קובץ CLAUDE.md שמתאר את העסק, הקהל והשלב שאתם בו, הסקיל יקרא אותו והתשובות יהיו על העסק שלכם ולא על עסק תיאורטי."
+            },
+            {
+              "type": "p",
+              "html": "<strong>שני: זה לא מתאים לכל שאלה.</strong> להתלבטות בלי מחיר לטעות אין סיבה לכנס שמונה ראשים, וזה גם בזבוז זמן. שמרו את זה להחלטות שבאמת יכאב לטעות בהן."
+            },
+            {
+              "type": "p",
+              "html": "<strong>שלישי: הכלי לא מחליט במקומכם, וטוב שכך.</strong> מדד הביטחון קיים בדיוק בשביל זה: כשהוא חוזר &quot;נמוך&quot;, הוא גם אומר לכם איזה מידע חסר. לפעמים התוצר הכי שימושי מהישיבה הוא לא תשובה, אלא ההבנה שאתם עוד לא במצב להחליט, ומה צריך לברר קודם."
+            }
+          ]
+        },
+        {
+          "title": "ולבסוף, החזרה",
+          "blocks": [
+            {
+              "type": "p",
+              "html": "ההרצה השנייה שווה יותר מהראשונה, בתנאי אחד: שמישהו זוכר מה הוחלט ומה קרה מאז. הסקיל מציע בסוף לשמור רשומה קצרה של ההחלטה ותנאי החרטה שלה, ורק אחרי שתאשרו. בפעם הבאה שתפתחו אותו, הוא ישאל מה קרה בפועל עם ההחלטה הקודמת."
+            },
+            {
+              "type": "p",
+              "html": "התשובה לשאלה הזאת שווה יותר מכל חוות דעת חדשה, כי היא הדבר היחיד בכל התהליך שאינו הערכה אלא עובדה. ככה החלטה שלישית נראית אחרת מהראשונה, וככה מפסיקים להחליט לבד בעיוורון."
+            }
+          ]
+        }
+      ],
+      "highlight": false,
+      "episode": 13,
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/deciding-alone-without-deciding-blind/GUIDE.md",
+      "updated_at": "2026-08-24T22:10:15.825Z"
     },
     {
       "name": "hebrew-that-comes-out-professional",
@@ -1737,7 +1984,7 @@
       "highlight": false,
       "episode": 6,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/hebrew-that-comes-out-professional/GUIDE.md",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "landing-page-that-gets-enquiries",
@@ -1948,7 +2195,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-properly/GUIDE.md",
-      "updated_at": "2026-08-14T11:58:08.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "looking-at-competitors-with-radar",
@@ -2048,7 +2295,7 @@
       "highlight": false,
       "episode": 9,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-with-radar/GUIDE.md",
-      "updated_at": "2026-08-16T16:09:38.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "pre-meeting-research-in-15-minutes",
@@ -2213,7 +2460,7 @@
       "highlight": false,
       "episode": 5,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/pre-meeting-research-in-15-minutes/GUIDE.md",
-      "updated_at": "2026-08-20T18:28:01.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "producing-price-quotes-faster",
@@ -2338,7 +2585,7 @@
       "highlight": false,
       "episode": 4,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/producing-price-quotes-faster/GUIDE.md",
-      "updated_at": "2026-08-20T18:28:01.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "replying-to-client-emails-in-brand-voice",
@@ -2467,7 +2714,7 @@
       "highlight": false,
       "episode": 8,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/replying-to-client-emails-in-brand-voice/GUIDE.md",
-      "updated_at": "2026-08-20T18:28:01.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "safe-use-of-claude-code",
@@ -2648,7 +2895,7 @@
       "highlight": true,
       "episode": 3,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/safe-use-of-claude-code/GUIDE.md",
-      "updated_at": "2026-08-20T19:33:46.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
       "name": "site-status-report-with-findability",
@@ -2760,7 +3007,7 @@
       "highlight": false,
       "episode": 10,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/site-status-report-with-findability/GUIDE.md",
-      "updated_at": "2026-08-16T16:09:38.000Z"
+      "updated_at": "2026-08-22T19:12:27.000Z"
     }
   ],
   "links": [
