@@ -6,7 +6,6 @@ category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: "safety-checkup"
 highlight: true
-episode: 3
 steps_label: "כלל"
 license: MIT
 ---

@@ -5,8 +5,6 @@ summary_he: "איך לחבר את הג׳ימייל ואת קובץ CLAUDE.md ש�
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: "email-reply-in-brand-voice"
-episode: 8
-steps_label: "פרק"
 license: MIT
 ---
 

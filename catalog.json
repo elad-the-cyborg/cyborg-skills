@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-24T22:11:28.784Z",
+  "generated_at": "2026-08-25T05:33:36.002Z",
   "count": 20,
   "skills": [
     {
@@ -743,12 +743,12 @@
     {
       "name": "a-day-in-the-life-of-a-cyborg",
       "title_he": "יום עבודה של סייבורג: הרוטינה שקושרת הכל",
-      "summary_he": "פרק סיכום שמדגים את הרוטינה היומית של בעל עסק שאימץ את קלוד קוד: בוקר עם סיכום מיילים ובדיקת קמפיינים, אמצע יום עם הפקת תוצרים (הצעת מחיר, פוסט), אחר צהריים עם מחקר לקוח לפני פגישה, וסוף יום עם סקירת חשבוניות ותכנון מחר. הכל בסך של 90 דקות בפועל של אינטראקציה עם קלוד, על פני יום שלם.",
+      "summary_he": "מדריך סיכום שמדגים את הרוטינה היומית של בעל עסק שאימץ את קלוד קוד: בוקר עם סיכום מיילים ובדיקת קמפיינים, אמצע יום עם הפקת תוצרים (הצעת מחיר, פוסט), אחר צהריים עם מחקר לקוח לפני פגישה, וסוף יום עם סקירת חשבוניות ותכנון מחר. הכל בסך של 90 דקות בפועל של אינטראקציה עם קלוד, על פני יום שלם.",
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "daily-cyborg-routine",
-      "steps_label": "פרק",
-      "read_minutes": 6,
+      "steps_label": "שלב",
+      "read_minutes": 7,
       "intro": [
         {
           "type": "p",
@@ -769,7 +769,7 @@
           "blocks": [
             {
               "type": "p",
-              "html": "דנה פותחת את הלפטופ עם הקפה השני של הבוקר. במקום לפתוח את הג'ימייל ולקרוא שישים מיילים אחד אחד, היא פותחת את קלוד קוד ומקבלת סיכום שהיה מוכן מחכה: כמה מיילים חדשים היו הלילה, מה החשוב מהם, אילו דרשו תשובה מהירה, ואילו סתם ניוזלטרים. הסיכום הזה הוא בזכות חיבור המייל שהיא הקימה בהתחלת הדרך (פרק 7 בסדרה שלנו)."
+              "html": "דנה פותחת את הלפטופ עם הקפה השני של הבוקר. במקום לפתוח את הג'ימייל ולקרוא שישים מיילים אחד אחד, היא פותחת את קלוד קוד ומקבלת סיכום שהיה מוכן מחכה: כמה מיילים חדשים היו הלילה, מה החשוב מהם, אילו דרשו תשובה מהירה, ואילו סתם ניוזלטרים. הסיכום הזה הוא בזכות חיבור המייל שהיא הקימה בהתחלת הדרך (המדריך על חיבור המייל לחשבוניות)."
             },
             {
               "type": "p",
@@ -777,7 +777,7 @@
             },
             {
               "type": "p",
-              "html": "אחר כך היא מזמינה את הדוח היומי של הקמפיינים שהיא מריצה עבור לקוח, בזכות חיבור מטא ads (פרק 11). הדוח קצר: כמה הוצאנו אתמול, מה ה-CPL, האם משהו קרוב לתקציב היומי, והאם יש קמפיין שקרס. היום הכל בסדר. לוקח שתי דקות לסקור."
+              "html": "אחר כך היא מזמינה את הדוח היומי של הקמפיינים שהיא מריצה עבור לקוח, בזכות חיבור מטא ads (המדריך על חיבור מטא לקמפיינים). הדוח קצר: כמה הוצאנו אתמול, מה ה-CPL, האם משהו קרוב לתקציב היומי, והאם יש קמפיין שקרס. היום הכל בסדר. לוקח שתי דקות לסקור."
             }
           ]
         },
@@ -790,11 +790,11 @@
             },
             {
               "type": "p",
-              "html": "קלוד יודע איך נראית הצעת מחיר של דנה כי המחירון שלה יושב בתיקיית העבודה והטון שלה שמור ב-CLAUDE.md, וזה מה שדיברנו עליו בפרק 4 בסדרה. הוא מייצר טיוטה תוך שלוש דקות. דנה קוראת, מוסיפה שני דגשים ספציפיים ליוסי, ושולחת. הצעת המחיר שהייתה לוקחת לה שעה יצאה בחמש עשרה דקות."
+              "html": "קלוד יודע איך נראית הצעת מחיר של דנה כי המחירון שלה יושב בתיקיית העבודה והטון שלה שמור ב-CLAUDE.md, וזה מה שדיברנו עליו במדריך על הפקת הצעות מחיר. הוא מייצר טיוטה תוך שלוש דקות. דנה קוראת, מוסיפה שני דגשים ספציפיים ליוסי, ושולחת. הצעת המחיר שהייתה לוקחת לה שעה יצאה בחמש עשרה דקות."
             },
             {
               "type": "p",
-              "html": "בין לבין היא כתבה גם פוסט קצר לאינסטגרם על תובנה מלקוח אתמול. גם פה בטון שלה, לא בטון גנרי של AI, בזכות שפת המותג שהיא שמרה ב-CLAUDE.md (פרק 2)."
+              "html": "בין לבין היא כתבה גם פוסט קצר לאינסטגרם על תובנה מלקוח אתמול. גם פה בטון שלה, לא בטון גנרי של AI, בזכות שפת המותג שהיא שמרה ב-CLAUDE.md (המדריך על שפת המותג)."
             }
           ]
         },
@@ -803,7 +803,7 @@
           "blocks": [
             {
               "type": "p",
-              "html": "דנה רוצה לכתוב מאמר לבלוג שלה על הטרנד של סוכני AI לעסקים קטנים. לפני שהיא מתחילה לכתוב, היא רוצה להבין מה כבר קיים ברשת, כדי לא לחזור על מה שכולם אומרים. היא מזמינה את הסקיל competitor-radar (פרק 9) ומבקשת: &quot;תעשה לי סקירה של מה שנכתב בעברית על סוכני AI לעסקים קטנים בחודשיים האחרונים. חפש את חמשת המאמרים המרכזיים, סכם כל אחד בפסקה, וזהה זווית שאף אחד עוד לא לקח.&quot;"
+              "html": "דנה רוצה לכתוב מאמר לבלוג שלה על הטרנד של סוכני AI לעסקים קטנים. לפני שהיא מתחילה לכתוב, היא רוצה להבין מה כבר קיים ברשת, כדי לא לחזור על מה שכולם אומרים. היא מזמינה את הסקיל competitor-radar (המדריך על סקירת מתחרים) ומבקשת: &quot;תעשה לי סקירה של מה שנכתב בעברית על סוכני AI לעסקים קטנים בחודשיים האחרונים. חפש את חמשת המאמרים המרכזיים, סכם כל אחד בפסקה, וזהה זווית שאף אחד עוד לא לקח.&quot;"
             },
             {
               "type": "p",
@@ -811,7 +811,7 @@
             },
             {
               "type": "p",
-              "html": "בזמן שהיא כותבת היא גם מריצה את הסקיל findability-audit (פרק 10) על אתר שלה, כדי לוודא שאין בעיות שהיא צריכה לתקן. הדוח מגיע: יש שלוש המלצות קטנות, שום דבר קריטי. היא רושמת ליום שלישי הבא."
+              "html": "בזמן שהיא כותבת היא גם מריצה את הסקיל findability-audit (המדריך על בדיקת הנראות) על אתר שלה, כדי לוודא שאין בעיות שהיא צריכה לתקן. הדוח מגיע: יש שלוש המלצות קטנות, שום דבר קריטי. היא רושמת ליום שלישי הבא."
             }
           ]
         },
@@ -824,7 +824,7 @@
             },
             {
               "type": "p",
-              "html": "בתוך רבע שעה יש לה תיק (בדיוק כמו שדיברנו בפרק 5): פרופיל של אורית, פרופיל של BloomLab, מה חדש אצלם (הן השיקו שירות חדש לפני חודש), ושלוש שאלות מומלצות. דנה קוראת, שומרת בקובץ, ותהיה מוכנה מחר בבוקר."
+              "html": "בתוך רבע שעה יש לה תיק (בדיוק כמו שדיברנו במדריך ההכנה לפגישה): פרופיל של אורית, פרופיל של BloomLab, מה חדש אצלם (הן השיקו שירות חדש לפני חודש), ושלוש שאלות מומלצות. דנה קוראת, שומרת בקובץ, ותהיה מוכנה מחר בבוקר."
             }
           ]
         },
@@ -858,11 +858,11 @@
             },
             {
               "type": "p",
-              "html": "זה מה שהופך בעל עסק לסייבורג. לא איזה שינוי דרמטי, לא רכישת מכונה חדשה, לא צוות שכרתם. אלא רוטינה שהופכת את הכלים שלמדתם בשנים עשר המדריכים בסדרה לחלק אורגני מהיום שלכם. CLAUDE.md שומר על הטון, חיבור המייל אוסף חשבוניות, חיבור מטא מציף קמפיין שקרס, סקילים של מתחרים ואודיט חוסכים שעות מחקר, הצעות מחיר יוצאות מהר, מיילים יוצאים בטון, פגישות מוכנות, ועברית יוצאת מקצועית."
+              "html": "זה מה שהופך בעל עסק לסייבורג. לא איזה שינוי דרמטי, לא רכישת מכונה חדשה, לא צוות שכרתם. אלא רוטינה שהופכת את הכלים שלמדתם במדריכים שבספרייה לחלק אורגני מהיום שלכם. CLAUDE.md שומר על הטון, חיבור המייל אוסף חשבוניות, חיבור מטא מציף קמפיין שקרס, סקילים של מתחרים ואודיט חוסכים שעות מחקר, הצעות מחיר יוצאות מהר, מיילים יוצאים בטון, פגישות מוכנות, ועברית יוצאת מקצועית."
             },
             {
               "type": "p",
-              "html": "שנים עשר פרקים, כלי אחד, יום עבודה שנראה אחרת לגמרי."
+              "html": "ספרייה שלמה של מדריכים, כלי אחד, יום עבודה שנראה אחרת לגמרי."
             }
           ]
         },
@@ -888,13 +888,13 @@
           "blocks": [
             {
               "type": "p",
-              "html": "הפכתם לסייבורג לא ביום שהתקנתם את קלוד קוד ולא ביום שסיימתם לקרוא את המדריך הזה. הפכתם לסייבורג ברגע שהרוטינה השתנתה, ואתם לא זוכרים איך פעם התנהלתם בלי זה. עכשיו זה הזמן להתחיל. פתחו את המדריך הראשון בסדרה, הקימו את שפת המותג שלכם ב-CLAUDE.md, ותנו לגלגלת להתחיל לרוץ."
+              "html": "הפכתם לסייבורג לא ביום שהתקנתם את קלוד קוד ולא ביום שסיימתם לקרוא את המדריך הזה. הפכתם לסייבורג ברגע שהרוטינה השתנתה, ואתם לא זוכרים איך פעם התנהלתם בלי זה. עכשיו זה הזמן להתחיל. פתחו את המדריך על שפת המותג, הקימו את שפת המותג שלכם ב-CLAUDE.md, ותנו לגלגלת להתחיל לרוץ."
             }
           ]
         }
       ],
       "highlight": false,
-      "episode": 12,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/a-day-in-the-life-of-a-cyborg/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -1021,7 +1021,7 @@
       "category": "מחקר ואסטרטגיה",
       "category_slug": "01-research-strategy",
       "related_skill": "findability-audit",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 6,
       "intro": [
         {
@@ -1141,7 +1141,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "brand-voice-setup",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -1254,7 +1254,7 @@
         }
       ],
       "highlight": false,
-      "episode": 2,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/brand-voice-in-claude/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -1265,7 +1265,7 @@
       "category": "עיצוב ועריכת וידאו",
       "category_slug": "03-creative-visual",
       "related_skill": "instagram-carousel",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -1360,7 +1360,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "gmail-invoice-sync",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -1466,7 +1466,7 @@
         }
       ],
       "highlight": false,
-      "episode": 7,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-gmail-for-invoices/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -1477,7 +1477,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "meta-ads-reader",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 6,
       "intro": [
         {
@@ -1595,7 +1595,7 @@
         }
       ],
       "highlight": false,
-      "episode": 11,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-meta-for-campaigns/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -1807,7 +1807,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/deciding-alone-without-deciding-blind/GUIDE.md",
-      "updated_at": "2026-08-24T22:10:41.000Z"
+      "updated_at": "2026-08-24T22:11:37.000Z"
     },
     {
       "name": "hebrew-that-comes-out-professional",
@@ -1816,7 +1816,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "hebrew-copy-refiner",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -1982,7 +1982,7 @@
         }
       ],
       "highlight": false,
-      "episode": 6,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/hebrew-that-comes-out-professional/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -1993,7 +1993,7 @@
       "category": "קופי ותוכן",
       "category_slug": "02-copy-content",
       "related_skill": "landing-page-copy",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -2101,7 +2101,7 @@
       "category": "מחקר ואסטרטגיה",
       "category_slug": "01-research-strategy",
       "related_skill": "competitor-radar",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -2204,7 +2204,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "competitor-radar",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -2293,7 +2293,7 @@
         }
       ],
       "highlight": false,
-      "episode": 9,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-with-radar/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -2304,7 +2304,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "pre-meeting-prep",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -2458,7 +2458,7 @@
         }
       ],
       "highlight": false,
-      "episode": 5,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/pre-meeting-research-in-15-minutes/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -2469,7 +2469,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "price-quote-generator",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -2583,7 +2583,7 @@
         }
       ],
       "highlight": false,
-      "episode": 4,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/producing-price-quotes-faster/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -2594,7 +2594,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "email-reply-in-brand-voice",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -2712,7 +2712,7 @@
         }
       ],
       "highlight": false,
-      "episode": 8,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/replying-to-client-emails-in-brand-voice/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -2893,7 +2893,7 @@
         }
       ],
       "highlight": true,
-      "episode": 3,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/safe-use-of-claude-code/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
@@ -2904,7 +2904,7 @@
       "category": "יסודות ובטיחות",
       "category_slug": "00-foundations",
       "related_skill": "findability-audit",
-      "steps_label": "פרק",
+      "steps_label": "שלב",
       "read_minutes": 5,
       "intro": [
         {
@@ -3005,7 +3005,7 @@
         }
       ],
       "highlight": false,
-      "episode": 10,
+      "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/site-status-report-with-findability/GUIDE.md",
       "updated_at": "2026-08-22T19:12:27.000Z"
     }

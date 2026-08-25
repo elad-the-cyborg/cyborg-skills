@@ -5,8 +5,6 @@ summary_he: "איך לחבר את חשבון הגימייל לקלוד עם הר
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: "gmail-invoice-sync"
-episode: 7
-steps_label: "פרק"
 license: MIT
 ---
 

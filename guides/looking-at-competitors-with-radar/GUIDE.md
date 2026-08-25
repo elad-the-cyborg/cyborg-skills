@@ -5,8 +5,6 @@ summary_he: "איך משתמשים בסקיל competitor-radar כדי לקבל �
 category: "יסודות ובטיחות"
 category_slug: "00-foundations"
 related_skill: "competitor-radar"
-episode: 9
-steps_label: "פרק"
 license: MIT
 ---
 

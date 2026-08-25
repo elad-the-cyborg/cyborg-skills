@@ -5,7 +5,6 @@ summary_he: "מסביר מה חייב לקרות בשקף הראשון כדי ש
 category: "עיצוב ועריכת וידאו"
 category_slug: "03-creative-visual"
 related_skill: instagram-carousel
-steps_label: "פרק"
 license: MIT
 ---
 

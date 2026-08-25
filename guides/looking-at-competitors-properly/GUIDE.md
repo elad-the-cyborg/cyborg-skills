@@ -5,7 +5,6 @@ summary_he: "עובר על ארבעה דברים שכדאי לבדוק אצל כ
 category: "מחקר ואסטרטגיה"
 category_slug: "01-research-strategy"
 related_skill: competitor-radar
-steps_label: "פרק"
 license: MIT
 ---
 
