@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-25T05:33:36.002Z",
-  "count": 20,
+  "generated_at": "2026-09-02T08:39:44.689Z",
+  "count": 23,
   "skills": [
     {
       "name": "brand-voice-setup",
@@ -38,6 +38,114 @@
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/brand-voice-setup/INSTALL.md",
       "version": "2.0.0",
       "updated_at": "2026-08-22T19:12:27.000Z"
+    },
+    {
+      "name": "golden-rules",
+      "title_he": "20 חוקי הזהב לעבודה עם קלוד קוד",
+      "category": "יסודות ובטיחות",
+      "category_slug": "00-foundations",
+      "topic": "הרגלי עבודה עם קלוד קוד",
+      "description": "20 חוקי הזהב לעבודה עם קלוד קוד — עשרים הרגלי עבודה שמפרידים בין כלי שמשרת אותך לבין כלי שמתסכל אותך, ובכל הרצה נבחרים מתוכם רק אלה שרלוונטיים למה שאתה עושה עכשיו. הפעל כשמבקשים את חוקי הזהב, שואלים איך עובדים נכון, אומרים שזה לא מצליח או ששורף יותר מדי, או פותחים תיקיית עבודה בפעם הראשונה. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים שישה עד שמונה הרגלי עבודה שנבחרו לפי מה שפתוח על המסך שלכם ברגע זה, כל אחד עם ההסבר למה הוא מונע נזק או חוסך כסף, ואת הרשימה המלאה של כל העשרים כמסמך לחזור אליו.",
+      "audience_he": "מתאים למי שהתחיל לעבוד עם קלוד קוד ומרגיש שהוא מקבל פחות ממה שהכלי יודע לתת, או ששורף מכסה מהר מדי.",
+      "what_it_does_he": [
+        "בודק בפועל מה פתוח אצלך: איזו תיקייה, אילו קבצים, ומה עשית בשיחה עד עכשיו.",
+        "בוחר שישה עד שמונה חוקים שרלוונטיים למצב הזה במקום להקריא את כל העשרים.",
+        "מדגים כל חוק על מה שאתה עושה עכשיו, ולא על דוגמה מומצאת.",
+        "אומר תמיד את ארבעת החוקים שמונעים נזק אמיתי, גם אם הם לא רלוונטיים לרגע הזה.",
+        "שומר אחרי אישור אילו חוקים כבר עברתם, כדי שההרצה הבאה תמשיך מאיפה שנעצרתם."
+      ],
+      "how_it_helps_he": "רוב מי שמפסיק לעבוד עם הכלי לא נתקע בבעיה טכנית, אלא בשלוש טעויות חוזרות: לבקש פקודה במקום תוצאה, לתת לו לגעת במערכת חיה בלי להגיד לו להיזהר, ולשרוף מכסה בשיחה אחת שגררה את כל היום. הרגלים אלה נלמדים בעשרים דקות ומחזיקים שנה.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "beginner",
+      "visibility": "public",
+      "tags": [
+        "חוקי זהב",
+        "הרגלי עבודה",
+        "התחלה"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/00-foundations/golden-rules ~/.claude/skills/golden-rules",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/golden-rules",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/golden-rules/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T08:39:44.319Z"
+    },
+    {
+      "name": "output-check",
+      "title_he": "בקרת תוצר לפני מסירה",
+      "category": "יסודות ובטיחות",
+      "category_slug": "00-foundations",
+      "topic": "בקרת איכות על תוצרים",
+      "description": "בקרת תוצר לפני מסירה — עובר על תוצר שנוצר בשיחה ומפריד בין מה שנבדק בפועל, מה שנשען על הנחה, ומה שפשוט הומצא. הפעל כשעומדים לפרסם, לשלוח או להעלות תוצר, שואלים אם זה מוכן, או רוצים לוודא שלא נכנסו נתונים מומצאים. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים מעבר ביקורתי על טקסט או תוצר לפני שהוא יוצא החוצה, שמסמן בדיוק אילו מספרים ועובדות לא נבדקו, אילו הבטחות אי אפשר לעמוד בהן, ומה נכתב כאילו נבדק בלי שנבדק.",
+      "audience_he": "מתאים למי שעומד לפרסם מודעה, לשלוח מייל ללקוח או להעלות דף, ורוצה בדיקה אחת לפני שזה כבר בחוץ.",
+      "what_it_does_he": [
+        "מפרק את התוצר לטענות בודדות ומסמן לכל אחת אם היא נבדקה, הונחה, או נכתבה בלי מקור.",
+        "מסמן כל מספר, תאריך, מחיר ושם שמופיעים בתוצר ודורש להם מקור לפני פרסום.",
+        "מאתר הבטחות שהעסק לא באמת יכול לעמוד בהן, כי הן מה שמייצר תלונה או קנס.",
+        "בודק אם נאמר שמשהו נבדק או הורץ בפועל, ומחזיר הצהרה כזאת אם היא לא נכונה.",
+        "מחזיר את התוצר עם סימון לכל שורה שדורשת החלטה, במקום לתקן בשקט."
+      ],
+      "how_it_helps_he": "הכלי כותב בביטחון גם כשהוא לא יודע, וזה נראה בדיוק כמו טקסט שנבדק. הבדיקה הזאת מחזירה את ההפרדה בין מה שאומת לבין מה שנשמע טוב, לפני שהמספר הלא נכון כבר יושב במודעה או במייל שיצא ללקוח.",
+      "safety": {
+        "writes_files": false,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "beginner",
+      "visibility": "public",
+      "tags": [
+        "בקרת איכות",
+        "אימות",
+        "לפני פרסום"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/00-foundations/output-check ~/.claude/skills/output-check",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/output-check",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/output-check/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T08:39:44.331Z"
+    },
+    {
+      "name": "plan-before-build",
+      "title_he": "תכנון לפני בנייה",
+      "category": "יסודות ובטיחות",
+      "category_slug": "00-foundations",
+      "topic": "תכנון לפני ביצוע",
+      "description": "תכנון לפני בנייה — הופך רעיון לתוכנית בת ביצוע לפני שנשרפות שעתיים על בנייה שתפורק, ומסיים בקובץ תוכנית שאפשר לחזור אליו בשיחה הבאה. הפעל כשרוצים לבנות דף נחיתה, אתר, כלי, אוטומציה או סוכן, אומרים בוא נבנה, או פותחים משימה גדולה ולא ברור מאיפה מתחילים. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים תוכנית בנייה כתובה שאפשר לאשר לפני שנוגעים בכלום: מה בדיוק ייבנה, מה במפורש לא ייכנס לגרסה הזאת, באיזה סדר, ואיך נדע שזה הצליח.",
+      "audience_he": "מתאים לבעל עסק שרוצה לבנות משהו חדש בעצמו ולא רוצה לגלות אחרי שעתיים שבנה את הדבר הלא נכון.",
+      "what_it_does_he": [
+        "שואל שאלות קצרות אחת אחת עד שברור מה הבעיה האמיתית ומי הלקוח שסובל ממנה.",
+        "מציג שתיים או שלוש דרכים לפתור, עם המחיר האמיתי של כל אחת, וממליץ על אחת.",
+        "כותב במפורש מה לא נכנס לגרסה הראשונה, כי זה החלק שחוסך את רוב הזמן.",
+        "מפרק את הבנייה לשלבים שאפשר לעצור אחרי כל אחד ולראות משהו עובד.",
+        "שומר את התוכנית כקובץ בתיקייה שלכם, אחרי אישור, כדי שהשיחה הבאה תמשיך ממנה."
+      ],
+      "how_it_helps_he": "הכלי מסוגל לבנות מהר, וזו בדיוק הסכנה: אפשר לקבל תוך שעה דף שלם שפותר בעיה שלא הייתה. עשר דקות של שאלות לפני ההתחלה מחליפות את הסבב השני של הפירוק והבנייה מחדש, ומשאירות בידיים מסמך שאפשר להראות לשותף או לספק.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "beginner",
+      "visibility": "public",
+      "tags": [
+        "תכנון",
+        "בנייה",
+        "אפיון"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/00-foundations/plan-before-build ~/.claude/skills/plan-before-build",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/plan-before-build",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/plan-before-build/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T08:39:44.343Z"
     },
     {
       "name": "safety-checkup",
@@ -896,7 +1004,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/a-day-in-the-life-of-a-cyborg/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "ad-hooks-in-20-minutes",
@@ -1132,7 +1240,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/being-found-by-ai-assistants/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "brand-voice-in-claude",
@@ -1256,7 +1364,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/brand-voice-in-claude/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "carousel-people-swipe-to-the-end",
@@ -1351,7 +1459,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/carousel-people-swipe-to-the-end/GUIDE.md",
-      "updated_at": "2026-08-16T05:21:25.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "connecting-gmail-for-invoices",
@@ -1468,7 +1576,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-gmail-for-invoices/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "connecting-meta-for-campaigns",
@@ -1597,7 +1705,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/connecting-meta-for-campaigns/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "deciding-alone-without-deciding-blind",
@@ -1984,7 +2092,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/hebrew-that-comes-out-professional/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "landing-page-that-gets-enquiries",
@@ -2092,7 +2200,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/landing-page-that-gets-enquiries/GUIDE.md",
-      "updated_at": "2026-08-14T11:58:08.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "looking-at-competitors-properly",
@@ -2195,7 +2303,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-properly/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "looking-at-competitors-with-radar",
@@ -2295,7 +2403,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/looking-at-competitors-with-radar/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "pre-meeting-research-in-15-minutes",
@@ -2460,7 +2568,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/pre-meeting-research-in-15-minutes/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "producing-price-quotes-faster",
@@ -2585,7 +2693,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/producing-price-quotes-faster/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "replying-to-client-emails-in-brand-voice",
@@ -2714,7 +2822,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/replying-to-client-emails-in-brand-voice/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "safe-use-of-claude-code",
@@ -2895,7 +3003,7 @@
       "highlight": true,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/safe-use-of-claude-code/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     },
     {
       "name": "site-status-report-with-findability",
@@ -3007,7 +3115,7 @@
       "highlight": false,
       "episode": null,
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/guides/site-status-report-with-findability/GUIDE.md",
-      "updated_at": "2026-08-22T19:12:27.000Z"
+      "updated_at": "2026-08-25T05:33:59.000Z"
     }
   ],
   "links": [
