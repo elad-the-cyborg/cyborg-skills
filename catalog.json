@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "generated_at": "2026-09-02T08:39:44.689Z",
-  "count": 23,
+  "generated_at": "2026-09-02T10:08:42.825Z",
+  "count": 30,
   "skills": [
     {
       "name": "brand-voice-setup",
@@ -73,7 +73,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/golden-rules",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/golden-rules/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-09-02T08:39:44.319Z"
+      "updated_at": "2026-09-02T08:40:07.000Z"
     },
     {
       "name": "output-check",
@@ -109,7 +109,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/output-check",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/output-check/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-09-02T08:39:44.331Z"
+      "updated_at": "2026-09-02T08:40:07.000Z"
     },
     {
       "name": "plan-before-build",
@@ -145,7 +145,7 @@
       "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/00-foundations/plan-before-build",
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/00-foundations/plan-before-build/INSTALL.md",
       "version": "1.0.0",
-      "updated_at": "2026-09-02T08:39:44.343Z"
+      "updated_at": "2026-09-02T08:40:07.000Z"
     },
     {
       "name": "safety-checkup",
@@ -184,6 +184,42 @@
       "updated_at": "2026-08-22T19:12:27.000Z"
     },
     {
+      "name": "campaign-brief",
+      "title_he": "בריף קמפיין",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "topic": "בריף קמפיין",
+      "description": "בריף קמפיין — הופך רעיון לקמפיין לבריף כתוב שאפשר לכתוב ממנו מודעות ולהפיק קריאייטיב בלי לנחש. הפעל כשמתכננים קמפיין חדש, מבקשים בריף, או מתחילים לכתוב מודעות בלי שסוכם למי ומה המסר. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים מסמך אחד שכל מי שנוגע בקמפיין עובד לפיו: מי הקהל, מה המסר היחיד, מה ההצעה, שלוש זוויות מוכנות לכתיבה, ומה אסור להגיד.",
+      "audience_he": "מתאים לבעל עסק שעומד להעלות קמפיין ורוצה שהמודעות והקריאייטיב יצאו מאותו מקום.",
+      "what_it_does_he": [
+        "שואב מקובץ העסק את מה שכבר ידוע, ושואל רק על מה שבאמת חסר לקמפיין הזה.",
+        "מחדד את הקהל של הקמפיין הספציפי, שהוא כמעט תמיד צר יותר מהקהל של העסק.",
+        "מנסח מסר אחד שאם הלקוח יזכור רק אותו, הקמפיין עשה את שלו.",
+        "מייצר שלוש זוויות שונות לאותו קהל, כדי שיהיה מה להשוות במקום לתלות הכול במודעה אחת.",
+        "רושם במפורש מה אסור להגיד, כולל הבטחות והגבלות רגולציה."
+      ],
+      "how_it_helps_he": "בלי בריף, כל מודעה נכתבת מהזיכרון של מי שכתב אותה באותו רגע, והקריאייטיב מספר סיפור אחר מהטקסט. מסמך אחד קצר מסנכרן את כל מי שנוגע בקמפיין, וגם מאפשר לדעת אחר כך למה משהו עבד או לא.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "beginner",
+      "visibility": "public",
+      "tags": [
+        "בריף",
+        "קמפיין",
+        "תכנון"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/campaign-brief ~/.claude/skills/campaign-brief",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/campaign-brief",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/campaign-brief/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T21:49:59.000Z"
+    },
+    {
       "name": "competitor-radar",
       "title_he": "מכ״ם המתחרים של הסייבורג",
       "category": "מחקר ואסטרטגיה",
@@ -219,6 +255,42 @@
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/competitor-radar/INSTALL.md",
       "version": "2.0.0",
       "updated_at": "2026-08-22T19:12:27.000Z"
+    },
+    {
+      "name": "conversion-blockers",
+      "title_he": "חסמי המרה",
+      "category": "מחקר ואסטרטגיה",
+      "category_slug": "01-research-strategy",
+      "topic": "חסמי המרה במשפך",
+      "description": "חסמי המרה — עובר על המשפך מהכניסה ועד אישור ההזמנה, מוצא איפה בדיוק אנשים נעלמים, ומדרג כל ממצא לפי כמה כסף הוא עולה. הפעל כששואלים למה נכנסים ולא קונים, מבקשים לשפר המרות, מדברים על נטישת עגלה, או רוצים בדיקה של דף מוצר או קופה. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים רשימת חסמים מדורגת לפי כמה כסף כל אחד עולה וכמה מאמץ הוא דורש, עם תיקון קונקרטי לכל אחד, ושלוש עד חמש פעולות לשבוע הקרוב.",
+      "audience_he": "מתאים לעסק שכבר מביא תנועה לאתר או לחנות, ורואה שהיא לא הופכת למכירות.",
+      "what_it_does_he": [
+        "מושך נתוני משפך אמיתיים אם יש חיבור לאנליטיקס, כדי לדעת איפה הנשירה ולא לנחש.",
+        "פותח את הדף בפועל ועובר על עשרים וארבעה סעיפים, במקום לשפוט לפי תיאור.",
+        "מפריד בין מה שנמדד לבין מה שהוא הערכה מקצועית, ולא מציג דעה כנתון.",
+        "מדרג כל ממצא לפי חומרה ומאמץ, ומקדים את מה שחמור וקל לתיקון.",
+        "מזכיר גיבוי ושינוי אחד בכל פעם כשהתיקון נוגע באתר חי."
+      ],
+      "how_it_helps_he": "התנועה שכבר מגיעה ולא קונה היא הכסף הזול ביותר בעסק, כי לא צריך לשלם עליה שוב אלא רק להסיר את מה שעוצר אותה. הרשימה מסודרת כך שהתיקון הראשון נותן תוצאה כבר בשבוע הראשון.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": true,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "המרות",
+        "משפך",
+        "נטישה"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/01-research-strategy/conversion-blockers ~/.claude/skills/conversion-blockers",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/01-research-strategy/conversion-blockers",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/conversion-blockers/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T10:08:42.442Z"
     },
     {
       "name": "findability-audit",
@@ -329,6 +401,42 @@
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/01-research-strategy/the-cyborg-board-cyborgion/INSTALL.md",
       "version": "1.0.0",
       "updated_at": "2026-08-24T22:10:41.000Z"
+    },
+    {
+      "name": "customer-flow",
+      "title_he": "רצפי לקוחות",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "topic": "רצפי הודעות ללקוחות",
+      "description": "רצפי לקוחות — כותב את ההודעות שאף אחד לא שולח ללקוח שכבר קנה או כמעט קנה, לפי ערוץ ולפי עיתוי. הפעל כשמבקשים רצף נטישת עגלה, הודעות אחרי רכישה, בקשת ביקורת, החזרת לקוחות ישנים או ניוזלטר. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים טבלה שאפשר להעתיק ממנה ישר למערכת הדיוור: מה מפעיל כל הודעה, כמה זמן אחרי, הנוסח לוואטסאפ ולמייל בנפרד, ופעולה אחת לכל הודעה.",
+      "audience_he": "מתאים לעסק שיש לו כבר לקוחות ופניות, ואף אחד לא חוזר אליהם אחרי הקנייה או אחרי הנטישה.",
+      "what_it_does_he": [
+        "בודק אילו ערוצים באמת מחוברים, ולא כותב רצף לערוץ שאי אפשר לשלוח בו.",
+        "מתחיל מרצף אחד וסוגר אותו, במקום חמישה רצפים חצי בנויים ששום דבר מהם לא נשלח.",
+        "כותב נוסח נפרד לוואטסאפ ולמייל, כי אלה לא אותם טקסטים.",
+        "קובע לכל הודעה מטרה אחת ופעולה אחת, ומחזיק את ההנחה לסוף הרצף בלבד.",
+        "מציף את כללי ההרשאות וההסרה גם כשלא שאלו עליהם."
+      ],
+      "how_it_helps_he": "לקוח שכבר קנה או שכבר הגיע לעגלה עולה הרבה פחות מלקוח חדש, וברוב העסקים הקטנים אף אחד לא מדבר איתו. אלה ההודעות שמחזירות כסף שכבר הושקע בהבאתו, ובלי להגדיל שקל בתקציב המדיה.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "נטישת עגלה",
+        "מייל",
+        "וואטסאפ"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/customer-flow ~/.claude/skills/customer-flow",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/customer-flow",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/customer-flow/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T10:08:42.485Z"
     },
     {
       "name": "google-search-ads-copy",
@@ -512,6 +620,78 @@
       "updated_at": "2026-08-13T14:18:59.000Z"
     },
     {
+      "name": "product-page",
+      "title_he": "דף מוצר",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "topic": "דף מוצר",
+      "description": "דף מוצר — כותב או משדרג דף מוצר שגם נמצא בחיפוש וגם סוגר את המכירה כשמגיעים אליו. הפעל כשמבקשים תיאור מוצר, דף מוצר, שדרוג של קטלוג, או ששואלים למה אף אחד לא מוצא את המוצרים באתר. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים עמוד שלם לפריט בקטלוג: תיאור שמוכר, תרגום של כל מספר טכני למה שהוא נותן בפועל, שאלות נפוצות, כותרת ותיאור לגוגל, טקסט חלופי לתמונות וקוד סימון.",
+      "audience_he": "מתאים לעסק עם קטלוג, שהמוצרים שלו מתוארים בשורה או שתיים מהיצרן.",
+      "what_it_does_he": [
+        "קורא את הדף הקיים ואת המפרט מהתיקייה לפני שהוא כותב, במקום להתחיל מדף חלק.",
+        "מתרגם כל תכונה טכנית לתועלת שהלקוח מרגיש, ולא משאיר מספרים לבד.",
+        "כותב סעיף של למי המוצר לא מתאים, שהוא הסעיף שהכי מוכר ושהכי חסר.",
+        "מייצר את השכבה שמביאה תנועה: כותרת ותיאור לגוגל, טקסט חלופי וקוד סימון מוצר.",
+        "מסמן כל מספר שאין לו מקור ואוסף אותו לרשימה בסוף במקום להמציא."
+      ],
+      "how_it_helps_he": "זה העמוד היחיד באתר שעובד בשני הכיוונים באותה עבודה: הוא מביא את הגולש מהחיפוש, והוא זה שסוגר את הרכישה. אותה כתיבה מכפילה את עצמה על כל פריט בקטלוג, ולכן ההחזר עליה גבוה מכל עמוד אחר.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "דף מוצר",
+        "קטלוג",
+        "המרה"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/product-page ~/.claude/skills/product-page",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/product-page",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/product-page/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T10:08:42.548Z"
+    },
+    {
+      "name": "seo-article",
+      "title_he": "מאמר לאתר",
+      "category": "קופי ותוכן",
+      "category_slug": "02-copy-content",
+      "topic": "תוכן אורגני לאתר",
+      "description": "מאמר לאתר — כותב תוכן שעונה על שאלה אמיתית שאנשים שואלים לפני שהם קונים, ובנוי גם להיענות על ידי מנועי תשובות ולא רק להימצא בגוגל. הפעל כשמבקשים מאמר, מדריך או פוסט לאתר, רוצים תוכן אורגני, או שואלים איך מביאים תנועה בלי לשלם. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים טקסט שלם לאתר עם שלד שאושר מראש, תשובה שעומדת בפסקה הראשונה, שאלות נפוצות, קישורים פנימיים לעמוד שמוכר, וכל עובדה מסומנת עם המקור שלה.",
+      "audience_he": "מתאים לעסק שרוצה שיגיעו אליו מחיפוש בלי לשלם על כל קליק, ואין לו כותב תוכן.",
+      "what_it_does_he": [
+        "בודק קודם אם כבר יש תוכן על הנושא באתר, כי לרוב עדיף לשדרג אותו מלייצר לו מתחרה.",
+        "מגדיר לאיזה שלב בחיפוש הטקסט מדבר, כי טקסט שמדבר לשלושה שלבים לא מדבר לאף אחד.",
+        "מציג שלד לאישור לפני הכתיבה המלאה, וחוסך שכתוב של טקסט שלם.",
+        "כותב כך שהתשובה עומדת ראשונה בכל סעיף, וזה מה שמנועי תשובות מצטטים.",
+        "דורש מקור לכל עובדה, ומסייג או משמיט את מה שאי אפשר לאמת."
+      ],
+      "how_it_helps_he": "זה הערוץ היחיד שממשיך להביא פניות אחרי שמפסיקים לשלם. הכתיבה כאן לא מכוונת רק לדירוג בגוגל אלא גם לכך שעוזר בינה מלאכותית יצטט את העסק כשמישהו שואל אותו שאלה בתחום, וזו הדרך שבה חלק גדל מהלקוחות מחפשים היום.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "intermediate",
+      "visibility": "public",
+      "tags": [
+        "תוכן",
+        "אורגני",
+        "מנועי תשובות"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/02-copy-content/seo-article ~/.claude/skills/seo-article",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/02-copy-content/seo-article",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/seo-article/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T10:08:42.558Z"
+    },
+    {
       "name": "taboola-ads-copy",
       "title_he": "קופי למודעות טאבולה",
       "category": "קופי ותוכן",
@@ -547,6 +727,78 @@
       "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/02-copy-content/taboola-ads-copy/INSTALL.md",
       "version": "1.0.0",
       "updated_at": "2026-08-13T14:20:08.000Z"
+    },
+    {
+      "name": "ad-banner",
+      "title_he": "הפקת באנרים",
+      "category": "עיצוב ועריכת וידאו",
+      "category_slug": "03-creative-visual",
+      "topic": "הפקת באנרים למודעות",
+      "description": "הפקת באנרים — מפיק מודעות תמונה עם עברית תקינה, בשיטה שמייצרת את הסצנה בלי טקסט ומלבישה את הכיתוב עליה בשלב נפרד. הפעל כשמבקשים באנר, מודעת תמונה, קריאייטיב לפיד או לסטורי, או שהעברית יוצאת משובשת ממנוע התמונות. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים קובצי תמונה מוכנים להעלאה במידות הנכונות, עם עברית נקייה בגופן של המותג, ובסטורי גם עם השוליים שהפלטפורמה מכסה נשמרים ריקים.",
+      "audience_he": "מתאים למי שמפיק מודעות בעצמו ומקבל ממנועי התמונות עברית שבורה או משובשת.",
+      "what_it_does_he": [
+        "מייצר את הסצנה בלי שום טקסט בתוכה, כי מנועי תמונות משבשים אותיות עבריות.",
+        "מלביש את הכיתוב בשכבה נפרדת בגופן של המותג ובכיוון ימין לשמאל, ומרנדר לקובץ.",
+        "מעדיף תמונת מוצר אמיתית על תמונה מיוצרת כשהמוצר עצמו צריך להופיע.",
+        "שומר בסטורי את חמישית המסך העליונה והתחתונה ריקות, כי הפלטפורמה מכסה אותן.",
+        "פותח את הקובץ שנוצר ובודק אותו בעיניים לפני שהוא מדווח שהוא מוכן."
+      ],
+      "how_it_helps_he": "זו הנקודה שבה רוב האנשים נתקעים: הכלים יודעים לייצר תמונה יפה אבל לא יודעים לכתוב עברית עליה. הפרדת הסצנה מהכיתוב פותרת את זה לגמרי, ונותנת גם שליטה מלאה בגופן, במידות ובמה שכתוב.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": true,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "advanced",
+      "visibility": "public",
+      "tags": [
+        "באנרים",
+        "קריאייטיב",
+        "עברית"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/ad-banner ~/.claude/skills/ad-banner",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/ad-banner",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/ad-banner/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-09-02T10:08:42.580Z"
+    },
+    {
+      "name": "brand-palette",
+      "title_he": "פלטת מותג",
+      "category": "עיצוב ועריכת וידאו",
+      "category_slug": "03-creative-visual",
+      "topic": "פלטת מותג וזהות ויזואלית",
+      "description": "פלטת מותג — בונה פלטת צבעים וזוג גופנים לעסק, מאמת שהטקסט באמת קריא על הרקע, ומייצר תצוגה שאפשר לפתוח בדפדפן ולראות. הפעל כשמבקשים צבעי מותג, פלטה, זהות ויזואלית, או שכל מודעה יוצאת בצבעים אחרים. קורא קודם CLAUDE.md אם קיים.",
+      "summary_he": "מקבלים סט צבעים וגופנים עם תפקיד מוגדר לכל אחד, קוד מוכן להעתקה, ודף תצוגה שנפתח בדפדפן ומראה איך זה באמת נראה לפני שמשתמשים בזה.",
+      "audience_he": "מתאים לעסק שכל מודעה שלו יוצאת בצבעים קצת אחרים, ורוצה סט אחד שכולם עובדים לפיו.",
+      "what_it_does_he": [
+        "נשען על הלוגו והצבעים שכבר קיימים בעסק במקום להתחיל מדף חלק.",
+        "בונה פלטה שבה לכל צבע יש תפקיד אחד, כולל צבע הדגשה יחיד לכפתורים.",
+        "מחשב את יחס הניגודיות לכל צמד טקסט ורקע, ומסמן צמד שנופל מתחת לסף הקריאות.",
+        "מייצר קובץ תצוגה שנפתח בדפדפן ומראה את הפלטה על כפתור וכותרת אמיתיים.",
+        "מציע זוג גופנים לעברית עם משקלים לכותרת ולגוף."
+      ],
+      "how_it_helps_he": "עסק קטן נראה חובבני לא בגלל עיצוב חלש אלא בגלל חוסר עקביות: כל מודעה בגוון אחר וכל דף בגופן אחר. סט אחד קבוע פותר את זה, וגם חוסך את ההתלבטות הזאת בכל פעם מחדש.",
+      "safety": {
+        "writes_files": true,
+        "sends_external": false,
+        "touches_live_campaigns": false
+      },
+      "site_gate": "open",
+      "level": "beginner",
+      "visibility": "public",
+      "tags": [
+        "מותג",
+        "צבעים",
+        "טיפוגרפיה"
+      ],
+      "install_command": "npx degit elad-the-cyborg/cyborg-skills/skills/03-creative-visual/brand-palette ~/.claude/skills/brand-palette",
+      "github_url": "https://github.com/elad-the-cyborg/cyborg-skills/tree/main/skills/03-creative-visual/brand-palette",
+      "install_guide_url": "https://github.com/elad-the-cyborg/cyborg-skills/blob/main/skills/03-creative-visual/brand-palette/INSTALL.md",
+      "version": "1.0.0",
+      "updated_at": "2026-08-12T21:49:59.000Z"
     },
     {
       "name": "instagram-carousel",
